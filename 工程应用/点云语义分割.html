@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>点云语义分割 &#8212; LeoMao的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '工程应用/点云语义分割';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Deep Q Learning" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LeoMao的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html">Deep Q Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/工程应用/点云语义分割.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>点云语义分割</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据结构</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据处理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">算法模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">加速优化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spconv">Spconv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>点云语义分割<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>数据结构<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="octree">
+<h3>Octree<a class="headerlink" href="#octree" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.open3d.org/docs/release/tutorial/geometry/octree.html">Octree - Open3D 0.19.0 documentation</a>
+八叉树是将三维数据进行划分存储的一种方式。将一个体素格进行分割，能够分成八个子格子，因此八叉树的八个子节点即父节点分成的子格子。若格子内无点，则不需要继续分割，否则可以继续分割，直到每个叶子节点都只有一个点。</p>
+</section>
+<section id="kdtree">
+<h3>KDTree<a class="headerlink" href="#kdtree" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.open3d.org/docs/release/tutorial/geometry/kdtree.html">KDTree - Open3D 0.19.0 documentation</a>
+KD树可以用于最近邻搜索。输入K维数据，按不同维度依方差顺序找均值划分二叉树，即KD树。最近邻搜索时，依坐标值找到叶子节点，若距离小于均值，则叶子节点是最近邻，否则再查找下一分支。</p>
+</section>
+</section>
+<section id="id3">
+<h2>数据处理<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="farthest-point-sampling">
+<h3>Farthest Point Sampling<a class="headerlink" href="#farthest-point-sampling" title="Link to this heading">#</a></h3>
+<p>最远点采样是一种采样方法，目的是使采样尽可能的离散均匀。算法流程是：</p>
+<ol class="arabic simple">
+<li><p>随机选取一个点加入采样集合</p></li>
+<li><p>寻找剩余点中与采样集合的距离最远的点，加入采样集合</p></li>
+<li><p>计算点与采样集合中所有点的的距离，最短距离即点与采样集合的距离</p></li>
+<li><p>重复以上步骤直到采样到足够点
+最远点采样需要三重for循环（采样点、剩余点、点与已采样点距离），因此计算量大，速度慢，优点是采样均匀，能够保持三维形状特征。</p></li>
+</ol>
+</section>
+</section>
+<section id="id4">
+<h2>算法模型<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="point-transformer">
+<h3>Point Transformer<a class="headerlink" href="#point-transformer" title="Link to this heading">#</a></h3>
+</section>
+<section id="point-transformer-v2">
+<h3>Point Transformer V2<a class="headerlink" href="#point-transformer-v2" title="Link to this heading">#</a></h3>
+</section>
+<section id="point-transformer-v3">
+<h3>Point Transformer V3<a class="headerlink" href="#point-transformer-v3" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/Pointcept/Pointcept">GitHub - Pointcept/Pointcept: Pointcept: a codebase for point cloud perception research. Latest works: Sonata (CVPR’25 Highlight), PTv3 (CVPR’24 Oral), PPT (CVPR’24), MSC (CVPR’23)</a></p>
+</section>
+</section>
+<section id="id5">
+<h2>加速优化<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="spconv">
+<h3>Spconv<a class="headerlink" href="#spconv" title="Link to this heading">#</a></h3>
+</section>
+<section id="flash-attention">
+<h3>Flash Attention<a class="headerlink" href="#flash-attention" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Deep Q Learning</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据结构</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据处理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">算法模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">加速优化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spconv">Spconv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

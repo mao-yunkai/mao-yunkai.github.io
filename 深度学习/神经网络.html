@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>神经网络 &#8212; LeoMao的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '深度学习/神经网络';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="激活函数" href="%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html" />
+    <link rel="prev" title="评估" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LeoMao的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html">Deep Q Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/深度学习/神经网络.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>神经网络</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">通用近似定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本模型</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>神经网络<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>通用近似定理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>通用近似定理（universal approximation theorem）(Hornik et al., 1989; Cybenko, 1989) 表明，一个前馈神经网络如果具有线性输出层和至少一层具有任何一种 ‘‘挤压’’ 性质的激活函数（例如logistic sigmoid激活函数）的隐藏层，只要给予网络足够数量的隐藏单元，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。</p>
+</section>
+<section id="id3">
+<h2>基本模型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://pytorch.org/docs/stable/nn.html#linear-layers">torch.nn — PyTorch 2.5 documentation</a>
+神经网络可以表示任意变换，因此，只要有数据和标签，就可以使用神经网络学习数据与标签之间的关系。神经网络层由两部分构成，第一部分是线性输出层，可以满足任意线性变换；第二部分是[[激活函数#激活函数]]，可以提供非线性变换能力。
+单个神经元的结构为
+![[Single model.png]]</p>
+<blockquote>
+<div><p>💡 <strong>为什么<span class="math notranslate nohighlight">\(b\)</span>是一维而<span class="math notranslate nohighlight">\(W\)</span>是多维？</strong>
+假设<span class="math notranslate nohighlight">\(B\in \mathbb R^{d\times h}\)</span>，根据公式<span class="math notranslate nohighlight">\(H=XW+B\)</span>，那么可以得到<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+h_1&amp;=w_1\times x_1+b_1+w_2\times x_2+b_2+w_3\times x_3+b_3+w_4\times x_4+b_4\\
+&amp;=w_1\times x_1+w_2\times x_2+w_3\times x_3+w_4\times x_4+(b_1+b_2+b_3+b_4)\\
+&amp;=w_1\times x_1+w_2\times x_2+w_3\times x_3+w_4\times x_4+b\\
+&amp;=xW+b
+\end{align}\end{split}\]</div>
+因此<span class="math notranslate nohighlight">\(b\)</span>只需要一维即可。</p>
+</div></blockquote>
+<p>以一个单隐藏层神经网络为例
+![[Neural Network.png]]
+设输入<span class="math notranslate nohighlight">\(X\in\mathbb R^{n\times d}\)</span>表示<span class="math notranslate nohighlight">\(n\)</span>个具有<span class="math notranslate nohighlight">\(d\)</span>维特征的样本，<span class="math notranslate nohighlight">\(H\in \mathbb R^{n\times h}\)</span>表示隐藏层的输出，<span class="math notranslate nohighlight">\(O\in \mathbb R^{n\times q}\)</span>表示输出层的输出。输入一个样本<span class="math notranslate nohighlight">\(x=[x_1, x_2, x_3, x_4]\)</span>，首先经过隐藏层，公式为<div class="math notranslate nohighlight">
+\[H=\sigma(xW^1+b^1)\]</div>
+其中<span class="math notranslate nohighlight">\(W^1\in \mathbb R^{d\times h}\)</span>，<span class="math notranslate nohighlight">\(b^1\in\mathbb R^{1\times h}\)</span>，<span class="math notranslate nohighlight">\(\sigma(x)\)</span>是激活函数，如[[激活函数#ReLU]]。
+隐藏表示的特征再输入输出层，公式为<div class="math notranslate nohighlight">
+\[O=HW^2+b^2\]</div>
+其中<span class="math notranslate nohighlight">\(W^2\in \mathbb R^{h\times q}\)</span>，<span class="math notranslate nohighlight">\(b^2\in \mathbb R^{1\times q}\)</span>。
+此时得到的输出<span class="math notranslate nohighlight">\(O\)</span>的取值范围是<span class="math notranslate nohighlight">\(\mathbb R\)</span>。在拟合任务中，我们已经得到了我们希望的输出；在分类任务中，我们希望输出层的输出可以表示预测出的类别分布概率。因此，我们需要用softmax函数处理输出结果。
+<div class="math notranslate nohighlight">
+\[\hat Y=softmax(O),其中,\hat {y_i}=\frac{e^i}{\Sigma_je^j}\]</div>
+
+在Pytorch中，实现上述模型的代码为</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+	<span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="p">,</span> <span class="n">hidden_features</span><span class="p">),</span>
+	<span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+	<span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_features</span><span class="p">,</span> <span class="n">out_features</span><span class="p">),</span>
+	<span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>in_features是输入层的神经网络节点个数，hidden_features是隐藏层的神经网络节点个数，out_features是输出层神经网络的节点个数。</p>
+<blockquote>
+<div><p>💡<strong>为什么Pytorch实现中通常不加入Softmax层？</strong>
+Pytorch在nn.CrossEntropyLoss中隐式的实现了Softmax操作。如果使用的Loss函数不包括此功能，同时标签也是以One-hot格式组织，那么就需要自己实现Softmax操作。</p>
+</div></blockquote>
+<blockquote>
+<div><p>💡<strong>为什么不能用单层神经网络作为通用模型，而需要设计不同的模型架构？</strong>
+万能近似定理意味着无论我们试图学习什么函数，我们知道一个大的 MLP 一 定能够<strong>表示</strong>这个函数。然而，我们不能保证训练算法能够<strong>学得</strong>这个函数。即使 MLP 能够表示该函数，学习也可能因两个不同的原因而失败。首先，用于训练的优化算 法可能找不到用于期望函数的参数值。其次，训练算法可能由于过拟合而选择了错 误的函数。回忆第 5.2.1 节中的 ‘‘没有免费的午餐’’ 定理，说明了没有普遍优越的机 器学习算法。前馈网络提供了表示函数的万能系统，在这种意义上，给定一个函数，深度前馈网络 存在一个前馈网络能够近似该函数。不存在万能的过程既能够验证训练集上的特殊 样本，又能够选择一个函数来扩展到训练集上没有的点。
+总之，具有单层的前馈网络足以表示任何函数，但是网络层可能大得不可实现， 并且可能无法正确地学习和泛化。在很多情况下，使用更深的模型能够减少表示期望函数所需的单元的数量，并且可以减少泛化误差。</p>
+</div></blockquote>
+<p>线性代数的矩阵表示方式看起来不那么直观，将所有参数展开表示，我们来看一看数据在经过模型时发生了什么。基本模型的参数包括</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\begin{bmatrix}W^1 &amp; b^1\end{bmatrix}^T &amp;= \begin{bmatrix}
+w^1_{11} &amp; w^1_{12} &amp; w^1_{13} &amp; w^1_{14} &amp; w^1_{15} \\
+w^1_{21} &amp; w^1_{22} &amp; w^1_{23} &amp; w^1_{24} &amp; w^1_{25} \\
+w^1_{31} &amp; w^1_{32} &amp; w^1_{33} &amp; w^1_{34} &amp; w^1_{35} \\
+w^1_{41} &amp; w^1_{42} &amp; w^1_{43} &amp; w^1_{44} &amp; w^1_{45} \\
+b^1_1    &amp; b^1_2    &amp; b^1_3    &amp; b^1_4    &amp; b^1_5
+\end{bmatrix} \\
+\begin{bmatrix}W^2 &amp; b^2\end{bmatrix}^T &amp;= \begin{bmatrix}
+w^2_{11} &amp; w^2_{12} &amp; w^2_{13} \\
+w^2_{21} &amp; w^2_{22} &amp; w^2_{23} \\
+w^2_{31} &amp; w^2_{32} &amp; w^2_{33} \\
+w^2_{41} &amp; w^2_{42} &amp; w^2_{43} \\
+w^2_{51} &amp; w^2_{52} &amp; w^2_{53} \\
+b^2_1    &amp; b^2_2    &amp; b^2_3 
+\end{bmatrix}
+\end{align}
+\end{split}\]</div>
+<p>输入一个样本<span class="math notranslate nohighlight">\(\mathbfit x=[x_1\ x_2\ x_3\ x_4]^T\)</span>，隐藏层输出为<span class="math notranslate nohighlight">\(H\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+H=\begin{bmatrix}h_1 &amp; h_2 &amp; h_3 &amp; h_4 &amp; h_5\end{bmatrix}^T=ReLU(W^1\mathbfit x+b^1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H^0=\begin{cases}
+h^0_1 = x_1w^1_{11}+x_2w^1_{12}+x_3w^1_{13}+x_4w^1_{14}+b_1^1 \\
+h^0_2 = x_1w^1_{21}+x_2w^1_{22}+x_3w^1_{23}+x_4w^1_{24}+b_2^1 \\
+h^0_3 = x_1w^1_{31}+x_2w^1_{32}+x_3w^1_{33}+x_4w^1_{34}+b_3^1 \\
+h^0_4 = x_1w^1_{41}+x_2w^1_{42}+x_3w^1_{43}+x_4w^1_{44}+b_4^1 \\
+h^0_5 = x_1w^1_{51}+x_2w^1_{52}+x_3w^1_{53}+x_4w^1_{54}+b_5^1 \\
+\end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H=\begin{cases}
+h_1=max\{0,h^0_1\} \\
+h_2=max\{0,h^0_2\} \\
+h_3=max\{0,h^0_3\} \\
+h_4=max\{0,h^0_4\} \\
+h_5=max\{0,h^0_5\} \\
+\end{cases}
+\end{split}\]</div>
+<p>输出层的输出为<span class="math notranslate nohighlight">\(\hat Y\)</span></p>
+<div class="math notranslate nohighlight">
+\[\hat {\mathbfit y}=\begin{bmatrix}\hat{y_1} &amp; \hat{y_2} &amp; \hat{y_3}\end{bmatrix}^T=Softmax(W^2H+b^2)\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbfit o=\begin{cases}
+o_1 = h_1w^2_{11}+h_2w^2_{12}+h_3w^2_{13}+h_4w^2_{14}+h_5w^2_{15}+b^2_1 \\
+o_2 = h_1w^2_{21}+h_2w^2_{22}+h_3w^2_{23}+h_4w^2_{24}+h_5w^2_{25}+b^2_2 \\
+o_3 = h_1w^2_{32}+h_2w^2_{32}+h_3w^2_{33}+h_4w^2_{34}+h_5w^2_{35}+b^2_3 \\
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+\hat {y_1} = \frac{\exp(o_1)}{\Sigma_i \exp(o_i)} \\
+\hat {y_2} = \frac{\exp(o_2)}{\Sigma_i \exp(o_i)} \\
+\hat {y_3} = \frac{\exp(o_3)}{\Sigma_i \exp(o_i)} \\
+\end{cases}\end{split}\]</div>
+<p>样本<span class="math notranslate nohighlight">\(\mathbfit x\)</span>有标签<span class="math notranslate nohighlight">\(\mathbfit y=\begin{bmatrix}y_1 &amp; y_2 &amp; y_3\end{bmatrix}\)</span>，说明样本被分为总共3个类，使用One-hot表示方式，若样本属于类别2，则<span class="math notranslate nohighlight">\(\mathbfit y=\begin{bmatrix}0&amp;1&amp;0\end{bmatrix}\)</span>。</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">评估</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">激活函数</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">通用近似定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本模型</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

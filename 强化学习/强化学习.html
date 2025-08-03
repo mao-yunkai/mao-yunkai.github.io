@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>强化学习 &#8212; LeoMao的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '强化学习/强化学习';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="策略梯度方法" href="%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html" />
+    <link rel="prev" title="模型部署" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LeoMao的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html">Deep Q Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/强化学习/强化学习.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>强化学习</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">核心概念</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">环境模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">马尔可夫性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">马尔可夫决策过程模型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">问题建模</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">基于策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">基于价值</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">优化方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">代数求解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">动态规划</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">策略迭代</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">价值迭代</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">蒙特卡洛</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">时间差分</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>强化学习<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>核心概念<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在马尔可夫决策过程环境中，智能体根据状态选择动作，执行动作得到奖励和下一个状态。策略是智能体根据状态选择动作的函数。期望回报是智能体根据策略与环境交互得到的所有轨迹的回报的期望值。强化学习通过优化策略使得期望回报最大化的方法。</p>
+<p>主要问题：</p>
+<ol class="arabic simple">
+<li><p>如何选择动作？</p></li>
+<li><p>如何调整策略？</p></li>
+</ol>
+<p>选择动作的两种思路：</p>
+<ol class="arabic simple">
+<li><p>定义动作价值函数，根据价值选择动作，通过奖励值调整动作价值</p></li>
+<li><p>定义策略函数，根据策略选择动作，通过奖励值调整策略函数参数</p></li>
+</ol>
+</section>
+<section id="id3">
+<h2>环境模型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>马尔可夫性<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>满足以下条件的过程我们称为具有马尔可夫性，即下一个状态仅与当前状态有关，而与历史状态无关。
+<div class="math notranslate nohighlight">
+\[ P(S_{t+1}|S_t)=P{S_{t+1}|S_1,...,S_t} \]</div>
+</p>
+</section>
+<section id="id5">
+<h3>马尔可夫决策过程模型<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>马尔可夫过程是一个具备马尔可夫性质的离散随机过程。马尔可夫性质即下一状态只与当前状态有关，与之前的状态无关，也被称为时间同质性。马尔可夫过程由状态集和状态转移矩阵构成。</p>
+<p>智能体可以通过马尔可夫链的状态转移函数来实现与环境的交互，但是马尔可夫过程并不能让环境提供奖励反馈给智能体。因此，马尔可夫奖励过程加入了奖励函数和奖励折扣因子。</p>
+<p>折扣化回报：奖励值的加权求和。解决的问题是使回报值收敛，距离更近的时间步比相对较远的时间步产生更大的影响。</p>
+<p>强化学习以马尔可夫决策过程作为环境模型。</p>
+<p>马尔可夫决策过程是一个五元组 <span class="math notranslate nohighlight">\(&lt;S, A, \boldsymbol{P}, R, \gamma&gt;\)</span>,分别代表：</p>
+<p><span class="math notranslate nohighlight">\(S = \{s_1, s_2, ..., s_n\}\)</span> - 状态空间，包含模型所有可能的状态值</p>
+<p><span class="math notranslate nohighlight">\(A = \{a_1, a_2, ..., a_m\}\)</span> - 动作空间，包含模型所有可能的动作值</p>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{P}(s,a) = p(S_{t+1}|S_t=s, A_t=a)\)</span> - 状态转移概率函数，输出是转移到其他状态的概率向量</p>
+<p><span class="math notranslate nohighlight">\({P}(s'|s,a) = p(S_{t+1}=s'|S_t=s, A_t=a)\)</span> - 表示状态s执行动作a后转移到状态s’的概率值</p>
+<p><span class="math notranslate nohighlight">\(R(s) = \mathbb{E}(R_{t+1}|S_t=s)\)</span> - 奖励函数，某个状态的奖励指转移到该状态时可以获得奖励的期望。</p>
+<p><span class="math notranslate nohighlight">\(R(s,a)\)</span> - 奖励函数，表示状态s执行动作a后获得的奖励。</p>
+<p><span class="math notranslate nohighlight">\(\gamma\)</span> - 折扣因子，常量</p>
+</section>
+</section>
+<section id="id6">
+<h2>问题建模<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h3>基于策略<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>强化学习的目的是找到一个策略使智能体通过策略与环境交互的期望回报最大化。</p>
+<p>策略函数用<span class="math notranslate nohighlight">\(\theta\)</span>来定义：
+<div class="math notranslate nohighlight">
+\[\pi_\theta(a|s)=p(A_t=a|S_t=s)\]</div>
+</p>
+<p>轨迹<span class="math notranslate nohighlight">\( \tau=(S_1,A_1,S_2,A_2,...,S_T,A_T) \)</span>
+根据策略生成轨迹的概率：
+<div class="math notranslate nohighlight">
+\[p_\theta(\tau)=p(S_1)\prod_{t=1}^{T}\pi_\theta(A_t|S_t)P(S_{t+1}|S_t,A_t)\]</div>
+</p>
+<p>由概率的乘法公式，<span class="math notranslate nohighlight">\(p(S_1S_2...S_T)=p(S_1)p(S_2|S_1)p(S_3|S_2S_1)...p(S_T|S_{t-1}...S_1)\)</span>。由马尔可夫性质，公式简化为<span class="math notranslate nohighlight">\(p(S_1S_2...S_T)=p(S_1)p(S_2|S_1)p(S_3|S_2)...p(S_T|S_{t-1})\)</span>。由马尔可夫决策模型可得<span class="math notranslate nohighlight">\(p(S_{t+1}|S_t) = \pi_\theta(A_t|S_t)P(S_{t+1}|S_t, A_t)\)</span>。
+为什么这里会用到<span class="math notranslate nohighlight">\(t+1\)</span>? 因为轨迹中包含了<span class="math notranslate nohighlight">\(A_T\)</span>，想要得到<span class="math notranslate nohighlight">\(A_T\)</span>就要计算<span class="math notranslate nohighlight">\(p(S_{t+1}|S_t)\)</span>。</p>
+<p>策略的期望回报：
+<div class="math notranslate nohighlight">
+\[J(\theta)=\int_\tau p_\theta(\tau)R(\tau)=\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)]\]</div>
+</p>
+<p>直接通过优化策略得到最优策略函数
+<div class="math notranslate nohighlight">
+\[\theta^*=\arg\max_\theta J(\theta)\]</div>
+</p>
+</section>
+<section id="id8">
+<h3>基于价值<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>基于价值的方法中，使用贪心策略选择动作，即选择当前状态下的期望最大的动作。价值的定义与求解是这类方法的核心。</p>
+<p>价值函数定义为从状态出发遵循策略能获得的期望回报：
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+V^{\pi}(s)&amp;=\mathbb{E}[R_t+\gamma R_{t+1}+\gamma^2R_{t+2}+\ldots|S_t=s] \\
+&amp;=\mathbb{E}[R_{t}+\gamma(R_{t+1}+\gamma R_{t+2}+\ldots)|S_{t}=s] \\
+&amp;=\mathbb{E}[R_t+\gamma V^{\pi}(S_{t+1})|S_t=s] \\
+&amp;=\sum_{a\in A}\pi(a|s)\left(R(s,a)+\gamma\sum_{s^{\prime}\in S}P(s^{\prime}|s,a)V^\pi(s^{\prime})\right)
+\end{aligned}\end{split}\]</div>
+</p>
+<p>动作价值函数定义为从状态和动作出发遵循策略能获得的期望回报：
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q^{\pi}(s,a)&amp; =\mathbb{E}_\pi[R_t+\gamma Q^\pi(S_{t+1},A_{t+1})|S_t=s,A_t=a]  \\
+&amp;=R(s,a)+\gamma\sum_{s^{\prime}\in S}P(s^{\prime}|s,a)\sum_{a^{\prime}\in A}\pi(a^{\prime}|s^{\prime})Q^{\pi}(s^{\prime},a^{\prime})
+\end{aligned}\end{split}\]</div>
+</p>
+<p>贝尔曼方程：
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+V^{\pi}(s)&amp; =\mathbb{E}_\pi[R_t+\gamma V^\pi(S_{t+1})|S_t=s]  \\
+&amp;=\sum_{a\in A}\pi(a|s)\left(R(s,a)+\gamma\sum_{s^{\prime}\in S}P(s^{\prime}|s,a)V^\pi(s^{\prime})\right) \\
+Q^{\pi}(s,a)&amp; =\mathbb{E}_\pi[R_t+\gamma Q^\pi(S_{t+1},A_{t+1})|S_t=s,A_t=a]  \\
+&amp;=R(s,a)+\gamma\sum_{s^{\prime}\in S}P(s^{\prime}|s,a)\sum_{a^{\prime}\in A}\pi(a^{\prime}|s^{\prime})Q^{\pi}(s^{\prime},a^{\prime})
+\end{aligned}\end{split}\]</div>
+</p>
+<p>有了Q值对策略进行评估之后，我们只需要找到一种能提升Q值的方法就能提升策略的效果。从另一个角度来看，价值函数和动作价值函数也是期望回报的一种形式，使价值函数最大化与期望回报最大化本质上是一致的。
+贝尔曼方程的意义是，状态的价值函数等于即时奖励加上未来可能的奖励的期望，也就是所有可能转移到的下一个状态的价值的加权和。</p>
+</section>
+</section>
+<section id="id9">
+<h2>优化方法<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>基于策略的模型中，优化目标是找到最优的策略函数参数。首先使用神经网络表示策略函数，将策略函数参数化为<span class="math notranslate nohighlight">\(\pi(\theta)\)</span>，参数化后的策略函数可以直接使用梯度上升方法，对期望回报求关于参数的梯度，使期望回报的值最大化。</p>
+<p>基于价值的模型中，优化目标是找到价值函数与动作价值函数的值。通过矩阵运算，可以直接得到解析解。解析解的计算复杂度是<span class="math notranslate nohighlight">\(O(n^3)\)</span>，n是状态的数量，因此只有状态规模很小时才适用。
+常用动态规划、蒙特卡洛、时间差分这三类方法估计价值函数。提升Q值的方法则通常使用时间差分方法，使用<span class="math notranslate nohighlight">\(\epsilon\)</span>-贪心策略选择目标Q值，确保目标值不小于当前值。</p>
+<section id="id10">
+<h3>代数求解<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+</section>
+<section id="id11">
+<h3>动态规划<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>动态规划的基本思想是将待求解问题分解成若干个子问题，先求解子问题，然后从这些子问题的解得到目标问题的解。动态规划会保存已解决的子问题的答案，在求解目标问题的过程中，需要这些子问题答案时就可以直接利用，避免重复计算。</p>
+<p>需要事先知道环境的转移函数和奖励函数。</p>
+<section id="id12">
+<h4>策略迭代<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>策略评估</p></li>
+</ol>
+<p>用上一轮的状态价值函数计算当前的状态价值函数。
+<div class="math notranslate nohighlight">
+\[ V^{k+1}(s)=\sum_{a\in A}\pi(a|s)\left(r(s,a)+\gamma\sum_{s'\in S}P(s'|s,a)V^k(s')\right) \]</div>
+
+当状态价值函数趋近于不变时，结束迭代。</p>
+<ol class="arabic simple" start="2">
+<li><p>策略提升</p></li>
+</ol>
+<p>策略提升定理：<div class="math notranslate nohighlight">
+\[\exists \pi', \forall s\in S, Q^\pi(s, \pi'(s))\geq V^\pi(s) \Rightarrow V^{\pi'}(s)\geq V^\pi(s)\]</div>
+
+使用贪心策略：
+<div class="math notranslate nohighlight">
+\[ \pi'(s)=\arg\max_aQ^\pi(s,a)=\arg\max_a\{r(s,a)+\gamma\sum_{s'}P(s'|s,a)V^\pi(s')\} \]</div>
+
+构造的贪心策略<span class="math notranslate nohighlight">\(\pi'\)</span>满足策略提升定理的条件，所以策略<span class="math notranslate nohighlight">\(pi'\)</span>能够比策略<span class="math notranslate nohighlight">\(pi\)</span>更好或者至少与其一样好。这个根据贪心法选取动作从而得到新的策略的过程称为策略提升。当策略提升之后得到的策略<span class="math notranslate nohighlight">\(\pi'\)</span>和之前的策略<span class="math notranslate nohighlight">\(\pi\)</span>一样时，说明策略迭代达到了收敛，此时<span class="math notranslate nohighlight">\(\pi\)</span>和<span class="math notranslate nohighlight">\(\pi'\)</span>就是最优策略。</p>
+</section>
+<section id="id13">
+<h4>价值迭代<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[ V^{k+1}(s)=\max_{a\in\mathcal{A}}\{r(s,a)+\gamma\sum_{s'\in\mathcal{S}}P(s'|s,a)V^{k}(s')\} \]</div>
+<p>当价值不变时停止迭代，恢复策略：
+<div class="math notranslate nohighlight">
+\[ \pi(s)=\arg\max_a\{r(s,a)+\gamma\sum_{s^{\prime}}p(s^{\prime}|s,a)V^{k+1}(s^{\prime})\} \]</div>
+</p>
+</section>
+</section>
+<section id="id14">
+<h3>蒙特卡洛<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>通常使用重复随机抽样，然后运用概率统计方法来从抽样结果中归纳出我们想求的目标的数值估计。</p>
+<div class="math notranslate nohighlight">
+\[ V^{\pi}(s) \approx \frac1{N} \sum_{i=0}^nG_t^{(i)} \]</div>
+</section>
+<section id="id15">
+<h3>时间差分<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[ V(s_t)\leftarrow V(s_t)+\alpha[r_t+\gamma V(s_{t+1})-V(s_t)] \]</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">模型部署</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">策略梯度方法</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">核心概念</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">环境模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">马尔可夫性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">马尔可夫决策过程模型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">问题建模</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">基于策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">基于价值</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">优化方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">代数求解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">动态规划</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">策略迭代</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">价值迭代</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">蒙特卡洛</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">时间差分</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

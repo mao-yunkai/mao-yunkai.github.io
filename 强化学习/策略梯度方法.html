@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>策略梯度方法 &#8212; LeoMao的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '强化学习/策略梯度方法';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deep Q Learning" href="%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html" />
+    <link rel="prev" title="强化学习" href="%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LeoMao的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">策略梯度方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html">Deep Q Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/强化学习/策略梯度方法.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>策略梯度方法</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforce">REINFORCE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actor-critic">Actor-Critic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trpo">TRPO</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>策略梯度方法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>轨迹定义：
+<div class="math notranslate nohighlight">
+\[\tau = (s_1, a_1, s_2, a_2, ..., s_T, a_T)\]</div>
+
+轨迹分布定义：
+<div class="math notranslate nohighlight">
+\[p_\theta(\tau)=p(s_1)\prod_{t=1}^{T}\pi_\theta(a_t|s_t)p(s_{t+1}|s_t, a_t)\]</div>
+
+回报定义：
+<div class="math notranslate nohighlight">
+\[J(\theta) = E_{\tau\sim p_\theta(\tau)}[r(\tau)] \]</div>
+</p>
+<section id="reinforce">
+<h2>REINFORCE<a class="headerlink" href="#reinforce" title="Link to this heading">#</a></h2>
+<p>对参数<span class="math notranslate nohighlight">\(\theta\)</span>求导，得到策略梯度：
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+   \nabla_\theta J(\theta)  &amp;= \nabla_\theta E_{\tau\sim p_\theta(\tau)}[r(\tau)] \\
+     &amp;= \nabla_\theta \int_\tau p_\theta(\tau)r(\tau)d\tau \\
+     &amp;= \int_\tau \nabla_\theta p_\theta(\tau)r(\tau)d\tau \\
+     &amp;= \int_\tau p_\theta(\tau)\nabla_\theta \log p_\theta(\tau)r(\tau)d\tau \\
+     &amp;= E_{\tau\sim p_\theta(\tau)}\left[\nabla_\theta \log p_\theta(\tau)r(\tau)\right] \\
+     &amp;= E_{\tau\sim p_\theta(\tau)}\left[\nabla_\theta\log\left(p(s_1)\prod_{t=1}^{T}\pi_\theta(a_t|s_t)p(s_{t+1}|s_t, a_t)\right)\left(\sum_{t=1}^Tr(s_t, a_t)\right)\right] \\
+     &amp;= E_{\tau\sim p_\theta(\tau)}\left[\nabla_\theta\left(\log p(s_1)+\sum_{t=1}^{T}\left(\log\pi_\theta(a_t|s_t)+\log p(s_{t+1}|s_t, a_t)\right)\right)\left(\sum_{t=1}^Tr(s_t, a_t)\right)\right] \\
+     &amp;= E_{\tau\sim p_\theta(\tau)}\left[\left(\nabla_\theta \log p(s_1)+\sum_{t=1}^{T}\nabla_\theta \log\pi_\theta(a_t|s_t)+\sum_{t=1}^T\nabla_\theta \log p(s_{t+1}|s_t, a_t)\right)\left(\sum_{t=1}^Tr(s_t, a_t)\right)\right] \\
+     &amp;=E_{\tau\sim p_\theta(\tau)}\left[\left(\sum_{t=1}^{T}\nabla_\theta \log \pi_\theta(a_t|s_t)\right)\left(\sum_{t=1}^{T}r(s_t, a_t)\right)\right]
+ \end{align}\end{split}\]</div>
+
+第2步采用了期望的积分形式。第3步将梯度放入积分内，因为累和的求导与求导的累和相同。第4步根据<span class="math notranslate nohighlight">\(p_\theta\nabla_\theta \log p_\theta(\tau) = p_\theta (\tau)\frac{\nabla_\theta p_\theta(\tau)}{p_\theta(\tau)}=\nabla_\theta p_\theta (\tau)\)</span> 进行变换，因此第5步可以变回期望形式。第6步展开<span class="math notranslate nohighlight">\(p_\theta(\tau)\)</span>，第7步用<span class="math notranslate nohighlight">\(log\)</span>函数特点将乘法转换成加法，第8步将求导代入到加法中的每一项，因此第9步便可以约去与<span class="math notranslate nohighlight">\(\theta\)</span>无关的求导项，因为其结果为0。</p>
+<p>使用蒙特卡洛方法可以估计期望值：
+<div class="math notranslate nohighlight">
+\[ \nabla_\theta \hat J(\theta) \approx \frac{1}{N}\sum_{i=1}^N\left(\sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t}|s_{i,t}) \right)\left(\sum_{t=1}^T r(s_{i,t}, a_{i,t})\right) \]</div>
+</p>
+<p>蒙特卡洛估计是无偏估计，但是估计值与真实值之间的方差较大，有效性低。我们希望得到有效性更高的估计量。</p>
+<p>由公式5计算蒙特卡洛估计值的方差为
+<div class="math notranslate nohighlight">
+\[ \hat V=E_\tau\left[\left(\nabla_\theta \log p_\theta(\tau)r(\tau)-\nabla_\theta J(\theta)\right)^2\right]\]</div>
+
+由于<span class="math notranslate nohighlight">\(E_\tau\left[\nabla_\theta log p_\theta(\tau)b \right]=\int_\tau p_\theta(\tau) \frac{\nabla_\theta p_\theta(\tau)}{p_\theta(\tau)}b d\tau=b\nabla_\theta\int_\tau p_\theta(\tau) d_\tau=b\nabla_\theta1=0\)</span>，可以在保持期望值不变的同时引入基线，将<span class="math notranslate nohighlight">\(\nabla_\theta J(\theta)\)</span>修改为：
+<div class="math notranslate nohighlight">
+\[\nabla_\theta \hat J(\theta)=E_\tau[\nabla_\theta \log p_\theta(\tau)(r(\tau)-b)]\]</div>
+
+再次计算方差为：
+<div class="math notranslate nohighlight">
+\[ \bar V=E_\tau\left[\left(\nabla_\theta \log p_\theta(\tau)(r(\tau)-b) - \nabla_\theta J(\theta)\right)^2\right] \]</div>
+
+比较两个方差估计量的值：
+<div class="math notranslate nohighlight">
+\[ \hat V - \bar V = E_\tau[(\nabla_\theta \log p_\theta(\tau))^2b(2r(\tau)-b)]\]</div>
+
+<div class="math notranslate nohighlight">
+\[ b^* =\frac {E_\tau[(\nabla_\theta \log p_\theta(\tau))^2r(\tau)]}{E_\tau[(\nabla_\theta \log p_\theta(\tau))^2]}\]</div>
+
+当<span class="math notranslate nohighlight">\(b=b^*\)</span>时，上式取得最大值，<span class="math notranslate nohighlight">\(\hat V - \bar V &gt; 0\)</span>，也就是说<span class="math notranslate nohighlight">\(\bar V\)</span>要比<span class="math notranslate nohighlight">\(\hat V\)</span>小，引入基线后使方差降低了。</p>
+<p>引入基线后的策略梯度表达式为：
+<div class="math notranslate nohighlight">
+\[ \nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^N  \left[\left(\sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t}|s_{i,t})\right) \left(\sum_{t=1}^T r(s_{i,t}, a_{i,t})-b\right)\right] \]</div>
+
+<div class="math notranslate nohighlight">
+\[b=\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T r(s_{i,t}, a_{i,t})\]</div>
+
+实践中基线一般不采用最大值，而是使用奖励均值的方法。</p>
+</section>
+<section id="actor-critic">
+<h2>Actor-Critic<a class="headerlink" href="#actor-critic" title="Link to this heading">#</a></h2>
+<p>因为因果关系，<span class="math notranslate nohighlight">\(t\)</span>时间做的决策并不会影响<span class="math notranslate nohighlight">\(t\)</span>时间前的回报，因此也可以把期望回报写成下面的形式：
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b64ea2cf-8fdb-4b5f-970f-953cf69b4c7a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-b64ea2cf-8fdb-4b5f-970f-953cf69b4c7a" title="Permalink to this equation">#</a></span>\[\begin{align}
+\nabla_\theta J(\theta) = E_{\tau\sim p_\theta(\tau)}\left[\sum_{t=1}^T \left(\nabla_\theta \log \pi_\theta(a_t|s_t) \sum_{t'=t}^T r(s_{t'}, a_{t'})\right) \right]
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}如果$T=2$，这种写法比前一种写法少了$\nabla_\theta \log \pi_\theta(a_2|s_2)r(s_1,a_1)$这一项，就是不计算时间2时的决策带给时间1的收益。\\我们可以将奖励定义为动作价值函数：
+$$ Q^{\pi}(\mathbf{s}_{t},\mathbf{a}_{t})=\sum_{t^{\prime}=t}^{T}E_{\pi_{\theta}}\left[r(\mathbf{s}_{t^{\prime}},\mathbf{a}_{t^{\prime}})|\mathbf{s}_{t},\mathbf{a}_{t}\right] \end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ V^{\pi}(\mathbf{s}_{t})=E_{\mathbf{a}_{t}\sim\pi_{\theta}(\mathbf{a}_{t}|\mathbf{s}_{t})}[Q^{\pi}(\mathbf{s}_{t},\mathbf{a}_{t})] \]</div>
+<div class="math notranslate nohighlight">
+\[ A^\pi(\mathbf{s}_t,\mathbf{a}_t)=Q^\pi(\mathbf{s}_t,\mathbf{a}_t)-V^\pi(\mathbf{s}_t) \]</div>
+<div class="math notranslate nohighlight">
+\[ \nabla_\theta J(\theta)\approx\frac1N\sum_{i=1}^N\sum_{t=1}^T\nabla_\theta\log\pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})A^\pi(\mathbf{s}_{i,t},\mathbf{a}_{i,t}) \]</div>
+</section>
+<section id="trpo">
+<h2>TRPO<a class="headerlink" href="#trpo" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+J(\theta')-J(\theta)&amp; =J(\theta^{\prime})-E_{\mathbf{s}_{0}\sim p(\mathbf{s}_{0})}\left[V^{\pi_{\theta}}(\mathbf{s}_{0})\right] \\
+&amp;=J(\theta^{\prime})-E_{\tau\sim p_{\theta^{\prime}}(\tau)}\left[V^{\pi_{\theta}}(\mathbf{s}_{0})\right] \\
+&amp;=J(\theta')-E_{\tau\sim p_{\theta'}(\tau)}\left[\sum_{t=0}^{\infty}\gamma^{t}V^{\pi_{\theta}}(\mathbf{s}_{t})-\sum_{t=1}^{\infty}\gamma^{t}V^{\pi_{\theta}}(\mathbf{s}_{t})\right] \\
+&amp;=J(\theta')+E_{\tau\sim p_{\theta'}(\tau)}\left[\sum_{t=0}^\infty\gamma^t(\gamma V^{\pi_\theta}(\mathbf{s}_{t+1})-V^{\pi_\theta}(\mathbf{s}_t))\right] \\
+&amp;=E_{\tau\sim p_{\theta^{\prime}}(\tau)}\left[\sum_{t=0}^{\infty}\gamma^{t}r(\mathbf{s}_{t},\mathbf{a}_{t})\right]+E_{\tau\sim p_{\theta^{\prime}}(\tau)}\left[\sum_{t=0}^{\infty}\gamma^{t}(\gamma V^{\pi_{\theta}}(\mathbf{s}_{t+1})-V^{\pi_{\theta}}(\mathbf{s}_{t}))\right] \\
+&amp;=E_{\tau\sim p_{\theta'}(\tau)}\left[\sum_{t=0}^{\infty}\gamma^{t}(r(\mathbf{s}_{t},\mathbf{a}_{t})+\gamma V^{\pi_{\theta}}(\mathbf{s}_{t+1})-V^{\pi_{\theta}}(\mathbf{s}_{t}))\right] \\
+&amp;=E_{\tau\sim p_{\theta'}(\tau)}\left[\sum_{t=0}^{\infty}\gamma^{t}A^{\pi_{\theta}}(\mathbf{s}_{t},\mathbf{a}_{t})\right] \\
+&amp; =\sum_{t}E_{\mathbf{s}_{t}\sim p_{\theta^{\prime}}(\mathbf{s}_{t})}\left[E_{\mathbf{a}_{t}\sim\pi_{\theta^{\prime}}(\mathbf{a}_{t}|\mathbf{s}_{t})}\left[\gamma^{t}A^{\pi_{\theta}}(\mathbf{s}_{t},\mathbf{a}_{t})\right]\right] \\
+&amp;=\sum_{t}E_{\mathbf{s}_{t}\sim p_{\theta^{\prime}}(\mathbf{s}_{t})}\left[E_{\mathbf{a}_{t}\sim\pi_{\theta}(\mathbf{a}_{t}|\mathbf{s}_{t})}\left[\frac{\pi_{\theta^{\prime}}(\mathbf{a}_{t}|\mathbf{s}_{t})}{\pi_{\theta}(\mathbf{a}_{t}|\mathbf{s}_{t})}\gamma^{t}A^{\pi_{\theta}}(\mathbf{s}_{t},\mathbf{a}_{t})\right]\right]
+\end{align} \end{split}\]</div>
+<p>公式11中使用<span class="math notranslate nohighlight">\(s_0\sim p(s_0)\)</span>，表示期望回报与<span class="math notranslate nohighlight">\(\theta\)</span>无关，因此可以从公式11到公式12。公式19使用了重要性采样变换。<br />
+现在我们想将<span class="math notranslate nohighlight">\(s_t\sim p_{\theta'(s_t)}\)</span>修改为<span class="math notranslate nohighlight">\(s_t\sim p_{\theta(s_t)}\)</span>，这样<span class="math notranslate nohighlight">\(J(\theta')-J(\theta)\approx\bar A(\theta')\)</span>。</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">强化学习</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deep Q Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforce">REINFORCE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actor-critic">Actor-Critic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trpo">TRPO</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

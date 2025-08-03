@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>数据 &#8212; LeoMao的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '机器学习/数据';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="训练" href="%E8%AE%AD%E7%BB%83.html" />
+    <link rel="prev" title="博弈论" href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LeoMao的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html">Deep Q Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/机器学习/数据.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>数据</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据采集</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据标注</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据划分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">三类数据集</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">划分训练数据</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">数据配置</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">配置模板</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">配置读取</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">数据加载</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">创建Dataset类</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataloader">创建Dataloader对象</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Dataloader参数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">创建代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>数据<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>机器学习任务不同，数据不同，但是对数据集的要求是有共性的。数据集是任务函数的采样集合。</p>
+<section id="id2">
+<h2>数据采集<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+</section>
+<section id="id3">
+<h2>数据标注<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+</section>
+<section id="id4">
+<h2>数据划分<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>三类数据集<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>训练集 - 训练数据中用于训练模型的集合</p></li>
+<li><p>验证集 - 训练数据中用于测试模型的集合，评估系统性能</p></li>
+<li><p>测试集 - 用于估计训练中或训练后的泛化误差，更新超参数</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>划分训练数据<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>数据划分为两个不相交的子集，其中一个用于训练，另一个用于测试</p></li>
+<li><p>训练数据划分为训练集和验证集，通常按80%与20%的比例划分</p></li>
+</ol>
+</section>
+</section>
+<section id="id7">
+<h2>数据配置<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3>配置模板<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>使用YAML编写配置文件，原则上应当保存数据集相关的所有配置，配置模板为</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">labels：</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">0：&#39;unlabeled&#39;</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="l l-Scalar l-Scalar-Plain">color_map</span><span class="p p-Indicator">:</span>
+<span class="err">	</span><span class="nt">0</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="nt">learning_labels</span><span class="p">:</span>
+<span class="err">	</span><span class="nt">0</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;label1&#39;</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="nt">split</span><span class="p">:</span>
+<span class="err">	</span><span class="nt">train</span><span class="p">:</span>
+<span class="err">		</span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="err">		</span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="err">	</span><span class="nt">valid</span><span class="p">:</span>
+<span class="err">		</span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="err">		</span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="err">	</span><span class="nt">test</span><span class="p">:</span>
+<span class="err">		</span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="err">		</span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>说明：</p>
+<ol class="arabic simple">
+<li><p>labels存储数据集所有标签类型以及他们的原始标签</p></li>
+<li><p>color_map存储数据集原始标签对应的颜色</p></li>
+<li><p>learning_lables存储需要训练的标签以及训练时下标</p></li>
+<li><p>split存储数据划分后的数据集包含的文件夹名称</p></li>
+</ol>
+</section>
+<section id="id9">
+<h3>配置读取<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;dataset.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>数据加载<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://pytorch.org/docs/stable/data.html">torch.utils.data — PyTorch 2.5 documentation</a></p>
+<section id="dataset">
+<h3>创建Dataset类<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
+<p>Custom dataset 需要实现三个函数</p>
+<ul class="simple">
+<li><p>__init__ - 初始化函数，执行一次，需要保存文件列表对象</p></li>
+<li><p>__len__ - 长度函数，返回数据集大小</p></li>
+<li><p>__getitem__ - 迭代获取对象函数，根据输入的idx返回对象</p></li>
+<li><p>collate_fn - 一般整理函数也会写在Dataset中，然后</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splitset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;semantickitti.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_labels</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;learning_labels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_map_inv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_label_map</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;colors&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">split</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;split&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">splitset</span> <span class="o">=</span> <span class="n">splitset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">splitset</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="s1">&#39;sequences&#39;</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="s1">&#39;velodyne&#39;</span><span class="p">))))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="s1">&#39;sequences&#39;</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">))))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_list</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_list</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">learning_map</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_list</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">label</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">learning_label_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_map_inv</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_labels</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">learning_key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">learning_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">learning_labels</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">learning_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">learning_key</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">learning_map_inv</span><span class="p">[</span><span class="n">learning_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+</pre></div>
+</div>
+</section>
+<section id="dataloader">
+<h3>创建Dataloader对象<a class="headerlink" href="#dataloader" title="Link to this heading">#</a></h3>
+<section id="id11">
+<h4>Dataloader参数<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+           <span class="n">batch_sampler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+           <span class="n">pin_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+           <span class="n">worker_init_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">prefetch_factor</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+           <span class="n">persistent_workers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>num_workers: 指定线程数，多线程处理加快训练速度</p></li>
+<li><p>collate_fn: 整理函数，该函数会在一个批次数据加载完成后执行，数据经过该函数整理后被返回</p></li>
+<li><p>worker_init_fn: 这里如果传入的是局部函数或者lambda函数，会影响后面使用enumerate方法进行迭代</p></li>
+</ul>
+</section>
+<section id="id12">
+<h4>创建代码<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datasets.semantickitti.SemanticKittiDataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">SemanticKittiDataset</span>
+
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">SemanticKittiDataset</span><span class="p">(</span><span class="s1">&#39;data\semantickitti\sequences&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">)</span>
+<span class="n">valid_data</span> <span class="o">=</span> <span class="n">SemanticKittiDataset</span><span class="p">(</span><span class="s1">&#39;data\semantickitti\sequences&#39;</span><span class="p">,</span> <span class="s1">&#39;valid&#39;</span><span class="p">)</span>
+
+<span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">valid_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">valid_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_workers</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>如何处理不同长度的输入数据</strong>？
+神经网络难以处理不同长度的输入数据的原因有两点：</p>
+<ol class="arabic simple">
+<li><p>模型结构限制了输入的形状。比如，卷积层可以接受不同大小的输入，但是线性层不可以，其神经网络单元是固定的。</p></li>
+<li><p>通常为了加速训练，需要批量输入训练数据，同一批数据要输入到网络，必须组织成矩阵的形式，因此需要同一个批次内的数据形状相同。
+不同的数据形状导致的问题会发生在加载数据时，因为同一批次数据形状不同导致报错。因此我们需要在collate_fn函数或者__getitem__中对数据进行填充或裁剪。一般会在__getitem__中对数据进行处理，以点云语义分割为例，数据会在__getitem__中进行划分并采样到同一个形状大小，然后在collate_fn中压入栈中，处理成模型需要的格式。</p></li>
+</ol>
+</div></blockquote>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">博弈论</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E8%AE%AD%E7%BB%83.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">训练</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据采集</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据标注</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据划分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">三类数据集</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">划分训练数据</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">数据配置</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">配置模板</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">配置读取</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">数据加载</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">创建Dataset类</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataloader">创建Dataloader对象</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Dataloader参数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">创建代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

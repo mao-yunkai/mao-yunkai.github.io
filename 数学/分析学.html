@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>分析学 &#8212; LeoMao的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '数学/分析学';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="代数学" href="%E4%BB%A3%E6%95%B0%E5%AD%A6.html" />
+    <link rel="prev" title="逻辑学" href="%E9%80%BB%E8%BE%91%E5%AD%A6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LeoMao的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95.html">Deep Q Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/数学/分析学.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>分析学</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">复数</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">函数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">初等函数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">函数构造</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">函数性质</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">极限</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">极限性质</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">极限运算</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">微分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">微分</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">导数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">函数的求导法则</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">多元函数微分</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">平面点集</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#n"><span class="math notranslate nohighlight">\(n\)</span>维空间</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">多元函数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">偏导数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">梯度</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">函数极值</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">拉格朗日乘数法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">积分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">积分法则</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">牛顿-莱布尼茨方程</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>分析学<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>数<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>数是一个用作计数、标记或用作量度的抽象概念，是用以比较同质性或同属性物件等级的简单符号记录形式。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>类别</p></th>
+<th class="head"><p>符号</p></th>
+<th class="head"><p>定义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>自然数</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb N\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{0,1,2,\cdots\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>整数</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb Z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{\cdots, -2, -1, 0,1,2,\cdots\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>有理数</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb Q\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{x \vert x=\frac{m}{n},m,n\in\mathbb Z, n\neq 0\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>无理数</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb P\)</span></p></td>
+<td><p>无限不循环小数</p></td>
+</tr>
+<tr class="row-even"><td><p>实数</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb R\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{x\vert x \in \mathbb Q \cup \mathbb P\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>复数</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb C\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\{z\vert z=x+y\mathrm i, x,y\in \mathbb R, i=\sqrt{-1}\}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id3">
+<h3>复数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>因为<span class="math notranslate nohighlight">\(\sqrt{-1}\)</span>的值在实数域中没有定义，因此构建出复数域，定义<span class="math notranslate nohighlight">\(\mathrm i=\sqrt{-1}\)</span>，复数<span class="math notranslate nohighlight">\(z=x+y\mathrm i\)</span>。因为复数与实数<span class="math notranslate nohighlight">\((x,y)\)</span>有序对存在一一对应关系，因此复数全体与二维坐标平面上的点存在一一对应关系。
+欧拉公式：<span class="math notranslate nohighlight">\(e^{\mathrm i\theta}=\cos\theta+\sin\theta \mathrm i\)</span></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>运算</p></th>
+<th class="head"><p>公式</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>加法</p></td>
+<td><p><div class="math notranslate nohighlight">
+\[z_1+z_2=(x_1+x_2)+\mathrm i(y_1+y_2)\]</div>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p>减法</p></td>
+<td><p><div class="math notranslate nohighlight">
+\[z_1 - z_2 = (x_1 - x_2) + \mathrm{i}(y_1 - y_2)\]</div>
+</p></td>
+</tr>
+<tr class="row-even"><td><p>乘法</p></td>
+<td><p><div class="math notranslate nohighlight">
+\[z_1 \cdot z_2 = (x_1 \cdot x_2 - y_1 \cdot y_2) + \mathrm{i}(x_1 \cdot y_2 + x_2 \cdot y_1)\]</div>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p>除法</p></td>
+<td><p><div class="math notranslate nohighlight">
+\[\frac{z_1}{z_2} = \frac{x_1 + \mathrm{i} y_1}{x_2 + \mathrm{i} y_2} = \frac{x_1 x_2 + y_1 y_2}{x_2^2 + y_2^2} + \mathrm{i} \frac{y_1 x_2 - x_1 y_2}{x_2^2 + y_2^2}\]</div>
+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>函数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>设<span class="math notranslate nohighlight">\(X\)</span>、<span class="math notranslate nohighlight">\(Y\)</span>是两个非空集合，如果存在一个法则<span class="math notranslate nohighlight">\(f\)</span>，使得对<span class="math notranslate nohighlight">\(X\)</span>中每个元素<span class="math notranslate nohighlight">\(x\)</span>，按法则<span class="math notranslate nohighlight">\(f\)</span>，在<span class="math notranslate nohighlight">\(Y\)</span>中有唯一确定的元素<span class="math notranslate nohighlight">\(y\)</span> 与之对应，那么称<span class="math notranslate nohighlight">\(f\)</span>为从<span class="math notranslate nohighlight">\(X\)</span> 到<span class="math notranslate nohighlight">\(Y\)</span>的映射，记作
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} f{:}X\to Y, \\ y=f\left(x\right). \end{align}\end{split}\]</div>
+
+其中<span class="math notranslate nohighlight">\(y\)</span>称为元素<span class="math notranslate nohighlight">\(x\)</span>（在映射<span class="math notranslate nohighlight">\(f\)</span>下）的像，并记作<span class="math notranslate nohighlight">\(f(x)\)</span>，而元素<span class="math notranslate nohighlight">\(x\)</span>称为元素<span class="math notranslate nohighlight">\(y\)</span>在映射<span class="math notranslate nohighlight">\(f\)</span>下的一个原像，集合<span class="math notranslate nohighlight">\(X\)</span> 称为映射<span class="math notranslate nohighlight">\(f\)</span>的定义域，<span class="math notranslate nohighlight">\(\{f( x ) | x\in X \}\)</span>是映射<span class="math notranslate nohighlight">\(f\)</span>的值域。
+设数集<span class="math notranslate nohighlight">\(X\subseteq\mathbb{R}\)</span>，则称映射<span class="math notranslate nohighlight">\(f{:}X\to\mathbb{R}\)</span>为定义在<span class="math notranslate nohighlight">\(X\)</span>上的函数，通常简记为
+<div class="math notranslate nohighlight">
+\[y=f(x) , x\in X.\]</div>
+
+其中<span class="math notranslate nohighlight">\(x\)</span>称为自变量，<span class="math notranslate nohighlight">\(y\)</span>称为因变量，<span class="math notranslate nohighlight">\(X\)</span>称为定义域，<span class="math notranslate nohighlight">\(\{f( x ) | x\in X \}\)</span>是函数<span class="math notranslate nohighlight">\(f\)</span>的值域。</p>
+<section id="id5">
+<h3>初等函数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>函数</p></th>
+<th class="head text-left"><p>公式</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>常值函数</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(y=C\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>幂函数</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(y=x^\alpha(\alpha &gt; 0)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>指数函数</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(y=a^x(a&gt;0)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>对数函数</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(y=\log_a{x}(a&gt;0, a\neq 1)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>三角函数</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(y=\sin x,y=\cos x, y=\tan x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>反三角函数</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(y=\arcsin x, y=\arccos x, y=\arctan x\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id6">
+<h3>函数构造<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>函数四则运算</p></li>
+<li><p>变更定义域</p></li>
+<li><p>函数复合</p></li>
+<li><p>反函数 - <span class="math notranslate nohighlight">\(\forall y \in f(D), \exists! x \in D, f(x)=y \Rightarrow f^{-1}(y) = x\)</span>
+从基本初等函数出发，经过有限多次构造能得到的所有函数统称为初等函数。</p></li>
+</ol>
+</section>
+<section id="id7">
+<h3>函数性质<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>有界性 - <span class="math notranslate nohighlight">\(|f(x)|\le M\)</span></p></li>
+<li><p>单调性</p></li>
+</ol>
+<ul class="simple">
+<li><p>单调递增 <span class="math notranslate nohighlight">\(\forall x_1&lt;x_2, f(x_1) \le f(x_2)\)</span></p></li>
+<li><p>单调递减 <span class="math notranslate nohighlight">\(\forall x_1&lt;x_2, f(x_1) \ge f(x_2)\)</span></p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>周期性 - <span class="math notranslate nohighlight">\(\forall x, f(x+T) = f(x)\)</span></p></li>
+<li><p>奇偶性</p></li>
+</ol>
+<ul class="simple">
+<li><p>奇函数 <span class="math notranslate nohighlight">\(\forall x, f(-x) = -f(x)\)</span></p></li>
+<li><p>偶函数 <span class="math notranslate nohighlight">\(\forall x, f(-x) = f(x)\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="id8">
+<h2>极限<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>自变量趋于有限值时函数的极限<div class="math notranslate nohighlight">
+\[ \lim_{x\to x_0}f(x)=A\Leftrightarrow\forall\varepsilon&gt;0,\exists\delta&gt;0,0&lt;|x-x_0|&lt;\delta,|f(x)-A|&lt;\varepsilon. \]</div>
+</p></li>
+<li><p>自变量趋于无穷大时函数的极限<div class="math notranslate nohighlight">
+\[\lim_{x\to\infty}f(x)=A\Leftrightarrow\forall\varepsilon&gt;0,\exists X&gt;0,|x|&gt;X,|f(x)-A|&lt;\varepsilon.\]</div>
+</p></li>
+</ol>
+<section id="id9">
+<h3>极限性质<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>函数极限的唯一性<br />
+如果存在<span class="math notranslate nohighlight">\(\lim_{x\to x_0}f(x)\)</span>，那么这极限唯一。</p></li>
+<li><p>函数极限的局部有界性<br />
+如果<span class="math notranslate nohighlight">\(\lim_{x\to x_0}f(x)=A\)</span>，那么存在常数<span class="math notranslate nohighlight">\(M&gt;0\)</span>和<span class="math notranslate nohighlight">\(\delta&gt;0\)</span>，使得当<span class="math notranslate nohighlight">\(0&lt;|x-x_0|&lt;\delta\)</span>时，有<span class="math notranslate nohighlight">\(|f(x)|\leq M\)</span>。</p></li>
+<li><p>函数极限的局部保号性<br />
+如果<span class="math notranslate nohighlight">\(\lim_{x\to x_0}f(x)=A\)</span>，且<span class="math notranslate nohighlight">\(A&gt;0\)</span>(或<span class="math notranslate nohighlight">\(A&lt;0\)</span>),那么存在常数<span class="math notranslate nohighlight">\(\delta&gt;0\)</span>使得当<span class="math notranslate nohighlight">\(0&lt;|x-x_0|&lt;\delta\)</span>时，有<span class="math notranslate nohighlight">\(f(x)&gt;0\)</span>(或<span class="math notranslate nohighlight">\(f(x)&lt;0\)</span>)。</p></li>
+<li><p>无穷小<br />
+如果函数<span class="math notranslate nohighlight">\(f(x)\)</span>当<span class="math notranslate nohighlight">\(x\to x_0(\)</span>或<span class="math notranslate nohighlight">\(x\to\infty)\)</span>时的极限为零，那么称函数<span class="math notranslate nohighlight">\(f(x)\)</span>为当 <span class="math notranslate nohighlight">\(x\to x_0(\)</span>或 <span class="math notranslate nohighlight">\(x\to\infty)\)</span>时的无穷小。</p></li>
+<li><p>无穷大<br />
+设函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span>的某一去心邻域内有定义(或|<span class="math notranslate nohighlight">\(x|\)</span>大于某一正数时有定义)。如果对于任意给定的正数<span class="math notranslate nohighlight">\(M\)</span>（不论它多么大），总存在正数δ（或正数<span class="math notranslate nohighlight">\(X\)</span>），只要<span class="math notranslate nohighlight">\(x\)</span>适合不等式 <span class="math notranslate nohighlight">\(0&lt;|x-x_0|&lt;\delta\)</span>（或<span class="math notranslate nohighlight">\(|x|&gt;X\)</span>），对应的函数值<span class="math notranslate nohighlight">\(f(x)\)</span>总满足不等式
+<div class="math notranslate nohighlight">
+\[|f(x)|&gt;M，\]</div>
+
+那么称函数<span class="math notranslate nohighlight">\(f(x)\)</span>是当<span class="math notranslate nohighlight">\(x\to x_0(\)</span>或<span class="math notranslate nohighlight">\(x\to\infty)\)</span>时的无穷大。</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>极限运算<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>两个无穷小的和是无穷小</p></li>
+<li><p>有界函数与无穷小的乘积是无穷小</p></li>
+<li><p>如果 <span class="math notranslate nohighlight">\(\lim f(x)=A,\lim g(x)=B\)</span>，那么<br />
+（1） <span class="math notranslate nohighlight">\(\operatorname* { lim} [ f( x) \pm g( x)\)</span> <span class="math notranslate nohighlight">\(] = \operatorname* { lim} f(x) \pm \operatorname* { lim} g(\)</span> <span class="math notranslate nohighlight">\(x) = A\pm B\)</span><br />
+（2） <span class="math notranslate nohighlight">\(\operatorname* { lim} [ f( x)\)</span> <span class="math notranslate nohighlight">\(\cdot\)</span> <span class="math notranslate nohighlight">\(g( x)\)</span> <span class="math notranslate nohighlight">\(] = \operatorname* { lim} f(x)\)</span> <span class="math notranslate nohighlight">\(\cdot\)</span> <span class="math notranslate nohighlight">\(\operatorname* { lim} g(\)</span> <span class="math notranslate nohighlight">\(x) = A\)</span> <span class="math notranslate nohighlight">\(\cdot\)</span> <span class="math notranslate nohighlight">\(B\)</span><br />
+（3）若 <span class="math notranslate nohighlight">\(B\neq0\)</span>，则<span class="math notranslate nohighlight">\(\lim\frac{f( x )}{g( x )}=\frac{\lim f( x )}{\lim g( x )}=\frac{A}{B}\)</span><br />
+（4）<span class="math notranslate nohighlight">\(\lim[cf(x)]=c\lim f(x)\)</span><br />
+（5）<span class="math notranslate nohighlight">\(\lim[f(x)]^n=[\lim f(x)]^n\)</span></p></li>
+</ol>
+</section>
+</section>
+<section id="id11">
+<h2>微分<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<section id="id12">
+<h3>微分<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>设函数<span class="math notranslate nohighlight">\(y=f(x)\)</span>在某区间内有定义，<span class="math notranslate nohighlight">\(x_0\)</span>及<span class="math notranslate nohighlight">\(x_0+\Delta x\)</span>在这区间内，如果函数的增量<span class="math notranslate nohighlight">\(\Delta y=f(x_0+\Delta x)-f(x_0)\)</span>可表示为
+<div class="math notranslate nohighlight">
+\[\Delta y=A\Delta x+\mathcal{o}(\Delta x)\]</div>
+
+其中<span class="math notranslate nohighlight">\(A\)</span>是不依赖于<span class="math notranslate nohighlight">\(\Delta x\)</span>的常数，那么称函数<span class="math notranslate nohighlight">\(y=f(x)\)</span>在点<span class="math notranslate nohighlight">\(x_0\)</span>是可微的，而<span class="math notranslate nohighlight">\(A\Delta x\)</span>叫做函数<span class="math notranslate nohighlight">\(y=f(x)\)</span>在点<span class="math notranslate nohighlight">\(x_0\)</span>相应于自变量增量<span class="math notranslate nohighlight">\(\Delta x\)</span>的微分，记作<span class="math notranslate nohighlight">\(\mathrm{d}y\)</span>，即<div class="math notranslate nohighlight">
+\[\mathrm{d}y=A\Delta x\]</div>
+函数<span class="math notranslate nohighlight">\(y=f(x)\)</span>在任意点的微分，称为函数的微分，即
+<div class="math notranslate nohighlight">
+\[\mathrm{d}y=f^{\prime}(x)\Delta x =f^{\prime}(x)\mathrm{d}x \]</div>
+</p>
+</section>
+<section id="id13">
+<h3>导数<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>设函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span>在点 <span class="math notranslate nohighlight">\(x_0\)</span>的某个邻域内有定义，当自变量<span class="math notranslate nohighlight">\(x\)</span>在<span class="math notranslate nohighlight">\(x_0\)</span>处取得增置<span class="math notranslate nohighlight">\(\Delta x(\)</span>点<span class="math notranslate nohighlight">\(x_0+\Delta x\)</span>仍在该邻域内)时，相应地，因变量取得增量<span class="math notranslate nohighlight">\(\Delta y=\)</span> <span class="math notranslate nohighlight">\(f(x_{0}+\Delta x)-f(x_{0})\)</span>;如果<span class="math notranslate nohighlight">\(\Delta y\)</span>与<span class="math notranslate nohighlight">\(\Delta x\)</span>之比当<span class="math notranslate nohighlight">\(\Delta x\to0\)</span>时的极限存在，那么称函数<span class="math notranslate nohighlight">\(y=\)</span> <span class="math notranslate nohighlight">\(f(x)\)</span>在点 <span class="math notranslate nohighlight">\(x_0\)</span>处可导，并称这个极限为函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span>在点 <span class="math notranslate nohighlight">\(x_0\)</span>处的导数，记为<span class="math notranslate nohighlight">\(f^{\prime}(x_0)\)</span>,即
+<div class="math notranslate nohighlight">
+\[f^{\prime}( x_{0} )=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=\lim_{\Delta x\to0}\frac{f( x_{0}+\Delta x ) -f( x_{0} )}{\Delta x}\]</div>
+</p>
+<p>如果函数<span class="math notranslate nohighlight">\(y=f(x)\)</span>在开区间<span class="math notranslate nohighlight">\(I\)</span>内的每点处都可导，那么就称函数<span class="math notranslate nohighlight">\(f(x)\)</span>在开区间内可导。这时，对于任一<span class="math notranslate nohighlight">\(x\in I\)</span>，都对应着<span class="math notranslate nohighlight">\(f(x)\)</span>的一个确定的导数值。这样就构成了一个新的函数，这个函数叫做原来函数的导函数，记作
+<div class="math notranslate nohighlight">
+\[ f'(x) = \lim_{\Delta x\to0}\frac{f(x_{0}+\Delta x)-f(x_{0})}{\Delta x}\]</div>
+</p>
+<p>标量函数对向量的求导结果是梯度。
+向量函数对向量的求导结果是雅可比矩阵。</p>
+</section>
+<section id="id14">
+<h3>函数的求导法则<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>常数和基本初等函数的导数公式
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{aligned}&amp;(1)(C)^{\prime}=0,&amp;&amp;(2)(x^{\mu})^{\prime}=\mu x^{\mu-1},\\&amp;(3)(\sin x)^{\prime}=\cos x,&amp;&amp;(4)(\cos x)^{\prime}=-\sin x,\\&amp;(5)(\tan x)^{\prime}=\sec^{2}x,&amp;&amp;(6)(\cot x)^{\prime}=-\csc^{2}x,\\&amp;(7)(\sec x)^{\prime}=\sec x\tan x,&amp;&amp;(8)(\csc x)^{\prime}=-\csc x\cot x,\\&amp;(9)(a^{*})^{\prime}=a^{*}\ln a(a&gt;0,a\neq1),&amp;&amp;(10)(\mathrm{e}^{*})^{\prime}=\mathrm{e}^{*},\\&amp;(11)(\log_{a}x)^{\prime}=\frac{1}{x\ln a}(a&gt;0,a\neq1),&amp;&amp;(12)(\ln x)^{\prime}=\frac{1}{x},\\&amp;(13)(\arcsin x)^{\prime}=\frac{1}{\sqrt{1-x^{2}}},&amp;&amp;(14)(\arccos x)^{\prime}=-\frac{1}{\sqrt{1-x^{2}}},\\&amp;(15)(\arctan x)^{\prime}=\frac{1}{1+x^{2}},&amp;&amp;(16)(\mathrm{arccot}x)^{\prime}=-\frac{1}{1+x^{2}}.\end{aligned} \end{split}\]</div>
+</p></li>
+<li><p>函数的和、差、积、商的求导法则
+设<span class="math notranslate nohighlight">\(u=u(x),v=v(x)\)</span>都可导，则
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{aligned}&amp;(1)(u\pm v)^{\prime}=u^{\prime}\pm v^{\prime},&amp;&amp;(2)(Cu)^{\prime}=Cu^{\prime}(\text{C是常数}),\\&amp;(3)(uv)^{\prime}=u^{\prime}v+uv^{\prime},&amp;&amp;(4)\left(\frac{u}{v}\right)^{\prime}=\frac{u^{\prime}v-uv^{\prime}}{v^{2}}(v\neq0).\end{aligned} \end{split}\]</div>
+</p></li>
+<li><p>反函数的求导法则<br />
+设 <span class="math notranslate nohighlight">\(x=f(y)\)</span>在区间 <span class="math notranslate nohighlight">\(I_y\)</span>内单调、可导且<span class="math notranslate nohighlight">\(f^\prime(y)\neq0\)</span>，则它的反函数 <span class="math notranslate nohighlight">\(y=f^{-1}(x)\)</span>在 <span class="math notranslate nohighlight">\(I_x=f(I_r)\)</span>内也可导，且
+<div class="math notranslate nohighlight">
+\[[f^{-1}(x) ]^{\prime}=\frac{1}{f^{'}(y)}\]</div>
+</p></li>
+<li><p>复合函数的求导法则
+设 <span class="math notranslate nohighlight">\(y=f(u)\)</span>,而<span class="math notranslate nohighlight">\(u=g(x)\)</span>且<span class="math notranslate nohighlight">\(f(u)\)</span>及<span class="math notranslate nohighlight">\(g(x)\)</span>都可导，则复合函数 <span class="math notranslate nohighlight">\(y=f[g(x)]\)</span>的导数为
+<div class="math notranslate nohighlight">
+\[ y^\prime ( x) = f^{\prime }( u) \cdot g^{\prime }( x)\]</div>
+</p></li>
+</ol>
+</section>
+<section id="id15">
+<h3>多元函数微分<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<section id="id16">
+<h4>平面点集<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>坐标平面 - <span class="math notranslate nohighlight">\(\mathbf{R}^{2}=\mathbf{R}\times\mathbf{R}=\{(x,y)\mid x,y\in\mathbf{R}\}\)</span></p></li>
+<li><p>平面点集 - 坐标平面上具有某种性质<span class="math notranslate nohighlight">\(P\)</span>的点的集合，称为平面点集<span class="math notranslate nohighlight">\(E\)</span>。</p></li>
+<li><p>邻域 - <span class="math notranslate nohighlight">\(U(P_{0},\delta)=\{P||PP_{0}|&lt;\delta\}\)</span> 去心邻域记作<span class="math notranslate nohighlight">\(\mathring{U}(P_{0},\delta)\)</span></p></li>
+<li><p>聚点 - 如果对于任意给定的<span class="math notranslate nohighlight">\(\delta&gt;0\)</span>，点<span class="math notranslate nohighlight">\(P\)</span>的去心邻域<span class="math notranslate nohighlight">\(\mathring{U}(P_{0},\delta)\)</span>内总有<span class="math notranslate nohighlight">\(E\)</span>中的点，那么称<span class="math notranslate nohighlight">\(P\)</span>是<span class="math notranslate nohighlight">\(E\)</span>的聚点。点集<span class="math notranslate nohighlight">\(E\)</span>以及它的边界上的一切点都是<span class="math notranslate nohighlight">\(E\)</span>的聚点。</p></li>
+<li><p>开集、闭集、连通集、区域、闭区域、有界集、无界集</p></li>
+</ul>
+</section>
+<section id="n">
+<h4><span class="math notranslate nohighlight">\(n\)</span>维空间<a class="headerlink" href="#n" title="Link to this heading">#</a></h4>
+<p>设<span class="math notranslate nohighlight">\(n\)</span>为取定的一个正整数，我们用<span class="math notranslate nohighlight">\(R^n\)</span>表示<span class="math notranslate nohighlight">\(n\)</span>元有序实数组<span class="math notranslate nohighlight">\((x_1,x_2,...,x_n)\)</span>的全体所构成的几何，即<br />
+<div class="math notranslate nohighlight">
+\[\mathbf{R}^{n}=\mathbf{R}\times\mathbf{R}\times\cdots\times\mathbf{R}=\{(x_{_1},x_{_2},\cdots,x_{_n})\mid x_{_i}\in\mathbf{R},i=1,2,\cdots,n\} \]</div>
+
+<span class="math notranslate nohighlight">\(\mathbf{R}^n\)</span>中的元素<span class="math notranslate nohighlight">\((x_1,x_2,\cdots,x_n)\)</span>有时也用单个字母<span class="math notranslate nohighlight">\(\mathbfit x\)</span>来表示，即<span class="math notranslate nohighlight">\(\mathbfit x=(x_{1},x_{2},\cdots,x_{n})\)</span>。<span class="math notranslate nohighlight">\(\mathbf{R}^n\)</span>中的元素<span class="math notranslate nohighlight">\(\mathbfit x\)</span>也称为<span class="math notranslate nohighlight">\(\mathbf{R}^n\)</span>中的一个点或一个<span class="math notranslate nohighlight">\(n\)</span>维向量，<span class="math notranslate nohighlight">\(x_i\)</span>称为点<span class="math notranslate nohighlight">\(\mathbfit x\)</span>的第<span class="math notranslate nohighlight">\(i\)</span>个坐标或<span class="math notranslate nohighlight">\(n\)</span>维向量<span class="math notranslate nohighlight">\(\mathbfit x\)</span>个分量。</p>
+<p>设<span class="math notranslate nohighlight">\(\mathbfit x=\left(\begin{matrix}{x_{1},x_{2},\cdots,x_{n}}\\\end{matrix}\right),y=\left(\begin{matrix}{y_{1},y_{2},\cdots,y_{n}}\\\end{matrix}\right)\)</span> 为 <span class="math notranslate nohighlight">\(\mathbf{R}^{n}\)</span>中任意两个元素，<span class="math notranslate nohighlight">\(\lambda \in \mathbf{R}\)</span>，规定<br />
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{aligned}&amp;x+y=\left(\begin{matrix}{x_{1}}&amp;{+y_{1}}&amp;{,x_{2}}&amp;{+y_{2}}&amp;{,\cdots,x_{n}}&amp;{+y_{n}}\\\end{matrix}\right),\\&amp;\lambda x=\left(\begin{matrix}{\lambda x_{1}}&amp;{,\lambda x_{2}}&amp;{,\cdots,\lambda x_{n}}\\\end{matrix}\right).\end{aligned} \end{split}\]</div>
+
+这样定义了线性运算的集合<span class="math notranslate nohighlight">\(\mathbf{R}^{n}\)</span>称为<span class="math notranslate nohighlight">\(n\)</span>维空间。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{R}^n\)</span>中的零元<span class="math notranslate nohighlight">\(\mathbfit 0\)</span>称为<span class="math notranslate nohighlight">\(\mathbf{R}^n\)</span>中的坐标原点或<span class="math notranslate nohighlight">\(n\)</span>维零向量。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{R}^{n}\)</span> 中点 <span class="math notranslate nohighlight">\(x=(x_1,x_2,\cdots,x_n)\)</span> 和点 <span class="math notranslate nohighlight">\(y=(y_1,y_2,\cdots,y_n)\)</span> 间的距离，记作<span class="math notranslate nohighlight">\(\rho(x,y)\)</span>，规定<br />
+<div class="math notranslate nohighlight">
+\[\rho(x,y)=\sqrt{\left(x_{1}-y_{1}\right)^{2}+\left(x_{2}-y_{2}\right)^{2}+\cdots+\left(x_{n}-y_{n}\right)^{2}}.\]</div>
+</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span>维向量<span class="math notranslate nohighlight">\(\mathbfit x\)</span>与零元<span class="math notranslate nohighlight">\(\mathbfit 0\)</span>的距离表示为<span class="math notranslate nohighlight">\(\parallel x\parallel=\sqrt{x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2}}\)</span>，在<span class="math notranslate nohighlight">\(\mathbf{R}^{1}、\mathbf{R}^{2}、\mathbf{R}^{3}\)</span>中，通常将<span class="math notranslate nohighlight">\(\|x\|\)</span> 记作 <span class="math notranslate nohighlight">\(|x|\)</span>。</p></li>
+<li><p>设<span class="math notranslate nohighlight">\(\mathbfit a=(a_1,a_2,\cdots,a_n)\in\mathbf{R}^n,\delta\)</span>是某一正数，则<span class="math notranslate nohighlight">\(n\)</span>维空间内的点集<br />
+<div class="math notranslate nohighlight">
+\[U(\mathbfit a,\delta)=\{x|x\in\mathbf{R}^{n},\rho(x,a)&lt;\delta\}\]</div>
+
+就定义为<span class="math notranslate nohighlight">\(\mathbf{R}^n\)</span>中点<span class="math notranslate nohighlight">\(a\)</span>的<span class="math notranslate nohighlight">\(\delta\)</span>邻域。</p></li>
+</ul>
+</section>
+<section id="id17">
+<h4>多元函数<a class="headerlink" href="#id17" title="Link to this heading">#</a></h4>
+<p>设<span class="math notranslate nohighlight">\(D\)</span>是<span class="math notranslate nohighlight">\(\mathbf{R}^2\)</span>的一个非空子集，称映射<span class="math notranslate nohighlight">\(f:D\to \mathbf{R}\)</span>为定义在<span class="math notranslate nohighlight">\(D\)</span>上的二元函数，通常记为<br />
+<div class="math notranslate nohighlight">
+\[ z=f(x,y),(x,y)\in D \]</div>
+
+其中点集<span class="math notranslate nohighlight">\(D\)</span>称为该函数的定义域，<span class="math notranslate nohighlight">\(x\)</span>和<span class="math notranslate nohighlight">\(y\)</span>称为自变量，<span class="math notranslate nohighlight">\(z\)</span>称为因变量，函数值<span class="math notranslate nohighlight">\(f(x,y)\)</span>的全体所构成的集合称为函数f的值域，记作<span class="math notranslate nohighlight">\(f(D)\)</span>，即
+<div class="math notranslate nohighlight">
+\[ f(D)=\{z|z=f(x,y),(x,y)\in D\} \]</div>
+</p>
+<p>一般地，把二元函数中的平面点集D换成n维空间Rn内的点集D，映射<span class="math notranslate nohighlight">\(f:D\to \mathbf{R}\)</span>就称为定义在<span class="math notranslate nohighlight">\(D\)</span>上的<span class="math notranslate nohighlight">\(n\)</span>元函数，通常记为
+<div class="math notranslate nohighlight">
+\[ u=f(\mathbfit x),\mathbfit x = (x_{1},x_{2},\cdots,x_{n})\in D \]</div>
+</p>
+<ul>
+<li><p>极限<br />
+设二元函数f(P)=f(x,y)的定义域为D，P_0(x_0,y_0)是D的聚点。如果存在常数 <span class="math notranslate nohighlight">\(A\)</span>,对于任意给定的正数 <span class="math notranslate nohighlight">\(\varepsilon\)</span>,总存在正数 <span class="math notranslate nohighlight">\(\delta\)</span>,使得当点 <span class="math notranslate nohighlight">\(P(x,y)\in D\cap\mathring{U}(P_0,\delta)\)</span>时，都有
+<div class="math notranslate nohighlight">
+\[|f( P) -A | = |f( x ,y ) -A | &lt;\varepsilon \]</div>
+
+成立，那么就称常数<span class="math notranslate nohighlight">\(A\)</span> 为函数<span class="math notranslate nohighlight">\(f(x,y)\)</span>当<span class="math notranslate nohighlight">\((x,y)\to(x_0,y_0)\)</span>时的极限，记作
+<div class="math notranslate nohighlight">
+\[\lim_{(x,y)\to(x_0,y_0)}f(x,y)=A\quad\text{或}\quad f(x,y)\to A((x,y)\to(x_0,y_0))\]</div>
+</p></li>
+<li><p>连续性<br />
+设二元函数<span class="math notranslate nohighlight">\(f(P)=f(x,y)\)</span>的定义域为<span class="math notranslate nohighlight">\(D,P_0(x_0,y_0)\)</span>为<span class="math notranslate nohighlight">\(D\)</span>的聚点，且<span class="math notranslate nohighlight">\(P_{0}\in D\)</span>如果</p>
+<div class="math notranslate nohighlight">
+\[\lim _{( x, y) \to ( x_{0}, y_{0}) }f(x, y) = f(x_{0}, y_{0})\]</div>
+<p>那么称函数 <span class="math notranslate nohighlight">\(f(x,y)\)</span>在点 <span class="math notranslate nohighlight">\(P_0(x_0,y_0)\)</span> 连续。<br />
+设函数<span class="math notranslate nohighlight">\(f(x,y)\)</span>在<span class="math notranslate nohighlight">\(D\)</span> 上有定义，<span class="math notranslate nohighlight">\(D\)</span> 内的每一点都是函数定义域的聚点.如果函数<span class="math notranslate nohighlight">\(f(x,y)\)</span>在<span class="math notranslate nohighlight">\(D\)</span> 的每一点都连续，那么就称函数<span class="math notranslate nohighlight">\(f(x,y)\)</span>在<span class="math notranslate nohighlight">\(D\)</span>上连续，或者称<span class="math notranslate nohighlight">\(f(x,y)\)</span>是<span class="math notranslate nohighlight">\(D\)</span>上的连续函数。</p>
+</li>
+</ul>
+</section>
+<section id="id18">
+<h4>偏导数<a class="headerlink" href="#id18" title="Link to this heading">#</a></h4>
+<p>设函数<span class="math notranslate nohighlight">\(z=f(x,y)\)</span>在点<span class="math notranslate nohighlight">\((x_0,y_0)\)</span>的某一邻域内有定义，当<span class="math notranslate nohighlight">\(y\)</span>固定在<span class="math notranslate nohighlight">\(y_0\)</span>而<span class="math notranslate nohighlight">\(x\)</span>在<span class="math notranslate nohighlight">\(x_0\)</span>处有增量<span class="math notranslate nohighlight">\(\Delta x\)</span>时，相应的函数有增量<br />
+<div class="math notranslate nohighlight">
+\[ f(x_0+\Delta x,y_0)-f(x_0,y_0),\]</div>
+
+如果<br />
+<div class="math notranslate nohighlight">
+\[ \lim_{\Delta x\to0}\frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}=0 \]</div>
+
+存在，那么称此极限为函数<span class="math notranslate nohighlight">\(z=f(x,y)\)</span>在点<span class="math notranslate nohighlight">\((x_0,y_0)\)</span>处对<span class="math notranslate nohighlight">\(x\)</span>的偏导数，记作<br />
+<div class="math notranslate nohighlight">
+\[ \frac{\partial z}{\partial x}\Bigg|_{x,y=x_0,y_0},\frac{\partial f}{\partial x}\Bigg|_{x,y=x_0,y_0},z_{x}\Bigg|_{x,y=x_0,y_0}\text{或}f_{x}(x_{0},y_{0}) \]</div>
+
+如果函数<span class="math notranslate nohighlight">\(z=f(x,y)\)</span>在区域<span class="math notranslate nohighlight">\(D\)</span>内每一点<span class="math notranslate nohighlight">\((x,y)\)</span>处对<span class="math notranslate nohighlight">\(x\)</span>的偏导数都存在，那么这个偏导数就是<span class="math notranslate nohighlight">\(x\)</span>、<span class="math notranslate nohighlight">\(y\)</span>的函数，它就称为函数<span class="math notranslate nohighlight">\(z=f(x,y)\)</span>对自变量<span class="math notranslate nohighlight">\(x\)</span>的偏导函数，记作
+<div class="math notranslate nohighlight">
+\[ \frac{\partial z}{\partial x},\frac{\partial f}{\partial x},z_{x}\quad\text{或}f_{x}(x,y). \]</div>
+</p>
+<ul class="simple">
+<li><p>偏导数的几何意义<br />
+<span class="math notranslate nohighlight">\(f_x(x_0,y_0)\)</span>的几何意义是曲面被平面<span class="math notranslate nohighlight">\(y=y_0\)</span>所截得得曲线在<span class="math notranslate nohighlight">\(M_0\)</span>处的切线对<span class="math notranslate nohighlight">\(x\)</span>轴的斜率。</p></li>
+<li><p>高阶偏导数 二阶及二阶以上的偏导数统称为高阶偏导数，存在混合偏导数<span class="math notranslate nohighlight">\(\frac{\partial}{\partial y}\Big(\frac{\partial z}{\partial x}\Big), \frac{\partial}{\partial x}\Big(\frac{\partial z}{\partial y}\Big)\)</span>，如果二阶混合偏导数在区域内联系，那么他们在区域内必相等。</p></li>
+</ul>
+</section>
+<section id="id19">
+<h4>梯度<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+<p>在二元函数的情形，设函数<span class="math notranslate nohighlight">\(f(x,y)\)</span>在平面区域<span class="math notranslate nohighlight">\(D\)</span>内具有一阶连续偏导数，则对于每一点<span class="math notranslate nohighlight">\(P_0(x_0, y_0)\in D\)</span>，都可定出一个向量
+<div class="math notranslate nohighlight">
+\[ \nabla f(x_{0},y_{0})=f_{x}(x_{0},y_{0})\mathbfit{i}+f_{y}(x_{0},y_{0})\mathbfit{j} \]</div>
+
+这向量称为函数<span class="math notranslate nohighlight">\(f(x,y)\)</span>在点<span class="math notranslate nohighlight">\(P_0(x_0, y_0)\)</span>的梯度，记作<span class="math notranslate nohighlight">\(\mathbf {grad}f(x_0,y_0)\)</span>或<span class="math notranslate nohighlight">\(\nabla f(x_0,y_0)\)</span>，即
+<div class="math notranslate nohighlight">
+\[ \mathbf {grad}f(x_0,y_0) = \nabla f(x_0,y_0) = f_x(x_0,y_0)\mathbfit i+f_y(x_0,y_0)\mathbfit j. \]</div>
+
+其中<span class="math notranslate nohighlight">\(\nabla=\frac{\partial}{\partial x}\mathbfit i+\frac{\partial}{\partial y}\mathbfit j\)</span>称为（二维的）向量微分算子或Nabla算子，<span class="math notranslate nohighlight">\(\nabla f = \frac{\partial f}{\partial x}\mathbfit i+\frac{\partial f}{\partial y}\mathbfit j\)</span>。</p>
+<ul class="simple">
+<li><p>偏导数是函数沿坐标轴方向的方向导数，其他方向的方向导数是偏导数的合成。</p></li>
+<li><p>当前位置的梯度方向，为函数在该位置处方向导数最大的方向，也是函数值上升最快的方向，反方向为下降最快的方向</p></li>
+<li><p>当前位置的梯度长度（模），为最大方向导数的值</p></li>
+<li><p>梯度和等高线垂直，指向更高高度的等高线</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id20">
+<h2>函数极值<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<p>设函数<span class="math notranslate nohighlight">\(f(x)\)</span>在点<span class="math notranslate nohighlight">\(x_0\)</span>的某邻域<span class="math notranslate nohighlight">\(U(x_0)\)</span>内有定义，如果对于去心邻域<span class="math notranslate nohighlight">\(\mathring{U}(x_0)\)</span>内的任一<span class="math notranslate nohighlight">\(x\)</span>,有
+<div class="math notranslate nohighlight">
+\[f(x)&lt;f(x_0)\quad(\text{或}f(x)&gt;f(x_0)) ,\]</div>
+
+那么就称<span class="math notranslate nohighlight">\(f(x_0)\)</span>是函数<span class="math notranslate nohighlight">\(f(x)\)</span>的一个极大值(或极小值)。</p>
+<section id="id21">
+<h3>拉格朗日乘数法<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<p>要找函数 <span class="math notranslate nohighlight">\(z=f(x,y)\)</span>在附加条件<span class="math notranslate nohighlight">\(\varphi(x,y)=0\)</span> 下的可能极值点，可以先作拉格朗日函数
+<div class="math notranslate nohighlight">
+\[L(x,y)=f(x,y)+\lambda\varphi(x,y)\]</div>
+
+其中<span class="math notranslate nohighlight">\(\lambda\)</span>为参数。求其对<span class="math notranslate nohighlight">\(x\)</span>与<span class="math notranslate nohighlight">\(y\)</span>的一阶偏导数，并使之为零，然后与方程联立起来：
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}f_{x}( x ,y ) +\lambda\varphi_{x}( x ,y ) =0 ,\\f_{y}( x ,y ) +\lambda\varphi_{y}( x ,y ) =0 ,\\\varphi( x ,y ) =0.\end{cases}\end{split}\]</div>
+
+由这方程组解出<span class="math notranslate nohighlight">\(x\)</span>、<span class="math notranslate nohighlight">\(y\)</span>及<span class="math notranslate nohighlight">\(\lambda\)</span>，这样得到的<span class="math notranslate nohighlight">\((x,y)\)</span>就是函数<span class="math notranslate nohighlight">\(f(x,y)\)</span>在附加条件<span class="math notranslate nohighlight">\(\varphi(x,y)=0\)</span>下的可能极值点。</p>
+<p>等式约束可以用拉格朗日乘数法求解。
+不等式约束需要用拉格朗日乘数法以及KKT条件进行求解。</p>
+</section>
+</section>
+<section id="id22">
+<h2>积分<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<p>连续函数一定有原函数，不定积分<div class="math notranslate nohighlight">
+\[\int f(x)dx=F(x)+C\]</div>
+可以表示<span class="math notranslate nohighlight">\(f(x)\)</span>的任意一个原函数。</p>
+<section id="id23">
+<h3>积分法则<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{aligned}
+&amp;(1)\int k\mathrm{d}x=kx+C(k \text{是常数}), \\
+&amp;(2)\int x^{\mu}\mathrm{d}x=\frac{x^{\mu+1}}{\mu+1}+C(\mu\neq-1), \\
+&amp;(3)\int\frac{\mathrm{d}x}{x}=\ln|x|+C, \\
+&amp;(4)\int\frac{\mathrm{d}x}{1+x^{2}}=\arctan x+C, \\
+&amp;(5)\int\frac{\mathrm{d}x}{\sqrt{1-x^{2}}}=\arcsin x+C, \\
+&amp;(6)\int\cos x\mathrm{d}x=\sin x+C, \\
+&amp;(7)\int\sin x\mathrm{d}x=-\cos x+C, \\
+&amp;(8)\int\frac{\mathrm{d}x}{\cos^{2}x}=\int\sec^{2}x\mathrm{d}x=\tan x+C, \\
+&amp;(9) \int\frac{\mathrm{d}x}{\sin^{2}x}= \int \csc^{2}x\mathrm{d}x=-\cot x+C ,\\
+&amp;(10)\int\sec x\tan x \mathrm{d}x=\sec x+C,\\
+&amp;(11)\int\csc x\cot x\mathrm{d}x=-\csc x+C,\\
+&amp;(12)\int\mathrm{e}^{x}dx=\mathrm{e}^{x}+C,\\
+&amp;(13)\int a^{x}\mathrm{d}x=\frac{a^{x}}{\ln a}+C.
+\end{aligned} \end{split}\]</div>
+</section>
+<section id="id24">
+<h3>牛顿-莱布尼茨方程<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[ \int_{a}^{b}f(x)\mathrm{d}x=F(b)-F(a) \]</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="%E9%80%BB%E8%BE%91%E5%AD%A6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">逻辑学</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E4%BB%A3%E6%95%B0%E5%AD%A6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">代数学</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">复数</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">函数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">初等函数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">函数构造</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">函数性质</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">极限</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">极限性质</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">极限运算</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">微分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">微分</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">导数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">函数的求导法则</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">多元函数微分</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">平面点集</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#n"><span class="math notranslate nohighlight">\(n\)</span>维空间</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">多元函数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">偏导数</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">梯度</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">函数极值</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">拉格朗日乘数法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">积分</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">积分法则</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">牛顿-莱布尼茨方程</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
