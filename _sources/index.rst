@@ -3,8 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-LeoMao的知识库
+毛云开的知识库
 ============================
+
+知识库目的是记录我对知识的学习以及思考过程，重点在于明晰各种技术之间的底层原理与关系，由于精力有限，技术细节方面不能保证完全正确，请参照相关出版物内容。
 
 .. toctree::
    :titlesonly:
