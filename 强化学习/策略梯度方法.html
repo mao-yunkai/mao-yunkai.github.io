@@ -322,8 +322,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforce">REINFORCE</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actor-critic">Actor-Critic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trpo">TRPO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathcal-l-theta-prime-lambda-sum-t-e-mathbf-s-t-sim-p-theta-mathbf-s-t-left-e-mathbf-a-t-sim-pi-theta-mathbf-a-t-mathbf-s-t-left-frac-pi-theta-prime-mathbf-a-t-mathbf-s-t-pi-theta-mathbf-a-t-mathbf-s-t-gamma-t-a-pi-theta-mathbf-s-t-mathbf-a-t-right-right">使用拉格朗日法将函数加入到目标函数中。
-$$\mathcal L(\theta^{\prime},\lambda)=\sum_{t}E_{\mathbf{s}<em>{t}\sim p</em>{\theta}(\mathbf{s}<em>{t})}\left[E</em>{\mathbf{a}<em>{t}\sim\pi</em>{\theta}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}\left[\frac{\pi_{\theta^{\prime}}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}{\pi_{\theta}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}\gamma^{t}A^{\pi_{\theta}}(\mathbf{s}<em>{t},\mathbf{a}</em>{t})\right]\right]</a></li>
 </ul>
             </nav>
         </div>
@@ -444,12 +442,12 @@ J(\theta')-J(\theta)&amp; =J(\theta^{\prime})-E_{\mathbf{s}_{0}\sim p(\mathbf{s}
 	\mathrm{such\ that}\ D_{KL}(\pi_{\theta^{\prime}}(\mathbf{a}_t\vert s_t)||\pi_{\theta}(\mathbf{a}_t\vert s_t))\leq \epsilon
 \end{align}
 \end{split}\]</div>
-</section>
-<section id="mathcal-l-theta-prime-lambda-sum-t-e-mathbf-s-t-sim-p-theta-mathbf-s-t-left-e-mathbf-a-t-sim-pi-theta-mathbf-a-t-mathbf-s-t-left-frac-pi-theta-prime-mathbf-a-t-mathbf-s-t-pi-theta-mathbf-a-t-mathbf-s-t-gamma-t-a-pi-theta-mathbf-s-t-mathbf-a-t-right-right">
-<h2>使用拉格朗日法将函数加入到目标函数中。
-$$\mathcal L(\theta^{\prime},\lambda)=\sum_{t}E_{\mathbf{s}<em>{t}\sim p</em>{\theta}(\mathbf{s}<em>{t})}\left[E</em>{\mathbf{a}<em>{t}\sim\pi</em>{\theta}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}\left[\frac{\pi_{\theta^{\prime}}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}{\pi_{\theta}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}\gamma^{t}A^{\pi_{\theta}}(\mathbf{s}<em>{t},\mathbf{a}</em>{t})\right]\right]<a class="headerlink" href="#mathcal-l-theta-prime-lambda-sum-t-e-mathbf-s-t-sim-p-theta-mathbf-s-t-left-e-mathbf-a-t-sim-pi-theta-mathbf-a-t-mathbf-s-t-left-frac-pi-theta-prime-mathbf-a-t-mathbf-s-t-pi-theta-mathbf-a-t-mathbf-s-t-gamma-t-a-pi-theta-mathbf-s-t-mathbf-a-t-right-right" title="Link to this heading">#</a></h2>
-<p>\lambda(D_{KL}(\pi_{\theta^{\prime}}(\mathbf{a}<em>t\vert s_t)||\pi</em>{\theta}(\mathbf{a}_t\vert s_t))-\epsilon)$$
-然后执行优化算法：</p>
+<p>使用拉格朗日法将函数加入到目标函数中。</p>
+<div class="math notranslate nohighlight">
+\[\mathcal L(\theta^{\prime},\lambda)=\sum_{t}E_{\mathbf{s}_{t}\sim p_{\theta}(\mathbf{s}_{t})}\left[E_{\mathbf{a}_{t}\sim\pi_{\theta}(\mathbf{a}_{t}|\mathbf{s}_{t})}\left[\frac{\pi_{\theta^{\prime}}(\mathbf{a}_{t}|\mathbf{s}_{t})}{\pi_{\theta}(\mathbf{a}_{t}|\mathbf{s}_{t})}\gamma^{t}A^{\pi_{\theta}}(\mathbf{s}_{t},\mathbf{a}_{t})\right]\right]
+-
+\lambda(D_{KL}(\pi_{\theta^{\prime}}(\mathbf{a}_t\vert s_t)||\pi_{\theta}(\mathbf{a}_t\vert s_t))-\epsilon)\]</div>
+<p>然后执行优化算法：</p>
 <ol class="arabic simple">
 <li><p>最大化<span class="math notranslate nohighlight">\(\mathcal L(\theta^{\prime}, \lambda)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda \leftarrow \lambda + \alpha (D_{KL}(\pi_{\theta^{\prime}}(\mathbf{a}_t\vert s_t)||\pi_{\theta}(\mathbf{a}_t\vert s_t))-\epsilon)\)</span></p></li>
@@ -506,8 +504,6 @@ $$\mathcal L(\theta^{\prime},\lambda)=\sum_{t}E_{\mathbf{s}<em>{t}\sim p</em>{\t
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforce">REINFORCE</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actor-critic">Actor-Critic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trpo">TRPO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathcal-l-theta-prime-lambda-sum-t-e-mathbf-s-t-sim-p-theta-mathbf-s-t-left-e-mathbf-a-t-sim-pi-theta-mathbf-a-t-mathbf-s-t-left-frac-pi-theta-prime-mathbf-a-t-mathbf-s-t-pi-theta-mathbf-a-t-mathbf-s-t-gamma-t-a-pi-theta-mathbf-s-t-mathbf-a-t-right-right">使用拉格朗日法将函数加入到目标函数中。
-$$\mathcal L(\theta^{\prime},\lambda)=\sum_{t}E_{\mathbf{s}<em>{t}\sim p</em>{\theta}(\mathbf{s}<em>{t})}\left[E</em>{\mathbf{a}<em>{t}\sim\pi</em>{\theta}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}\left[\frac{\pi_{\theta^{\prime}}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}{\pi_{\theta}(\mathbf{a}<em>{t}|\mathbf{s}</em>{t})}\gamma^{t}A^{\pi_{\theta}}(\mathbf{s}<em>{t},\mathbf{a}</em>{t})\right]\right]</a></li>
 </ul>
   </nav></div>
 
