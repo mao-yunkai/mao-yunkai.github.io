@@ -330,16 +330,19 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pointnet">PointNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">PointNet++</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polarnet">PolarNet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">加速优化</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">评价指标</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">评价指标</a></li>
 </ul>
             </nav>
         </div>
@@ -412,6 +415,48 @@ KD树可以用于最近邻搜索。输入K维数据，按不同维度依方差�
 </section>
 <section id="id6">
 <h2>算法模型<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="pointnet">
+<h3>PointNet<a class="headerlink" href="#pointnet" title="Link to this heading">#</a></h3>
+<p>项目地址：<a class="reference external" href="https://github.com/charlesq34/pointnet">charlesq34/pointnet: PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</a>
+Pytorch复现代码地址：<a class="github reference external" href="https://github.com/yanx27/Pointnet_Pointnet2_pytorch">yanx27/Pointnet_Pointnet2_pytorch</a>
+贡献：</p>
+<ol class="arabic simple">
+<li><p>首先用神经网络处理三维数据的模型。</p></li>
+<li><p>使用最大池化层提取特征，解决了数据无序性问题。</p></li>
+<li><p>成为了后续3D点云特征提取的基础模型。
+Pointnet的做法是随机选择点云中一个点作为中心点，然后生成一个框，用np.where选择框内的点作为数据块，将局部相对位置（原点在中心点）与全局绝对位置（原点在点云帧原点）联合，然后用conv1d进行学习。</p></li>
+</ol>
+</section>
+<section id="id7">
+<h3>PointNet++<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>项目地址：<a class="reference external" href="https://github.com/charlesq34/pointnet2">charlesq34/pointnet2: PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</a>
+Pytorch复现代码地址：<a class="github reference external" href="https://github.com/yanx27/Pointnet_Pointnet2_pytorch">yanx27/Pointnet_Pointnet2_pytorch</a>
+贡献：</p>
+<ol class="arabic simple">
+<li><p>使用了Unet结构，提高了预测精度。
+方法：</p></li>
+<li><p>划分网格，用网格图作为最小训练单位。</p></li>
+<li><p>每个网格固定采样点数，点数不够重采样，点数太多降采样。</p></li>
+<li><p>最后形成固定大小的数据帧，输入到模型中，输入是N个点，每个具有d维坐标与C维特征。</p></li>
+<li><p>Set Abstraction 操作是指从N个点中选择N1个中心点（sampling）构建具有重叠区域的邻域（grouping），每个邻域中具有K个点（不固定，用Pointnet转成固定长度特征向量），然后提取出C1个特征值，数据从(N, d+C)变成(N1, K, d+C1)。模型使用了类似Unet的结构，逐层向下卷积再反卷积。</p></li>
+<li><p>FeaturePropagation层首先计算两层输入点坐标之间的距离，然后用第四层的三个最近邻点加权来表示第三层的点，这样就得到了与第三层个数相同的新点。</p></li>
+<li><p>新点得到的512个特征与第三层点的512个特征合并，得到768个特征。将特征输入到模型中，得到输出结果。</p></li>
+</ol>
+</section>
+<section id="polarnet">
+<h3>PolarNet<a class="headerlink" href="#polarnet" title="Link to this heading">#</a></h3>
+<p>项目地址：<a class="reference external" href="https://github.com/edwardzhou130/PolarSeg">edwardzhou130/PolarSeg: Implementation for PolarNet: An Improved Grid Representation for Online LiDAR Point Clouds Semantic Segmentation (CVPR 2020)</a>
+贡献：</p>
+<ol class="arabic simple">
+<li><p>首先使用极坐标表示法表示点云数据，然后根据极坐标分割体素，优势是与雷达的近密远疏的特征适配，解决了稀疏体素块过多导致效率低下的问题。</p></li>
+<li><p>使用Random Sample替换了Farthest Point Sample。</p></li>
+<li><p>简单，快速，高效
+方法：</p></li>
+<li><p>将数据变换成极坐标表示方式，使用极坐标划分体素。</p></li>
+<li><p>在极坐标体素上进行卷积。</p></li>
+<li><p>其他与基于体素的UNet结构方法类似。</p></li>
+</ol>
+</section>
 <section id="point-transformer">
 <h3>Point Transformer<a class="headerlink" href="#point-transformer" title="Link to this heading">#</a></h3>
 <p>Point Transformer使用Transformer架构进行点云语义分割，提出了向量注意力的概念。缩放点积注意力使用点积计算查询和键之间的关系，而向量注意力用减法衡量二者之间的关系。</p>
@@ -433,8 +478,8 @@ softmax(\mathrm{MLP}(Q-K)+\delta)(V+\delta)\\
 使用点云序列化的方式加速了模型的推理过程，利用固定的模式将三维点云映射到一维，每个点云都有一个下标，且相邻下标的点在几何上距离相近，这样就省去了在三维空间查找的时间。</p>
 </section>
 </section>
-<section id="id7">
-<h2>加速优化<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h2>加速优化<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <section id="flash-attention">
 <h3>Flash Attention<a class="headerlink" href="#flash-attention" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://github.com/Dao-AILab/flash-attention?tab=readme-ov-file">Dao-AILab/flash-attention: Fast and memory-efficient exact attention</a>
@@ -443,8 +488,8 @@ softmax(\mathrm{MLP}(Q-K)+\delta)(V+\delta)\\
 Flash Attention目前已经集成到pytorch中。</p>
 </section>
 </section>
-<section id="id8">
-<h2>评价指标<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h2>评价指标<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>Intersection over Union (IoU) 是指对于某个类别，其预测结果与真实标签之间重叠部分的面积与两者总面积的比例。
 <div class="math notranslate nohighlight">
 \[ IoU = \frac{Area\ of\ Overlap}{Area\ of\ Union}=\frac{TP}{TP+FP+FN}\]</div>
@@ -520,16 +565,19 @@ Flash Attention目前已经集成到pytorch中。</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pointnet">PointNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">PointNet++</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polarnet">PolarNet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">加速优化</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">评价指标</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">评价指标</a></li>
 </ul>
   </nav></div>
 
