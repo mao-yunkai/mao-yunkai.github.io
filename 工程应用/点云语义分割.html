@@ -318,17 +318,26 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据结构</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">问题定义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据集</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantickitti">SemanticKITTI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waymo">Waymo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nuscenes">nuScenes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s3dis">S3DIS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据结构</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据处理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">数据处理</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">算法模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">加速优化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">评价指标</a></li>
 </ul>
             </nav>
         </div>
@@ -343,7 +352,31 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>点云语义分割<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>数据结构<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>问题定义<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>给定数据集包含<span class="math notranslate nohighlight">\(N\)</span>张点云帧<span class="math notranslate nohighlight">\(\{(P_i,L_i)|i = 1,\ldots,N\}\)</span>，其中<span class="math notranslate nohighlight">\(P_i\in\mathbb{R}^{n_i\times4}\)</span>是第<span class="math notranslate nohighlight">\(i\)</span>张点云帧，包含<span class="math notranslate nohighlight">\(n_i\)</span>个点，每个点定义为<span class="math notranslate nohighlight">\((x,y,z,reflection)\)</span>， <span class="math notranslate nohighlight">\((x,y,z)\)</span>表示点的笛卡尔坐标值，reflection表示反射强度。<span class="math notranslate nohighlight">\(L_i \in \mathbb{Z}^{n_i}\)</span>包含每个点的语义标签值。
+我们的目标是学习一个函数<span class="math notranslate nohighlight">\(f(\cdot;\theta)\)</span>，<span class="math notranslate nohighlight">\(f(P_i)\)</span>输出与<span class="math notranslate nohighlight">\(L_i\)</span>之间的误差达到最小。</p>
+</section>
+<section id="id3">
+<h2>数据集<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="semantickitti">
+<h3>SemanticKITTI<a class="headerlink" href="#semantickitti" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://semantic-kitti.org/dataset.html#download">SemanticKITTI - A Dataset for LiDAR-based Semantic Scene Understanding</a></p>
+</section>
+<section id="waymo">
+<h3>Waymo<a class="headerlink" href="#waymo" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://waymo.com/open/challenges/2024/3d-semantic-segmentation/">3D Semantic Segmentation – 2024 – Waymo Open Dataset</a></p>
+</section>
+<section id="nuscenes">
+<h3>nuScenes<a class="headerlink" href="#nuscenes" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.nuscenes.org/nuscenes#overview">nuScenes</a></p>
+</section>
+<section id="s3dis">
+<h3>S3DIS<a class="headerlink" href="#s3dis" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://buildingparser.stanford.edu/dataset.html">http://buildingparser.stanford.edu/dataset.html</a></p>
+</section>
+</section>
+<section id="id4">
+<h2>数据结构<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 </section>
 <section id="octree">
 <h2>Octree<a class="headerlink" href="#octree" title="Link to this heading">#</a></h2>
@@ -355,8 +388,8 @@
 <p><a class="reference external" href="https://www.open3d.org/docs/release/tutorial/geometry/kdtree.html">KDTree - Open3D 0.19.0 documentation</a>
 KD树可以用于最近邻搜索。输入K维数据，按不同维度依方差顺序找均值划分二叉树，即KD树。最近邻搜索时，依坐标值找到叶子节点，若距离小于均值，则叶子节点是最近邻，否则再查找下一分支。</p>
 </section>
-<section id="id3">
-<h2>数据处理<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h2>数据处理<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 </section>
 <section id="farthest-point-sampling">
 <h2>Farthest Point Sampling<a class="headerlink" href="#farthest-point-sampling" title="Link to this heading">#</a></h2>
@@ -369,8 +402,8 @@ KD树可以用于最近邻搜索。输入K维数据，按不同维度依方差�
 最远点采样需要三重for循环（采样点、剩余点、点与已采样点距离），因此计算量大，速度慢，优点是采样均匀，能够保持三维形状特征。</p></li>
 </ol>
 </section>
-<section id="id4">
-<h2>算法模型<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h2>算法模型<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 </section>
 <section id="point-transformer">
 <h2>Point Transformer<a class="headerlink" href="#point-transformer" title="Link to this heading">#</a></h2>
@@ -392,8 +425,8 @@ softmax(\mathrm{MLP}(Q-K)+\delta)(V+\delta)\\
 <p><a class="reference external" href="https://github.com/Pointcept/Pointcept">GitHub - Pointcept/Pointcept: Pointcept: a codebase for point cloud perception research. Latest works: Sonata (CVPR’25 Highlight), PTv3 (CVPR’24 Oral), PPT (CVPR’24), MSC (CVPR’23)</a>
 使用点云序列化的方式加速了模型的推理过程，利用固定的模式将三维点云映射到一维，每个点云都有一个下标，且相邻下标的点在几何上距离相近，这样就省去了在三维空间查找的时间。</p>
 </section>
-<section id="id5">
-<h2>加速优化<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h2>加速优化<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 </section>
 <section id="flash-attention">
 <h2>Flash Attention<a class="headerlink" href="#flash-attention" title="Link to this heading">#</a></h2>
@@ -401,6 +434,32 @@ softmax(\mathrm{MLP}(Q-K)+\delta)(V+\delta)\\
 利用GPU的SRAM、HBM和CPUDRAM的处理带宽和容量的差异，将QKV向量分块后使用SRAM计算sm(QK)V的值。关键是使用safe softmax进行分块后的注意力值计算公式。
 <a class="reference external" href="https://docs.pytorch.org/docs/2.2/generated/torch.nn.functional.scaled_dot_product_attention.html">torch.nn.functional.scaled_dot_product_attention — PyTorch 2.2 documentation</a>
 Flash Attention目前已经集成到pytorch中。</p>
+</section>
+<section id="id8">
+<h2>评价指标<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Intersection over Union (IoU) 是指对于某个类别，其预测结果与真实标签之间重叠部分的面积与两者总面积的比例。
+<div class="math notranslate nohighlight">
+\[ IoU = \frac{Area\ of\ Overlap}{Area\ of\ Union}=\frac{TP}{TP+FP+FN}\]</div>
+
+整体精度<span class="math notranslate nohighlight">\(mIoU\)</span>是所有类别<span class="math notranslate nohighlight">\(IoU\)</span>的均值。
+快速计算<span class="math notranslate nohighlight">\(mIoU\)</span>的方法：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fast_hist</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">label</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">label</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">bin_count</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span>
+        <span class="n">n</span> <span class="o">*</span> <span class="n">label</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bin_count</span><span class="p">[:</span><span class="n">n</span> <span class="o">**</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    
+<span class="k">def</span><span class="w"> </span><span class="nf">per_class_iu</span><span class="p">(</span><span class="n">hist</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">hist</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">hist</span><span class="p">))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>fast_hist用来快速构建混淆矩阵。</p></li>
+<li><p>mask是一个布尔数组，用来筛选label中在0到n之间的元素。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n*label+pred</span></code>是一个值，取值范围在<span class="math notranslate nohighlight">\(n**2\)</span>之间，可以唯一映射到一个<code class="docutils literal notranslate"><span class="pre">(n,n)</span></code>的二维数组， <code class="docutils literal notranslate"><span class="pre">n*label</span></code>表示label值对应的行，加上pred值表示pred值对应的列。</p></li>
+<li><p>bincount统计值出现的次数，使用该方法统计所有值出现的频数，将其转换成二维数组，即可得到混淆矩阵。</p></li>
+<li><p>per_class_iu用来计算每个类的iou。iou值是对角线值除以行列之和，分母分别累和行列需要减去一个多加的对角线值。</p></li>
+</ul>
 </section>
 </section>
 
@@ -441,17 +500,26 @@ Flash Attention目前已经集成到pytorch中。</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据结构</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">问题定义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据集</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantickitti">SemanticKITTI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waymo">Waymo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nuscenes">nuScenes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s3dis">S3DIS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据结构</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据处理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">数据处理</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">算法模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">加速优化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">评价指标</a></li>
 </ul>
   </nav></div>
 
