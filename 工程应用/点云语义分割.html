@@ -319,24 +319,26 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">问题定义</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据集</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantickitti">SemanticKITTI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waymo">Waymo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nuscenes">nuScenes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s3dis">S3DIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据集</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据结构</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据结构</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">数据处理</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">数据处理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">评价指标</a></li>
 </ul>
             </nav>
@@ -358,41 +360,46 @@
 </section>
 <section id="id3">
 <h2>数据集<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<section id="semantickitti">
-<h3>SemanticKITTI<a class="headerlink" href="#semantickitti" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://semantic-kitti.org/dataset.html#download">SemanticKITTI - A Dataset for LiDAR-based Semantic Scene Understanding</a></p>
-</section>
-<section id="waymo">
-<h3>Waymo<a class="headerlink" href="#waymo" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://waymo.com/open/challenges/2024/3d-semantic-segmentation/">3D Semantic Segmentation – 2024 – Waymo Open Dataset</a></p>
-</section>
-<section id="nuscenes">
-<h3>nuScenes<a class="headerlink" href="#nuscenes" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://www.nuscenes.org/nuscenes#overview">nuScenes</a></p>
-</section>
-<section id="s3dis">
-<h3>S3DIS<a class="headerlink" href="#s3dis" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="http://buildingparser.stanford.edu/dataset.html">http://buildingparser.stanford.edu/dataset.html</a></p>
-</section>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>数据集</p></th>
+<th class="head"><p>链接</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SemanticKITTI</p></td>
+<td><p><a class="reference external" href="https://semantic-kitti.org/dataset.html#download">SemanticKITTI - A Dataset for LiDAR-based Semantic Scene Understanding</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Waymo</p></td>
+<td><p><a class="reference external" href="https://waymo.com/open/challenges/2024/3d-semantic-segmentation/">3D Semantic Segmentation – 2024 – Waymo Open Dataset</a></p></td>
+</tr>
+<tr class="row-even"><td><p>nuScenes</p></td>
+<td><p><a class="reference external" href="https://www.nuscenes.org/nuscenes#overview">nuScenes</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>S3DIS</p></td>
+<td><p><a class="reference external" href="http://buildingparser.stanford.edu/dataset.html">http://buildingparser.stanford.edu/dataset.html</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="id4">
 <h2>数据结构<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-</section>
 <section id="octree">
-<h2>Octree<a class="headerlink" href="#octree" title="Link to this heading">#</a></h2>
+<h3>Octree<a class="headerlink" href="#octree" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://www.open3d.org/docs/release/tutorial/geometry/octree.html">Octree - Open3D 0.19.0 documentation</a>
 八叉树是将三维数据进行划分存储的一种方式。将一个体素格进行分割，能够分成八个子格子，因此八叉树的八个子节点即父节点分成的子格子。若格子内无点，则不需要继续分割，否则可以继续分割，直到每个叶子节点都只有一个点。</p>
 </section>
 <section id="kdtree">
-<h2>KDTree<a class="headerlink" href="#kdtree" title="Link to this heading">#</a></h2>
+<h3>KDTree<a class="headerlink" href="#kdtree" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://www.open3d.org/docs/release/tutorial/geometry/kdtree.html">KDTree - Open3D 0.19.0 documentation</a>
 KD树可以用于最近邻搜索。输入K维数据，按不同维度依方差顺序找均值划分二叉树，即KD树。最近邻搜索时，依坐标值找到叶子节点，若距离小于均值，则叶子节点是最近邻，否则再查找下一分支。</p>
 </section>
+</section>
 <section id="id5">
 <h2>数据处理<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-</section>
 <section id="farthest-point-sampling">
-<h2>Farthest Point Sampling<a class="headerlink" href="#farthest-point-sampling" title="Link to this heading">#</a></h2>
+<h3>Farthest Point Sampling<a class="headerlink" href="#farthest-point-sampling" title="Link to this heading">#</a></h3>
 <p>最远点采样是一种采样方法，目的是使采样尽可能的离散均匀。算法流程是：</p>
 <ol class="arabic simple">
 <li><p>随机选取一个点加入采样集合</p></li>
@@ -402,11 +409,11 @@ KD树可以用于最近邻搜索。输入K维数据，按不同维度依方差�
 最远点采样需要三重for循环（采样点、剩余点、点与已采样点距离），因此计算量大，速度慢，优点是采样均匀，能够保持三维形状特征。</p></li>
 </ol>
 </section>
+</section>
 <section id="id6">
 <h2>算法模型<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-</section>
 <section id="point-transformer">
-<h2>Point Transformer<a class="headerlink" href="#point-transformer" title="Link to this heading">#</a></h2>
+<h3>Point Transformer<a class="headerlink" href="#point-transformer" title="Link to this heading">#</a></h3>
 <p>Point Transformer使用Transformer架构进行点云语义分割，提出了向量注意力的概念。缩放点积注意力使用点积计算查询和键之间的关系，而向量注意力用减法衡量二者之间的关系。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -416,24 +423,25 @@ softmax(\mathrm{MLP}(Q-K)+\delta)(V+\delta)\\
 <p>这样做的好处是与价值向量相乘的不再是一个点积标量而是一个向量，表达能力更强。</p>
 </section>
 <section id="point-transformer-v2">
-<h2>Point Transformer V2<a class="headerlink" href="#point-transformer-v2" title="Link to this heading">#</a></h2>
+<h3>Point Transformer V2<a class="headerlink" href="#point-transformer-v2" title="Link to this heading">#</a></h3>
 <p>PTv1的缺点是，随着数据规模的上升，参数规模也会变得非常大。因此PTv2提出了一个折中的办法，就是用分组的向量注意力机制，将一个向量分成几块，每块共享一个参数。
 另一个改进点是，PTv1的时候，用的是kNN查询近邻向量作为一个子集进行注意力训练，大量的时间花在了kNN查询中。因此，PTv2划分了网格，直接将网格内的点作为一个子集训练注意力。</p>
 </section>
 <section id="point-transformer-v3">
-<h2>Point Transformer V3<a class="headerlink" href="#point-transformer-v3" title="Link to this heading">#</a></h2>
+<h3>Point Transformer V3<a class="headerlink" href="#point-transformer-v3" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://github.com/Pointcept/Pointcept">GitHub - Pointcept/Pointcept: Pointcept: a codebase for point cloud perception research. Latest works: Sonata (CVPR’25 Highlight), PTv3 (CVPR’24 Oral), PPT (CVPR’24), MSC (CVPR’23)</a>
 使用点云序列化的方式加速了模型的推理过程，利用固定的模式将三维点云映射到一维，每个点云都有一个下标，且相邻下标的点在几何上距离相近，这样就省去了在三维空间查找的时间。</p>
 </section>
+</section>
 <section id="id7">
 <h2>加速优化<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-</section>
 <section id="flash-attention">
-<h2>Flash Attention<a class="headerlink" href="#flash-attention" title="Link to this heading">#</a></h2>
+<h3>Flash Attention<a class="headerlink" href="#flash-attention" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://github.com/Dao-AILab/flash-attention?tab=readme-ov-file">Dao-AILab/flash-attention: Fast and memory-efficient exact attention</a>
 利用GPU的SRAM、HBM和CPUDRAM的处理带宽和容量的差异，将QKV向量分块后使用SRAM计算sm(QK)V的值。关键是使用safe softmax进行分块后的注意力值计算公式。
 <a class="reference external" href="https://docs.pytorch.org/docs/2.2/generated/torch.nn.functional.scaled_dot_product_attention.html">torch.nn.functional.scaled_dot_product_attention — PyTorch 2.2 documentation</a>
 Flash Attention目前已经集成到pytorch中。</p>
+</section>
 </section>
 <section id="id8">
 <h2>评价指标<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
@@ -501,24 +509,26 @@ Flash Attention目前已经集成到pytorch中。</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">问题定义</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据集</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantickitti">SemanticKITTI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waymo">Waymo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nuscenes">nuScenes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s3dis">S3DIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据集</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据结构</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据结构</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#octree">Octree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree">KDTree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">数据处理</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">数据处理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#farthest-point-sampling">Farthest Point Sampling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">算法模型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer">Point Transformer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v2">Point Transformer V2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-transformer-v3">Point Transformer V3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">加速优化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-attention">Flash Attention</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">评价指标</a></li>
 </ul>
   </nav></div>
