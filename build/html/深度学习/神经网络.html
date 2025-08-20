@@ -356,9 +356,9 @@ h_1&amp;=w_1\times x_1+b_1+w_2\times x_2+b_2+w_3\times x_3+b_3+w_4\times x_4+b_4
 \end{align}\end{split}\]</div>
 因此<span class="math notranslate nohighlight">\(b\)</span>只需要一维即可。</p>
 </div></blockquote>
-<p>以一个单隐藏层神经网络为例
-<img alt="" src="../_images/NeuralNetwork.png" />
-设输入<span class="math notranslate nohighlight">\(X\in\mathbb R^{n\times d}\)</span>表示<span class="math notranslate nohighlight">\(n\)</span>个具有<span class="math notranslate nohighlight">\(d\)</span>维特征的样本，<span class="math notranslate nohighlight">\(H\in \mathbb R^{n\times h}\)</span>表示隐藏层的输出，<span class="math notranslate nohighlight">\(O\in \mathbb R^{n\times q}\)</span>表示输出层的输出。输入一个样本<span class="math notranslate nohighlight">\(x=[x_1, x_2, x_3, x_4]\)</span>，首先经过隐藏层，公式为<div class="math notranslate nohighlight">
+<p>以一个单隐藏层神经网络为例</p>
+<p><img alt="" src="../_images/NeuralNetwork.png" /></p>
+<p>设输入<span class="math notranslate nohighlight">\(X\in\mathbb R^{n\times d}\)</span>表示<span class="math notranslate nohighlight">\(n\)</span>个具有<span class="math notranslate nohighlight">\(d\)</span>维特征的样本，<span class="math notranslate nohighlight">\(H\in \mathbb R^{n\times h}\)</span>表示隐藏层的输出，<span class="math notranslate nohighlight">\(O\in \mathbb R^{n\times q}\)</span>表示输出层的输出。输入一个样本<span class="math notranslate nohighlight">\(x=[x_1, x_2, x_3, x_4]\)</span>，首先经过隐藏层，公式为<div class="math notranslate nohighlight">
 \[H=\sigma(xW^1+b^1)\]</div>
 其中<span class="math notranslate nohighlight">\(W^1\in \mathbb R^{d\times h}\)</span>，<span class="math notranslate nohighlight">\(b^1\in\mathbb R^{1\times h}\)</span>，<span class="math notranslate nohighlight">\(\sigma(x)\)</span>是激活函数，如[[激活函数#ReLU]]。
 隐藏表示的特征再输入输出层，公式为<div class="math notranslate nohighlight">
@@ -384,13 +384,14 @@ Pytorch在nn.CrossEntropyLoss中隐式的实现了Softmax操作。如果使用�
 </div></blockquote>
 <blockquote>
 <div><p>💡<strong>为什么不能用单层神经网络作为通用模型，而需要设计不同的模型架构？</strong>
-万能近似定理意味着无论我们试图学习什么函数，我们知道一个大的 MLP 一 定能够<strong>表示</strong>这个函数。然而，我们不能保证训练算法能够<strong>学得</strong>这个函数。即使 MLP 能够表示该函数，学习也可能因两个不同的原因而失败。首先，用于训练的优化算 法可能找不到用于期望函数的参数值。其次，训练算法可能由于过拟合而选择了错 误的函数。回忆第 5.2.1 节中的 ‘‘没有免费的午餐’’ 定理，说明了没有普遍优越的机 器学习算法。前馈网络提供了表示函数的万能系统，在这种意义上，给定一个函数，深度前馈网络 存在一个前馈网络能够近似该函数。不存在万能的过程既能够验证训练集上的特殊 样本，又能够选择一个函数来扩展到训练集上没有的点。
+万能近似定理意味着无论我们试图学习什么函数，我们知道一个大的 MLP 一 定能够<strong>表示</strong>这个函数。然而，我们不能保证训练算法能够<strong>学得</strong>这个函数。即使 MLP 能够表示该函数，学习也可能因两个不同的原因而失败。首先，用于训练的优化算 法可能找不到用于期望函数的参数值。其次，训练算法可能由于过拟合而选择了错误的函数。前馈网络提供了表示函数的万能系统，在这种意义上，给定一个函数，深度前馈网络存在一个前馈网络能够近似该函数。不存在万能的过程既能够验证训练集上的特殊样本，又能够选择一个函数来扩展到训练集上没有的点。
 总之，具有单层的前馈网络足以表示任何函数，但是网络层可能大得不可实现， 并且可能无法正确地学习和泛化。在很多情况下，使用更深的模型能够减少表示期望函数所需的单元的数量，并且可以减少泛化误差。</p>
 </div></blockquote>
-<p>线性代数的矩阵表示方式看起来不那么直观，将所有参数展开表示，我们来看一看数据在经过模型时发生了什么。基本模型的参数包括
-$$\begin{align}</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8620ffd-12f2-46f6-b357-19aa26838e64">
-<span class="eqno">(1)<a class="headerlink" href="#equation-a8620ffd-12f2-46f6-b357-19aa26838e64" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}W^1 &amp; b^1\end{bmatrix}^T &amp;= \begin{bmatrix}
+<p>线性代数的矩阵表示方式看起来不那么直观，将所有参数展开表示，我们来看一看数据在经过模型时发生了什么。基本模型的参数包括</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\begin{bmatrix}W^1 &amp; b^1\end{bmatrix}^T &amp;= \begin{bmatrix}
 w^1_{11} &amp; w^1_{12} &amp; w^1_{13} &amp; w^1_{14} &amp; w^1_{15} \\
 w^1_{21} &amp; w^1_{22} &amp; w^1_{23} &amp; w^1_{24} &amp; w^1_{25} \\
 w^1_{31} &amp; w^1_{32} &amp; w^1_{33} &amp; w^1_{34} &amp; w^1_{35} \\
@@ -404,52 +405,53 @@ w^2_{31} &amp; w^2_{32} &amp; w^2_{33} \\
 w^2_{41} &amp; w^2_{42} &amp; w^2_{43} \\
 w^2_{51} &amp; w^2_{52} &amp; w^2_{53} \\
 b^2_1    &amp; b^2_2    &amp; b^2_3 
-\end{bmatrix}\]</div>
-<p>\end{align}
+\end{bmatrix}
+\end{align}
+\end{split}\]</div>
+<p>输入一个样本<span class="math notranslate nohighlight">\(\mathbfit x=[x_1\ x_2\ x_3\ x_4]^T\)</span>，隐藏层输出为<span class="math notranslate nohighlight">\(H\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-输入一个样本$\mathbfit x=[x_1\ x_2\ x_3\ x_4]^T$，隐藏层输出为$H$
-\]</div>
-
 H=\begin{bmatrix}h_1 &amp; h_2 &amp; h_3 &amp; h_4 &amp; h_5\end{bmatrix}^T=ReLU(W^1\mathbfit x+b^1)
-<div class="math notranslate nohighlight">
-\[\]</div>
-
-H^0=\begin{cases}
-h^0_1 = x_1w^1_{11}+x_2w^1_{12}+x_3w^1_{13}+x_4w^1_{14}+b_1^1 \
-h^0_2 = x_1w^1_{21}+x_2w^1_{22}+x_3w^1_{23}+x_4w^1_{24}+b_2^1 \
-h^0_3 = x_1w^1_{31}+x_2w^1_{32}+x_3w^1_{33}+x_4w^1_{34}+b_3^1 \
-h^0_4 = x_1w^1_{41}+x_2w^1_{42}+x_3w^1_{43}+x_4w^1_{44}+b_4^1 \
-h^0_5 = x_1w^1_{51}+x_2w^1_{52}+x_3w^1_{53}+x_4w^1_{54}+b_5^1 \
-\end{cases}
-<div class="math notranslate nohighlight">
-\[\]</div>
-
-H=\begin{cases}
-h_1=max{0,h^0_1} \
-h_2=max{0,h^0_2} \
-h_3=max{0,h^0_3} \
-h_4=max{0,h^0_4} \
-h_5=max{0,h^0_5} \
-\end{cases}
-<div class="math notranslate nohighlight">
-\[
-输出层的输出为$\hat Y$
 \]</div>
-\hat {\mathbfit y}=\begin{bmatrix}\hat{y_1} &amp; \hat{y_2} &amp; \hat{y_3}\end{bmatrix}^T=Softmax(W^2H+b^2)<div class="math notranslate nohighlight">
-\[\]</div>
-\mathbfit o=\begin{cases}
-o_1 = h_1w^2_{11}+h_2w^2_{12}+h_3w^2_{13}+h_4w^2_{14}+h_5w^2_{15}+b^2_1 \
-o_2 = h_1w^2_{21}+h_2w^2_{22}+h_3w^2_{23}+h_4w^2_{24}+h_5w^2_{25}+b^2_2 \
-o_3 = h_1w^2_{32}+h_2w^2_{32}+h_3w^2_{33}+h_4w^2_{34}+h_5w^2_{35}+b^2_3 \
-\end{cases}<div class="math notranslate nohighlight">
-\[\]</div>
-\begin{cases}
-\hat {y_1} = \frac{\exp(o_1)}{\Sigma_i \exp(o_i)} \
-\hat {y_2} = \frac{\exp(o_2)}{\Sigma_i \exp(o_i)} \
-\hat {y_3} = \frac{\exp(o_3)}{\Sigma_i \exp(o_i)} \
-\end{cases}$<span class="math notranslate nohighlight">\(
-样本\)</span>\mathbfit x<span class="math notranslate nohighlight">\(有标签\)</span>\mathbfit y=\begin{bmatrix}y_1 &amp; y_2 &amp; y_3\end{bmatrix}<span class="math notranslate nohighlight">\(，说明样本被分为总共3个类，使用One-hot表示方式，若样本属于类别2，则\)</span>\mathbfit y=\begin{bmatrix}0&amp;1&amp;0\end{bmatrix}$。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H^0=\begin{cases}
+h^0_1 = x_1w^1_{11}+x_2w^1_{12}+x_3w^1_{13}+x_4w^1_{14}+b_1^1 \\
+h^0_2 = x_1w^1_{21}+x_2w^1_{22}+x_3w^1_{23}+x_4w^1_{24}+b_2^1 \\
+h^0_3 = x_1w^1_{31}+x_2w^1_{32}+x_3w^1_{33}+x_4w^1_{34}+b_3^1 \\
+h^0_4 = x_1w^1_{41}+x_2w^1_{42}+x_3w^1_{43}+x_4w^1_{44}+b_4^1 \\
+h^0_5 = x_1w^1_{51}+x_2w^1_{52}+x_3w^1_{53}+x_4w^1_{54}+b_5^1 \\
+\end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H=\begin{cases}
+h_1=max\{0,h^0_1\} \\
+h_2=max\{0,h^0_2\} \\
+h_3=max\{0,h^0_3\} \\
+h_4=max\{0,h^0_4\} \\
+h_5=max\{0,h^0_5\} \\
+\end{cases}
+\end{split}\]</div>
+<p>输出层的输出为<span class="math notranslate nohighlight">\(\hat Y\)</span>
+<div class="math notranslate nohighlight">
+\[\hat {\mathbfit y}=\begin{bmatrix}\hat{y_1} &amp; \hat{y_2} &amp; \hat{y_3}\end{bmatrix}^T=Softmax(W^2H+b^2)\]</div>
+
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbfit o=\begin{cases}
+o_1 = h_1w^2_{11}+h_2w^2_{12}+h_3w^2_{13}+h_4w^2_{14}+h_5w^2_{15}+b^2_1 \\
+o_2 = h_1w^2_{21}+h_2w^2_{22}+h_3w^2_{23}+h_4w^2_{24}+h_5w^2_{25}+b^2_2 \\
+o_3 = h_1w^2_{32}+h_2w^2_{32}+h_3w^2_{33}+h_4w^2_{34}+h_5w^2_{35}+b^2_3 \\
+\end{cases}\end{split}\]</div>
+
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+\hat {y_1} = \frac{\exp(o_1)}{\Sigma_i \exp(o_i)} \\
+\hat {y_2} = \frac{\exp(o_2)}{\Sigma_i \exp(o_i)} \\
+\hat {y_3} = \frac{\exp(o_3)}{\Sigma_i \exp(o_i)} \\
+\end{cases}\end{split}\]</div>
+
+样本<span class="math notranslate nohighlight">\(\mathbfit x\)</span>有标签<span class="math notranslate nohighlight">\(\mathbfit y=\begin{bmatrix}y_1 &amp; y_2 &amp; y_3\end{bmatrix}\)</span>，说明样本被分为总共3个类，使用One-hot表示方式，若样本属于类别2，则<span class="math notranslate nohighlight">\(\mathbfit y=\begin{bmatrix}0&amp;1&amp;0\end{bmatrix}\)</span>。</p>
 </section>
 <section id="safe-softmax">
 <h2>Safe Softmax<a class="headerlink" href="#safe-softmax" title="Link to this heading">#</a></h2>
