@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>信息论 &#8212; 毛云开的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '数学/信息论';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="博弈论" href="%E5%8D%9A%E5%BC%88%E8%AE%BA.html" />
+    <link rel="prev" title="概率论" href="%E6%A6%82%E7%8E%87%E8%AE%BA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">毛云开的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/数学/信息论.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>信息论</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">信息量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">信息熵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kl">KL散度</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>信息论<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>信息量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在信息论中，我们认为：</p>
+<ul class="simple">
+<li><p>非常可能发生的事件信息量要比较少。在极端情况下，确保能够发生的事件应该没有信息量。</p></li>
+<li><p>较不可能发生的事件具有更高的信息量。</p></li>
+<li><p>独立事件应具有增量的信息。例如，投掷的硬币两次正面朝上传递的信息量，应该是投掷一次硬币正面朝上的信息量的两倍。
+因此，事件<span class="math notranslate nohighlight">\(x\)</span>的信息量，又称为自信息，为
+<div class="math notranslate nohighlight">
+\[I(x)=log\frac{1}{p(x)}\]</div>
+
+本质上就是事件<span class="math notranslate nohighlight">\(x\)</span>发生的概率的分母。分母越大，概率越小，信息量越大。百分百发生的事情没有任何信息。</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>信息熵<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>熵的目的是为了衡量[[概率论#随机变量]]的不确定性。随机变量是样本空间的随机采样得到的变量。样本空间<span class="math notranslate nohighlight">\(X\)</span>中每个事件<span class="math notranslate nohighlight">\(x\)</span>都有分布概率<span class="math notranslate nohighlight">\(p(x)\)</span>。
+Entropy is a measure of the uncertainty of a random variable. Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random vairable with alphabet <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> and probability mass function <span class="math notranslate nohighlight">\(p(x)=P\{X=x\}, x\in \mathcal{X}\)</span>. The entropy <span class="math notranslate nohighlight">\(H(X)\)</span> of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is defined by
+<div class="math notranslate nohighlight">
+\[ H(X)=-\sum_{x\in\mathcal{X}}p(x)\log p(x)=E_p \log\frac{1}{p(X)}. \]</div>
+
+The log is to the base 2 and entropy is expressed in bits.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H(X)\geq 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_b(X)=(log_ba)H_a(X)\)</span>, which means that entropy can be changed from one base to another by multiplying by the appropriate factor.</p></li>
+</ul>
+<p>The joint entropy <span class="math notranslate nohighlight">\(H(X,Y)\)</span> of a pair of discrete random variables <span class="math notranslate nohighlight">\((X,Y)\)</span> with a joint distribution <span class="math notranslate nohighlight">\(p(x,y)\)</span> is defined as
+<div class="math notranslate nohighlight">
+\[ H(X,Y)=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)logp(x,y)=-E\log p(X,Y). \]</div>
+</p>
+<p>If <span class="math notranslate nohighlight">\((X,Y)\sim p(x,y)\)</span>, the conditional entropy <span class="math notranslate nohighlight">\(H(Y|X)\)</span> is defined as
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{aligned}
+H(Y|X)&amp; =\sum_{x\in\mathcal{X}}p(x)H(Y|X=x) \\
+&amp;=-\sum_{x\in\mathcal{X}}p(x)\sum_{y\in\mathcal{Y}}p(y|x)\log p(y|x) \\
+&amp;=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log p(y|x) \\
+&amp;=-E\log p(Y|X).
+\end{aligned} \end{split}\]</div>
+</p>
+<p>Chain rule
+<div class="math notranslate nohighlight">
+\[ H(X,Y)=H(X)+H(Y|X) \]</div>
+
+<div class="math notranslate nohighlight">
+\[ H(X,Y|Z)=H(X|Z)+H(Y|X,Z). \]</div>
+</p>
+</section>
+<section id="kl">
+<h2>KL散度<a class="headerlink" href="#kl" title="Link to this heading">#</a></h2>
+<p>The relative entropy is a measure of the distance between two distributions.
+The relative entropy or Kullback-Leibler distance between two probability mass functions <span class="math notranslate nohighlight">\(p(x)\)</span> and <span class="math notranslate nohighlight">\(q(x)\)</span> is defined as
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{aligned}
+D(p||q)&amp; =\sum_{x\in\mathcal{X}}p(x)\log\frac{p(x)}{q(x)} \\
+&amp;=E_p\log\frac{p(X)}{q(X)}.
+\end{aligned} \end{split}\]</div>
+</p>
+<p>For joint distributions <span class="math notranslate nohighlight">\(p(x,y)\)</span> and <span class="math notranslate nohighlight">\(q(x,y)\)</span>, the conditional relative entropy <span class="math notranslate nohighlight">\(D(p(y|x)||q(y|x))\)</span> is defined as:
+<div class="math notranslate nohighlight">
+\[ D(p(y|x)||q(y|x))=E_{p(x,y)}\log \frac{p(Y|X)}{q(Y|X)}. \]</div>
+</p>
+<p>Mutual infomation is a measure of the amount of information that one random variable contains about another random variables.
+Consider two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> with a joint probability mass function <span class="math notranslate nohighlight">\(p(x,y)\)</span> and marginal probability mass functions <span class="math notranslate nohighlight">\(p(x)\)</span> and <span class="math notranslate nohighlight">\(p(y)\)</span>. The mutual information <span class="math notranslate nohighlight">\(I(X,Y)\)</span> is the relative entropy between the joint distribution and the product distribution <span class="math notranslate nohighlight">\(p(x)p(y)\)</span>:
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{gathered}
+I\left(X;Y\right) =\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log\frac{p(x,y)}{p(x)p(y)} \\
+=D(p(x,y)||p(x)p(y)) \\
+=E_{p(x,y)}\log\frac{p(X,Y)}{p(X)p(Y)}. 
+\end{gathered} \end{split}\]</div>
+
+Relationship between entropy and mutual information
+<div class="math notranslate nohighlight">
+\[ I(X;Y)=H(X)-H(X|Y) \]</div>
+
+Thus, the mutual information is the reduction in the uncertainty of <span class="math notranslate nohighlight">\(X\)</span> due to the knowledge of <span class="math notranslate nohighlight">\(Y\)</span>.
+Chain rule for entropy
+<div class="math notranslate nohighlight">
+\[ H(X_1,X_2,\ldots,X_n)=\sum_{i=1}^nH(X_i|X_{i-1},\ldots,X_1). \]</div>
+
+Chain rule for information
+<div class="math notranslate nohighlight">
+\[ I\left(X_1,X_2,\ldots,X_n;Y\right)=\sum_{i=1}^nI\left(X_i;Y|X_{i-1},X_{i-2},\ldots,X_1\right). \]</div>
+
+Chain rule for relative entropy
+<div class="math notranslate nohighlight">
+\[ D(p(x,y)||q(x,y))=D(p(x)||q(x))+D(p(y|x)||q(y|x)). \]</div>
+
+Convex function definition:
+A function <span class="math notranslate nohighlight">\(f(x)\)</span> is said to be convex over an interval (a, b) if for every <span class="math notranslate nohighlight">\(x_1, x_2 \in (a, b)\)</span> and <span class="math notranslate nohighlight">\(0\le \lambda \le 1\)</span>,<br />
+<div class="math notranslate nohighlight">
+\[ f(\lambda x_1+(1-\lambda)x_2)\leq\lambda f(x_1)+(1-\lambda)f(x_2). \]</div>
+
+A function <span class="math notranslate nohighlight">\(f\)</span> is said to be strictly convex if equality holds only if <span class="math notranslate nohighlight">\(lambda = 0\)</span> or <span class="math notranslate nohighlight">\(lambda = 1\)</span>.
+Jensen’s inequality
+If <span class="math notranslate nohighlight">\(f\)</span> is a convex function and <span class="math notranslate nohighlight">\(X\)</span> is a random variable,
+<div class="math notranslate nohighlight">
+\[ Ef(X)\leq f(EX). \]</div>
+
+Informationo inequality
+Let <span class="math notranslate nohighlight">\(p(x), q(x), x\in X\)</span>, be two probability mass functions. Then
+<div class="math notranslate nohighlight">
+\[ D(p||q)\ge 0 \]</div>
+
+with equality if and only if <span class="math notranslate nohighlight">\(p(x)=q(x)\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>.
+For any two random variables, X, Y,
+<div class="math notranslate nohighlight">
+\[ I(X;Y)\ge 0, \]</div>
+
+with equality if and only if <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent.
+<div class="math notranslate nohighlight">
+\[ H(X|Y)\le H(X) \]</div>
+
+with equality if and only if <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent.
+Independence bound on entropy
+<div class="math notranslate nohighlight">
+\[ H(X_1, X_2, \ldots, X_n)\le\sum_{i=1}^nH(X_i)\]</div>
+
+with equality if and only if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are independent.
+Data processing inequality
+If <span class="math notranslate nohighlight">\(X\rightarrow Y\rightarrow Z\)</span>, then <span class="math notranslate nohighlight">\( I(X;Y)\ge I(X;Z) \)</span>
+A function <span class="math notranslate nohighlight">\(T(X)\)</span> is said to be a sufficient statistic relative to the family <span class="math notranslate nohighlight">\(\{f_\theta(x)\}\)</span> if <span class="math notranslate nohighlight">\(X\)</span> is independent of <span class="math notranslate nohighlight">\(\theta\)</span> given <span class="math notranslate nohighlight">\(T(X)\)</span> for any distribution on <span class="math notranslate nohighlight">\(\theta\)</span>[i.e., <span class="math notranslate nohighlight">\(\theta\to T(X)\to X\)</span> forms a Markov chain].
+This is the same as the condition for equality in the data-processing
+inequality,
+<div class="math notranslate nohighlight">
+\[I\left(\theta;X\right)=I\left(\theta;T\left(X\right)\right)\]</div>
+
+for all distributions on <span class="math notranslate nohighlight">\(\theta.\)</span> Hence sufficient statistics preserve mutual information and conversely.
+A statistic <span class="math notranslate nohighlight">\(T(X)\)</span> is a minimal sufficient statistic relative to <span class="math notranslate nohighlight">\(\{f_{\theta}(x)\}\)</span> if it is a function of every other sufficitient statistic <span class="math notranslate nohighlight">\(U\)</span>. Interpreting this in terms of the data-processing inequality, this implies that<br />
+<div class="math notranslate nohighlight">
+\[ \theta \to T(X) \to U(X) \to X \]</div>
+
+Hence, a minimal sufficient statistic maximally compresses the information about <span class="math notranslate nohighlight">\(\theta\)</span> in the sample. Other sufficient statistics may contain addtional irrelevant information.</p>
+<blockquote>
+<div><p><strong>为什么既有 KL 散度又有交叉熵</strong>
+在信息论中，熵的意义是对 P 事件的随机变量编码所需的最小字节数，KL 散度的意义是“额外所需的编码长度”如果我们使用 Q 的编码来表示 P，交叉熵指的是当你使用 Q 作为密码来表示 P 时所需要的 “平均的编码长度”。但是在机器学习评价两个分布之间的差异时，由于分布 P 会是给定的，所以此时 KL 散度和交叉熵的作用其实是一样的，而且因为交叉熵少算一项，更加简单，所以选择交叉熵会更好。</p>
+</div></blockquote>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="%E6%A6%82%E7%8E%87%E8%AE%BA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">概率论</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E5%8D%9A%E5%BC%88%E8%AE%BA.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">博弈论</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">信息量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">信息熵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kl">KL散度</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

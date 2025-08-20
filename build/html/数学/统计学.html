@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>统计学 &#8212; 毛云开的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '数学/统计学';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="概率论" href="%E6%A6%82%E7%8E%87%E8%AE%BA.html" />
+    <link rel="prev" title="几何学" href="%E5%87%A0%E4%BD%95%E5%AD%A6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">毛云开的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/数学/统计学.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>统计学</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">样本及抽样分布</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">参数估计</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">点估计</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">估计量的评选标准</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">无偏性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">有效性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">相合性</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">区间估计</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">置信区间</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">假设检验</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>统计学<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>样本及抽样分布<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>试验的全部可能观察值称为总体。每一个可能观察值称为个体。总体中所包含的个体的个数称为总体的容量。容量有限的称为有限总体，容量无限的称为无限总体。
+设<span class="math notranslate nohighlight">\(X\)</span>是具有分布函数<span class="math notranslate nohighlight">\(F\)</span>的随机变量，若<span class="math notranslate nohighlight">\(X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>是具有同一分布函数<span class="math notranslate nohighlight">\(F\)</span>的、相互独立的随机变量，则称<span class="math notranslate nohighlight">\(X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>为从分布函数<span class="math notranslate nohighlight">\(F\)</span>（或总体<span class="math notranslate nohighlight">\(F\)</span>、或总体<span class="math notranslate nohighlight">\(X\)</span>）得到的容量为<span class="math notranslate nohighlight">\(n\)</span>的简单随机样本，简称样本，它们的观察值<span class="math notranslate nohighlight">\(x_1,x_2,\cdotp\cdotp\cdotp,x_n\)</span>称为样本值，又称为<span class="math notranslate nohighlight">\(X\)</span>的<span class="math notranslate nohighlight">\(n\)</span>个独立的观察值。
+设<span class="math notranslate nohighlight">\(X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>是来自总体<span class="math notranslate nohighlight">\(X\)</span>的一个样本，<span class="math notranslate nohighlight">\(g(X_1,X_2,\cdotp\cdotp\cdotp,X_n)\)</span>是<span class="math notranslate nohighlight">\(X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>的函数，若<span class="math notranslate nohighlight">\(g\)</span>中不含未知参数，则称<span class="math notranslate nohighlight">\(g(X_1,X_2,\cdotp\cdotp\cdotp,X_n)\)</span>是一统计量</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>统计量</p></th>
+<th class="head"><p>公式</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>样本均值</p></td>
+<td><p><span class="math notranslate nohighlight">\(\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>样本方差</p></td>
+<td><p><span class="math notranslate nohighlight">\(S^2=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2=\frac{1}{n-1}(\sum_{i=1}^nX_i^2-n\bar{X}^2)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>样本标准差</p></td>
+<td><p><span class="math notranslate nohighlight">\(S=\sqrt{S^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>样本<span class="math notranslate nohighlight">\(k\)</span>阶（原点）矩</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_k=\frac{1}{n}\sum_{i=1}^{n}X_i^k, k=1,2,\cdots\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>样本<span class="math notranslate nohighlight">\(k\)</span>阶中心矩</p></td>
+<td><p><span class="math notranslate nohighlight">\(B_k=\frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^k, k=2,3,\cdots\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>统计量的分布称为抽样分布。</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id3">
+<h2>参数估计<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>点估计<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>设总体<span class="math notranslate nohighlight">\(X\)</span>的分布函数的形式已知，但它的一个或多个参数未知，借助于总体<span class="math notranslate nohighlight">\(X\)</span>的一个样本来估计总体未知参数的值的问题称为参数的点估计问题。
+设总体<span class="math notranslate nohighlight">\(X\)</span>的分布函数<span class="math notranslate nohighlight">\(F(x;\theta)\)</span>的形式为已知，<span class="math notranslate nohighlight">\(\theta\)</span>是待估参数. <span class="math notranslate nohighlight">\(X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>是<span class="math notranslate nohighlight">\(X\)</span>的一个样本<span class="math notranslate nohighlight">\(,x_{_1},x_{_2},\cdotp\cdotp\cdotp,x_{_n}\)</span>是相应的一个样本值.点估计问题就是要构造一个适当的统计量 <span class="math notranslate nohighlight">\(\hat{\theta}(X_1,X_2,\cdotp\cdotp\cdotp,X_n)\)</span>,用它的观察值<span class="math notranslate nohighlight">\(\hat{\theta}(x_1,x_2,\cdots,x_n)\)</span>作为未知参数 <span class="math notranslate nohighlight">\(\theta\)</span> 的近似值.我们称 <span class="math notranslate nohighlight">\(\hat{\theta}(X_1,X_2,\cdots,X_n)\)</span>为 <span class="math notranslate nohighlight">\(\theta\)</span> 的估计量，称<span class="math notranslate nohighlight">\(\hat{\theta}(x_1,x_2,\cdotp\cdotp\cdotp,x_n)\)</span>为<span class="math notranslate nohighlight">\(\theta\)</span>的估计值。</p>
+</section>
+<section id="id5">
+<h3>估计量的评选标准<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>点估计就是直接用样本数据计算出来的统计量当做总体参数的估计值。可用于总体参数点估计的估计量可以有很多。比如，可以用样本均值作为总体均值的估计量，也可以用样本中位数作为总体均值的估计量，等等。那么，用哪种估计量作为总体参数的估计呢？自然要用估计效果最好的那种估计量。什么样的估计量才算是一个好估计量呢？这就需要有一定的评价标准。统计学家给出了评价估计量的一些标准，主要包括下列三个。</p>
+<section id="id6">
+<h4>无偏性<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>在科学技术中以<span class="math notranslate nohighlight">\(E(\hat\theta)-\theta\)</span>称为以<span class="math notranslate nohighlight">\(\hat\theta\)</span>作为<span class="math notranslate nohighlight">\(\theta\)</span>的估计的系统误差。无偏估计的实际意义就是无系统误差。
+设<span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_n\)</span>是总体<span class="math notranslate nohighlight">\(X\)</span>的一个样本，<span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>是包含在总体<span class="math notranslate nohighlight">\(X\)</span>的分布中的待估参数，这里 <span class="math notranslate nohighlight">\(\Theta\)</span> 是<span class="math notranslate nohighlight">\(\theta\)</span> 的取值范围。<br />
+若估计量 <span class="math notranslate nohighlight">\(\hat{\theta}=\hat{\theta}(X_1,X_2,\cdotp\cdotp\cdotp,X_n)\)</span>的数学期望<span class="math notranslate nohighlight">\(E(\hat{\theta})\)</span>存在，且对于任意<span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>有
+<div class="math notranslate nohighlight">
+\[E(\hat{\theta})=\theta\]</div>
+
+则称<span class="math notranslate nohighlight">\(\hat{\theta}\)</span>是 <span class="math notranslate nohighlight">\(\theta\)</span> 的无偏估计量。</p>
+</section>
+<section id="id7">
+<h4>有效性<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>参数<span class="math notranslate nohighlight">\(\theta\)</span>的两个无偏估计量<span class="math notranslate nohighlight">\(\hat\theta_1\)</span>，<span class="math notranslate nohighlight">\(\hat\theta_2\)</span>，如果在样本容量<span class="math notranslate nohighlight">\(n\)</span>相同的情况下，<span class="math notranslate nohighlight">\(\hat\theta_1\)</span>的观察值较<span class="math notranslate nohighlight">\(\hat\theta_2\)</span>更密集在真值<span class="math notranslate nohighlight">\(\theta\)</span>附近，我们就认为<span class="math notranslate nohighlight">\(\hat\theta_1\)</span>较<span class="math notranslate nohighlight">\(\hat\theta_2\)</span>为理想。
+设<span class="math notranslate nohighlight">\(\hat{\theta}_1=\hat{\theta}_1(X_1,X_2,\cdots,X_n)\)</span>与<span class="math notranslate nohighlight">\(\hat{\theta}_2=\hat{\theta}_2(X_1,X_2,\cdots,X_n)\)</span>都是<span class="math notranslate nohighlight">\(\theta\)</span>的无偏估计量，若对于任意 <span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>,有
+<div class="math notranslate nohighlight">
+\[D(\hat{\theta}_1)\leqslant D(\hat{\theta}_2)\]</div>
+
+且至少对于某一个 <span class="math notranslate nohighlight">\(\theta\in\Theta\)</span> 上式中的不等号成立，则称<span class="math notranslate nohighlight">\(\hat{\theta}_{1}\)</span> 较<span class="math notranslate nohighlight">\(\hat{\theta}_{2}\)</span> 有效。</p>
+</section>
+<section id="id8">
+<h4>相合性<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>我们希望随着样本容量的增大，一个估计量的值稳定于待估参数的真值。
+设<span class="math notranslate nohighlight">\(\hat{\theta}(X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>)为参数<span class="math notranslate nohighlight">\(\theta\)</span>的估计量，若对于任意<span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>，当<span class="math notranslate nohighlight">\(n\to\infty\)</span>时 <span class="math notranslate nohighlight">\(\hat{\theta}(X_1,X_2,\cdots,X_n)\)</span>依概率收敛于 <span class="math notranslate nohighlight">\(\theta\)</span>,则称 <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> 为<span class="math notranslate nohighlight">\(\theta\)</span> 的相合估计量。<br />
+即，若对于任意<span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>都满足：对于任意<span class="math notranslate nohighlight">\(\varepsilon&gt;0,有\)</span>
+<div class="math notranslate nohighlight">
+\[\lim_{n\to\infty}P\{\mid\hat{\theta}-\theta\mid&lt;\varepsilon\}=1\:,\]</div>
+
+则称<span class="math notranslate nohighlight">\(\hat{\theta}\)</span>是<span class="math notranslate nohighlight">\(\theta\)</span>的相合估计量.</p>
+</section>
+</section>
+<section id="id9">
+<h3>区间估计<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>对于未知参数<span class="math notranslate nohighlight">\(\theta\)</span>，除了求出它的点估计<span class="math notranslate nohighlight">\(\hat{\theta}\)</span>外，我们还希望估计出一个范围，并希望知道这个范围包含参数<span class="math notranslate nohighlight">\(\theta\)</span>真值的可信程度。这样的范围通常以区间的形式给出，同时还给出此区间包含参数<span class="math notranslate nohighlight">\(\theta\)</span>真值的可信程度。这种形式的估计称为区间估计。</p>
+<section id="id10">
+<h4>置信区间<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<p>设总体<span class="math notranslate nohighlight">\(X\)</span>的分布函数<span class="math notranslate nohighlight">\(F(x;\theta)\)</span>含有一个未知参数<span class="math notranslate nohighlight">\(\theta,\theta\in\Theta\)</span>（<span class="math notranslate nohighlight">\(\Theta\)</span>是<span class="math notranslate nohighlight">\(\theta\)</span>可能取值的范围），对于给定值<span class="math notranslate nohighlight">\(\alpha(0&lt;\alpha&lt;1)\)</span>，若由来自<span class="math notranslate nohighlight">\(X\)</span>的样本<span class="math notranslate nohighlight">\(X_1,X_2,\cdots\)</span>, <span class="math notranslate nohighlight">\(X_{\pi}\)</span> 确定的两个统计量<span class="math notranslate nohighlight">\(\underline\theta=\underline{\theta}(X_1,X_2,\cdotp\cdotp\cdotp,X_n)\)</span>和<span class="math notranslate nohighlight">\(\bar{\theta}=\bar{\theta}(X_1,X_2,\cdotp\cdotp\cdotp,X_n)(\underline{\theta}&lt;\bar{\theta})\)</span>，对于任意<span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>满足
+<div class="math notranslate nohighlight">
+\[P\{\underline{\theta}(X_1,X_2,\cdots,X_n)&lt;\theta&lt;\bar{\theta}(X_1,X_2,\cdots,X_n)\}\geqslant1-\alpha,\]</div>
+
+则称随机区间（<span class="math notranslate nohighlight">\(\underline {\theta}, \bar{\theta}\)</span>）是<span class="math notranslate nohighlight">\(\theta\)</span>的置信水平为<span class="math notranslate nohighlight">\(1-\alpha\)</span> 的置信区间，<span class="math notranslate nohighlight">\(\underline{\theta}\)</span>和 <span class="math notranslate nohighlight">\(\bar{\theta}\)</span>分别称为置信水平为 <span class="math notranslate nohighlight">\(1-\alpha\)</span>的双侧置信区间的置信下限和置信上限，<span class="math notranslate nohighlight">\(1-\bar\alpha\)</span>称为置信水平。
+对于给定值<span class="math notranslate nohighlight">\(\alpha(0&lt;\alpha&lt;1)\)</span>,若由样本<span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_n\)</span>确定的统计量<span class="math notranslate nohighlight">\(\underline\theta=\underline{\theta}(X_1,X_2,\cdots,X_n)\)</span>,对于任意<span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>满足
+<div class="math notranslate nohighlight">
+\[P\{\theta{&gt;}\underline{\theta}\}\geqslant1-\alpha\]</div>
+
+称随机区间<span class="math notranslate nohighlight">\((\underline{\theta},\infty)\)</span>是<span class="math notranslate nohighlight">\(\theta\)</span>的置信水平为<span class="math notranslate nohighlight">\(1-\alpha\)</span>的单侧置信区间，<span class="math notranslate nohighlight">\(\underline{\theta}\)</span>称为 <span class="math notranslate nohighlight">\(\theta\)</span>的置信水平为 <span class="math notranslate nohighlight">\(1-α\)</span>的单侧置信下限。<br />
+又若统计量<span class="math notranslate nohighlight">\(\bar{\theta}=\bar{\theta}(X_{1},X_{2},\cdots,X_{n})\)</span>,对于任意<span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>满足
+<div class="math notranslate nohighlight">
+\[P\left \{ \theta {&lt; }\bar{\theta } \right \} \geqslant 1- \alpha\]</div>
+
+称随机区间<span class="math notranslate nohighlight">\((-\infty,\bar{\theta})\)</span>是<span class="math notranslate nohighlight">\(\theta\)</span> 的置信水平为 <span class="math notranslate nohighlight">\(1-\alpha\)</span> 的单侧置信区间，<span class="math notranslate nohighlight">\(\bar{\theta}\)</span> 称为<span class="math notranslate nohighlight">\(\theta\)</span> 的置信水平为<span class="math notranslate nohighlight">\(1-\alpha\)</span> 的单侧置信上限。</p>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2>假设检验<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>随机抽样得到样本集<span class="math notranslate nohighlight">\(\{x_1, x_2,\cdots,x_n\}\)</span>以及统计量观察值<span class="math notranslate nohighlight">\(\bar x\)</span>，为了验证样本空间的整体分布是否服从<span class="math notranslate nohighlight">\(N(\mu_0, \sigma)\)</span>，<span class="math notranslate nohighlight">\(\sigma\)</span>为定值，提出假设
+<div class="math notranslate nohighlight">
+\[H_0:\mu=\mu_0， H_1:\mu\neq\mu_0\]</div>
+
+其中<span class="math notranslate nohighlight">\(H_0\)</span>为原假设，<span class="math notranslate nohighlight">\(H_1\)</span>为备择假设。若假设成立，由于<span class="math notranslate nohighlight">\(\bar X\)</span>是无偏估计，<span class="math notranslate nohighlight">\(\bar x\)</span>的值应接近<span class="math notranslate nohighlight">\(\mu_0\)</span>。检验 <span class="math notranslate nohighlight">\(|\bar x-\mu_0|\)</span>，若差距过大，则拒绝假设<span class="math notranslate nohighlight">\(H_0\)</span>。为了使用正态分布，我们直接检验统计量 <span class="math notranslate nohighlight">\(Z = \frac{\bar X-\mu_0}{\sigma/\sqrt{n}}\)</span>的值，<span class="math notranslate nohighlight">\(|Z|\geq k\)</span>时拒绝假设。我们无法排除当假设成立时统计量的结果仍然显示为拒绝的情况，但是我们可以控制犯错的概率不超过显著性水平<span class="math notranslate nohighlight">\(\alpha\)</span>。由于当<span class="math notranslate nohighlight">\(H_0\)</span>为真时，<span class="math notranslate nohighlight">\(Z=\frac{\bar X-\mu_0}{\sigma/\sqrt{n}}\sim N(0,1)\)</span>，令<span class="math notranslate nohighlight">\(P\{|\frac{\bar X-\mu_0}{\sigma/\sqrt{n}}| \geq k \}=\alpha\)</span>，可得<span class="math notranslate nohighlight">\(k=z_{\alpha/2}\)</span>。那么<span class="math notranslate nohighlight">\(|z|\geq z_{\alpha/2}\)</span>为拒绝域，<span class="math notranslate nohighlight">\(z=\pm z_{\alpha/2}\)</span>为临界点。</p>
+<ul class="simple">
+<li><p>检验假设时，求出参数<span class="math notranslate nohighlight">\(\theta\)</span>的置信水平为<span class="math notranslate nohighlight">\(1-\alpha\)</span>的置信区间<span class="math notranslate nohighlight">\((\underline{\theta}, \bar{\theta})\)</span>，若<span class="math notranslate nohighlight">\(\theta_0\in(\underline{\theta}, \bar{\theta})\)</span>，则接受<span class="math notranslate nohighlight">\(H_0\)</span>，若<span class="math notranslate nohighlight">\(\theta_0\notin(\underline{\theta}, \bar{\theta})\)</span>，则拒绝<span class="math notranslate nohighlight">\(H_0\)</span>。</p></li>
+<li><p>假设检验的<span class="math notranslate nohighlight">\(p\)</span>值是有检验统计量的样本观察值得出的原假设可被拒绝的最小显著性水平。</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span>值检验法
+对于任意指定的显著性水平<span class="math notranslate nohighlight">\(\alpha\)</span>，就有</p>
+<ol class="arabic simple">
+<li><p>若<span class="math notranslate nohighlight">\(p\leq\alpha\)</span>，则在显著性水平<span class="math notranslate nohighlight">\(\alpha\)</span>下拒绝<span class="math notranslate nohighlight">\(H_0\)</span>。</p></li>
+<li><p>若<span class="math notranslate nohighlight">\(p&gt;\alpha\)</span>，则在显著性水平<span class="math notranslate nohighlight">\(\alpha\)</span>下接受<span class="math notranslate nohighlight">\(H_0\)</span>。</p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="%E5%87%A0%E4%BD%95%E5%AD%A6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">几何学</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E6%A6%82%E7%8E%87%E8%AE%BA.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">概率论</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">样本及抽样分布</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">参数估计</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">点估计</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">估计量的评选标准</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">无偏性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">有效性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">相合性</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">区间估计</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">置信区间</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">假设检验</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

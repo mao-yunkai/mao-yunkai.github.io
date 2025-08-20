@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>反向传播 &#8212; 毛云开的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '深度学习/反向传播';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="注意力机制" href="%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html" />
+    <link rel="prev" title="正则化" href="%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">毛云开的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA.html">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/深度学习/反向传播.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>反向传播</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">梯度下降</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">批量梯度下降</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">随机梯度下降</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>反向传播<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>[[神经网络#基本模型]]中定义的神经网络，使用[[损失函数#CrossEntropyLoss]]计算模型预测结果<span class="math notranslate nohighlight">\(\hat Y\)</span>与真实标签<span class="math notranslate nohighlight">\(Y\)</span>的损失
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+l_1=-y_1\log{\hat {y_1}} \\
+l_2=-y_2\log{\hat {y_2}} \\
+l_3=-y_3\log{\hat {y_3}} \\
+\end{cases}\end{split}\]</div>
+
+<div class="math notranslate nohighlight">
+\[
+J(\theta)=\frac{1}{3}(l_1+l_2+l_3)
+\]</div>
+
+到此，我们得到单样本<span class="math notranslate nohighlight">\(x\)</span>和标签<span class="math notranslate nohighlight">\(y\)</span>经过深度前向传播网络得到的预测结果<span class="math notranslate nohighlight">\(\hat y\)</span>和标签<span class="math notranslate nohighlight">\(y\)</span>之间的损失值。反向传播需要解决的问题是，如何利用损失调整参数，使得下次推断的损失值变得更小。</p>
+<section id="id2">
+<h2>梯度下降<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>💡<strong>Jacobian矩阵和Hessian矩阵</strong>
+Jacobian矩阵的定义是，如果我们有一个函数<span class="math notranslate nohighlight">\(\mathbfit f: \mathbb R^m\rightarrow\mathbb R^n\)</span>，<span class="math notranslate nohighlight">\(\mathbfit f\)</span>的Jacobian矩阵<span class="math notranslate nohighlight">\(\mathbfit J\in \mathbb R^{n\times m}\)</span>定义为<div class="math notranslate nohighlight">
+\[J_{i,j}=\frac{\partial}{\partial_{x_j}}f(\mathbfit x)_i\]</div>
+Hessian矩阵的定义是<div class="math notranslate nohighlight">
+\[\mathbfit H(f)(\mathbfit x)_{i,j}=\frac{\partial^2}{\partial x_i\partial x_j}f(\mathbfit x)\]</div>
+Hessian等价于梯度的Jacobian矩阵。</p>
+</div></blockquote>
+<p>优化指的是改变<span class="math notranslate nohighlight">\(x\)</span>以最小化或最大化某个函数<span class="math notranslate nohighlight">\(f(x)\)</span>的任务。最优化问题通常指最小化函数。
+[[分析学#梯度]]是在当前参数值下对目标函数每个参数进行求偏导得到的向量。以[[神经网络#基本模型]]为例，目标函数<span class="math notranslate nohighlight">\(J(\theta)\)</span>的梯度为
+<div class="math notranslate nohighlight">
+\[\Delta J(\theta)=(\frac{\partial J}{\partial w^1_{11}}, \frac{\partial J}{\partial w^1_{12}},\cdots,\frac{\partial J}{\partial b^2_3})\]</div>
+
+计算参数<span class="math notranslate nohighlight">\(w^1_{11}\)</span>的偏导数，使用链式法则
+<div class="math notranslate nohighlight">
+\[\frac{\partial J}{\partial w^1_{11}}=\frac{\partial J}{\partial \hat {\mathbfit y}}
+\frac{\partial \hat {\mathbfit y}}{\partial {\mathbfit o}}
+\frac{\partial \mathbfit o}{\partial \mathbfit h}
+\frac{\partial \mathbfit h}{\partial \mathbfit h^0}
+\frac{\partial \mathbfit h^0}{\partial w^1_{11}}
+\]</div>
+
+设学习率为<span class="math notranslate nohighlight">\(\eta\)</span>，最终参数<span class="math notranslate nohighlight">\(w^1_{11}\)</span>的变化量为
+<div class="math notranslate nohighlight">
+\[w^1_{11}=w^1_{11}+\eta \frac{\partial J}{\partial w^1_{11}}\]</div>
+
+对交叉熵函数求导，<span class="math notranslate nohighlight">\(\frac{\partial J}{\partial \hat {\mathbfit y}}\in \mathbb R^{1\times3}\)</span>
+<div class="math notranslate nohighlight">
+\[\frac{\partial J}{\partial \hat {\mathbfit y}}=[-\Sigma \frac{y_1}{\hat y_1}\:-\Sigma \frac{y_2}{\hat y_2}\:-\Sigma \frac{y_3}{\hat y_3}]\]</div>
+
+对Softmax函数求导得到的Jacobian矩阵<span class="math notranslate nohighlight">\(\frac{\partial \hat {\mathbfit y}}{\partial \mathbfit o}\in \mathbb R^{3\times3}\)</span>，对Softmax Cross Entropy Loss求导得到的结果是<div class="math notranslate nohighlight">
+\[\frac{\partial J}{\partial \mathbfit o}=\hat{\mathbfit y}-\mathbfit y\]</div>
+</p>
+<p>对输出层求导<span class="math notranslate nohighlight">\(\frac{\partial\mathbfit o}{\partial\mathbfit h}\in\mathbb R^{3\times5}\)</span>
+<div class="math notranslate nohighlight">
+\[\frac{\partial o_j}{\partial h_i}=w_{ji}^2\]</div>
+
+对激活函数求导<span class="math notranslate nohighlight">\(\frac{\partial \mathbfit h}{\partial \mathbfit {h_0}}\in\mathbb R^{5\times5}\)</span>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial h_j}{\partial h^0_i}=
+\begin{cases}
+1,h_i&gt;0\\
+0,h_i\leq0
+\end{cases}
+\end{split}\]</div>
+
+对线性模型求导<span class="math notranslate nohighlight">\(\frac{\partial \mathbfit h^0}{\partial w_{11}^1}\in\mathbb R^{5\times1}\)</span>
+<div class="math notranslate nohighlight">
+\[\frac{\partial  \mathbfit h^0}{\partial w^1_{11}}=[x_1,0,0,0,0]\]</div>
+</p>
+<section id="id3">
+<h3>批量梯度下降<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>输入一个样本经过损失函数可以得到一个交叉熵，对<span class="math notranslate nohighlight">\(\mathbfit W\)</span>求导可以得到一个梯度。数据集<span class="math notranslate nohighlight">\(\mathbfit X\in \mathbb R^{n\times d}\)</span>中有<span class="math notranslate nohighlight">\(n\)</span>个样本，意味着可以计算出<span class="math notranslate nohighlight">\(n\)</span>个梯度，每个梯度是关于<span class="math notranslate nohighlight">\(\mathbfit W\)</span>的函数在当前<span class="math notranslate nohighlight">\(\mathbfit W\)</span>值下的<span class="math notranslate nohighlight">\(n\)</span>个方向向量，将这些向量累和，则能得到在样本集上的梯度估计。因为是向量，累和后的方向更准确，累和导致的模长变大可以使用学习率进行调整。</p>
+</section>
+<section id="id4">
+<h3>随机梯度下降<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>使用批量梯度下降，会计算出所有样本梯度后再更新参数。这样的缺点是计算量大。随机梯度下降则使用一个随机样本或一批样本的梯度作为更新的值，这样计算量小。</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">正则化</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">注意力机制</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">梯度下降</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">批量梯度下降</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">随机梯度下降</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

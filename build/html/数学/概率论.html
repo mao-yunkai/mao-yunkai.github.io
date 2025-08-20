@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>概率论 &#8212; 毛云开的知识库 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=051c1eab"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '数学/概率论';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="信息论" href="%E4%BF%A1%E6%81%AF%E8%AE%BA.html" />
+    <link rel="prev" title="统计学" href="%E7%BB%9F%E8%AE%A1%E5%AD%A6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">毛云开的知识库 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">数学</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="%E9%80%BB%E8%BE%91%E5%AD%A6.html">逻辑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%88%86%E6%9E%90%E5%AD%A6.html">分析学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BB%A3%E6%95%B0%E5%AD%A6.html">代数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%87%A0%E4%BD%95%E5%AD%A6.html">几何学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%BB%9F%E8%AE%A1%E5%AD%A6.html">统计学</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">概率论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E4%BF%A1%E6%81%AF%E8%AE%BA.html">信息论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%8D%9A%E5%BC%88%E8%AE%BA.html">博弈论</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AE%AD%E7%BB%83.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%AF%84%E4%BC%B0.html">评估</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html">神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF.html">正则化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.html">反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.html">注意力机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2.html">模型部署</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">强化学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.html">强化学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95.html">策略梯度方法</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">工程应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/%E7%82%B9%E4%BA%91%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2.html">点云语义分割</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/数学/概率论.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>概率论</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速查表</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本概念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">样本空间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">频率与概率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">条件概率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">乘法公式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">全概率公式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">贝叶斯公式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">独立性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">随机变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">离散型随机变量</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">连续型随机变量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">多维随机变量及其分布</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">边缘分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">条件分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">相互独立的随机变量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">随机变量分布的数字特征</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">期望</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">方差</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">协方差</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">矩</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">大数定律及中心极限定理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">大数定律</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">依概率收敛</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">辛钦大数定理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">伯努利大数定理</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">中心极限定理</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">独立同分布的中心极限定理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">李雅普诺夫定理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">拉普拉斯定理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">排列与组合</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">排列数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">组合数</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>概率论<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>统计学是对真实世界的采样，统计学得到的只是频率，通过大数定律，将统计数据转为概率，进而利用概率密度函数，引入分析学进行分析，从而找出统计数据中的性质。</p>
+<section id="id2">
+<h2>速查表<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>概念</p></th>
+<th class="head"><p>公式</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>随机变量</p></td>
+<td><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
+<td><p>样本空间随机采样得到的变量</p></td>
+</tr>
+<tr class="row-odd"><td><p>分布律</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X=x)\)</span></p></td>
+<td><p>离散型随机变量使用分布律描述变量取值概率的规律</p></td>
+</tr>
+<tr class="row-even"><td><p>分布函数</p></td>
+<td><p><span class="math notranslate nohighlight">\(F(X)=P(X\leq x)\)</span></p></td>
+<td><p>连续随机变量使用分布函数描述随机变量的统计规律性</p></td>
+</tr>
+<tr class="row-odd"><td><p>概率密度函数</p></td>
+<td><p><span class="math notranslate nohighlight">\(f(x)=F'(x)\)</span><br><span class="math notranslate nohighlight">\(f(x)=\lim_{\Delta x\to0^{+}}\frac{P\{x&lt;X\leqslant x+\Delta x\}}{\Delta x}\)</span></p></td>
+<td><p>连续型随机变量的概率密度函数可以理解为离散型随机变量的分布律，表示变量取某值的概率<br></p></td>
+</tr>
+<tr class="row-even"><td><p>联合分布律</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X=x, Y=y)\)</span></p></td>
+<td><p>多维离散随机变量的描述方式</p></td>
+</tr>
+<tr class="row-odd"><td><p>联合分布函数</p></td>
+<td><p><span class="math notranslate nohighlight">\(F(x,y)=P(X\leq x, Y\leq y)\)</span></p></td>
+<td><p>多维连续随机变量的分布函数</p></td>
+</tr>
+<tr class="row-even"><td><p>联合概率密度</p></td>
+<td><p><span class="math notranslate nohighlight">\(f(x,y)=\frac{\partial^2F(x,y)}{\partial x\partial y}\)</span></p></td>
+<td><p>多维随机变量的概率密度</p></td>
+</tr>
+<tr class="row-odd"><td><p>边缘分布函数</p></td>
+<td><p><span class="math notranslate nohighlight">\(F_X(x)=F(x, \infty)\)</span><br><span class="math notranslate nohighlight">\(F_Y(y)=F(\infty, y)\)</span></p></td>
+<td><p>多维随机变量子集的概率的计算方式</p></td>
+</tr>
+<tr class="row-even"><td><p>边缘分布律</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X=x)=\Sigma_j P(X=x, Y=y_j)\)</span><br><span class="math notranslate nohighlight">\(P(Y=y)=\Sigma _i P(X=x_i, Y=y)\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>边缘概率密度</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_X(x)=\int_{-\infty}^\infty f(x,y) \mathrm{d}y\)</span><br><span class="math notranslate nohighlight">\(f_Y(y)=\int_{-\infty}^\infty f(x,y) \mathrm{d}x\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>条件分布律</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X\mid Y)=\frac{P(X,Y)}{P(Y)}\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>条件概率密度</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{X\mid Y}(x\mid y)=\frac{f(x,y)}{f_{Y}(y)}\)</span></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>相互独立的随机变量</p></td>
+<td><p><span class="math notranslate nohighlight">\(F(x,y)=F_X(x)F_Y(y)\)</span><br><span class="math notranslate nohighlight">\(f(x,y)=f_X(x)f_Y(y)\)</span></p></td>
+<td><p>相互独立的随机变量，联合概率密度的计算公式从<span class="math notranslate nohighlight">\(f(x,y)=f_Y(y)f_{X\mid Y}(x\mid y)\)</span>变成了<span class="math notranslate nohighlight">\(f(x,y)=f_X(x)f_Y(y)\)</span>。相当于X不依赖于Y，<span class="math notranslate nohighlight">\(f_X(x)=f_{X\mid Y}(x\mid y)\)</span>。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id3">
+<h2>基本概念<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>在个别试验中其结果呈现出不确定性，在大量重复试验中其结果又具有统计规律性的现象，我们称之为随机现象。概率论和数理统计是研究和揭示随机现象统计规律性的一门数学学科。</p>
+<section id="id4">
+<h3>样本空间<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>随机试验满足以下三个特点</p>
+<ol class="arabic simple">
+<li><p>可以在相同的条件下重复地进行；</p></li>
+<li><p>每次试验的可能结果不止一个，并且能事先明确试验的所有可能结果；</p></li>
+<li><p>进行一次试验之前不能确定哪一个结果会出现
+随机试验<span class="math notranslate nohighlight">\(E\)</span>的所有可能结果组成的集合称为<span class="math notranslate nohighlight">\(E\)</span>的样本空间，记为<span class="math notranslate nohighlight">\(S\)</span>。样本空间的元素称为样本点。试验<span class="math notranslate nohighlight">\(E\)</span>的样本空间<span class="math notranslate nohighlight">\(S\)</span>的子集为<span class="math notranslate nohighlight">\(E\)</span>的随机事件。在每次试验中，当且仅当这一子集中的一个样本点出现时，称这一事件发生。由一个样本点组成的单点集，称为基本事件。</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\subset B\)</span>，则称事件B包含事件A，这指的是事件A发生必导致事件B发生。</p></li>
+<li><p>若<span class="math notranslate nohighlight">\(A\subset B\)</span>且<span class="math notranslate nohighlight">\(B\subset A\)</span>，则称事件A与事件B相等。</p></li>
+<li><p>事件<span class="math notranslate nohighlight">\(A\cup B={x|x\in A或x\in B}\)</span>称为事件<span class="math notranslate nohighlight">\(A\)</span>与事件<span class="math notranslate nohighlight">\(B\)</span>的和事件。当且仅当<span class="math notranslate nohighlight">\(A\)</span>和<span class="math notranslate nohighlight">\(B\)</span>中至少有一个发生时，事件<span class="math notranslate nohighlight">\(A\cup B\)</span>发生。</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>频率与概率<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>在相同条件下，进行了<span class="math notranslate nohighlight">\(n\)</span>次试验，在这<span class="math notranslate nohighlight">\(n\)</span>次试验中，事件A发生的次数<span class="math notranslate nohighlight">\(n_A\)</span>称为事件<span class="math notranslate nohighlight">\(A\)</span>发生的频数。比值<span class="math notranslate nohighlight">\(n_A/n\)</span>称为事件<span class="math notranslate nohighlight">\(A\)</span>发生的频率，并记成<span class="math notranslate nohighlight">\(f_n(A)\)</span>。
+设<span class="math notranslate nohighlight">\(E\)</span>是随机试验，<span class="math notranslate nohighlight">\(S\)</span>是它的样本空间。对于<span class="math notranslate nohighlight">\(E\)</span> 的每一事件<span class="math notranslate nohighlight">\(A\)</span>赋予一个实数，记为<span class="math notranslate nohighlight">\(P(A)\)</span>，称为事件<span class="math notranslate nohighlight">\(A\)</span>的概率，如果集合函数<span class="math notranslate nohighlight">\(P(\cdot)\)</span>满足下列条件：</p>
+<ol class="arabic simple">
+<li><p>非负性：对于每一个事件 <span class="math notranslate nohighlight">\(A\)</span>，有<span class="math notranslate nohighlight">\(P(A)\geqslant0;\)</span></p></li>
+<li><p>规范性：对于必然事件 <span class="math notranslate nohighlight">\(S\)</span>，有 <span class="math notranslate nohighlight">\(P(S) = 1\)</span> ;</p></li>
+<li><p>可列可加性：设 <span class="math notranslate nohighlight">\(A_1,A_2,\cdotp\cdotp\cdotp\)</span>是两两互不相容的事件，即对于 <span class="math notranslate nohighlight">\(A_iA_j=\varnothing\)</span>,
+<span class="math notranslate nohighlight">\(i\neq j,i,j=1,2,\cdots\)</span>,有
+<div class="math notranslate nohighlight">
+\[P(A_{1}\cup A_{2}\cup\cdots)=P(A_{1})+P(A_{2})+\cdots.\]</div>
+
+古典概型有两个特点：</p></li>
+<li><p>试验的样本空间只包含有限个元素；</p></li>
+<li><p>试验中每个基本事件发生的可能性相同。</p></li>
+</ol>
+</section>
+<section id="id6">
+<h3>条件概率<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>设试验的基本事件总数为<span class="math notranslate nohighlight">\(n\)</span>，<span class="math notranslate nohighlight">\(A\)</span>所包含的基本事件数为<span class="math notranslate nohighlight">\(m(m&gt;0)\)</span>，<span class="math notranslate nohighlight">\(AB\)</span>所包含的基本事件数为<span class="math notranslate nohighlight">\(k\)</span>，即有
+<div class="math notranslate nohighlight">
+\[ P(B|A) = \frac{k}{m} = \frac{k/n}{m/n} =\frac{P(AB)}{P(A)} \]</div>
+</p>
+</section>
+<section id="id7">
+<h3>乘法公式<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>设<span class="math notranslate nohighlight">\(P(A)&gt;0\)</span>，则有
+<div class="math notranslate nohighlight">
+\[ P(AB) = P(B|A)P(A) \]</div>
+</p>
+</section>
+<section id="id8">
+<h3>全概率公式<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>设试验<span class="math notranslate nohighlight">\(E\)</span>的样本空间为<span class="math notranslate nohighlight">\(S\)</span>，<span class="math notranslate nohighlight">\(A\)</span>为<span class="math notranslate nohighlight">\(E\)</span>的事件，<span class="math notranslate nohighlight">\(B_1,B_2, \cdots, B_n\)</span>为S的一个划分，且<span class="math notranslate nohighlight">\(P(B_i)&gt;0(i=1,2,\cdots,n)\)</span>，则全概率公式为
+<div class="math notranslate nohighlight">
+\[ P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \cdots + P(A|B_n)P(B_n) \]</div>
+</p>
+</section>
+<section id="id9">
+<h3>贝叶斯公式<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>设试验<span class="math notranslate nohighlight">\(E\)</span>的样本空间为<span class="math notranslate nohighlight">\(S\)</span>。<span class="math notranslate nohighlight">\(A\)</span>为<span class="math notranslate nohighlight">\(E\)</span>的事件，<span class="math notranslate nohighlight">\(B_1,B_2,\cdots,B_n\)</span>为<span class="math notranslate nohighlight">\(S\)</span>的一
+个划分，且 <span class="math notranslate nohighlight">\(P(A)&gt;0,P(B_{i})&gt;0(i=1,2,\cdots,n)\)</span>，则贝叶斯公式为
+<div class="math notranslate nohighlight">
+\[P(B_{i}\mid A)=\frac{P(A\mid B_{i})P(B_{i})}{\sum_{i=1}^{n}P(A\mid B_{j})P(B_{j})},\quad i=1,2,\cdots,n.\]</div>
+
+特别地，若将<span class="math notranslate nohighlight">\(n=2\)</span>，并将<span class="math notranslate nohighlight">\(B_1\)</span>记为<span class="math notranslate nohighlight">\(B\)</span>，<span class="math notranslate nohighlight">\(B_2\)</span>记为<span class="math notranslate nohighlight">\(\bar B\)</span>，那么，全概率公式和贝叶斯公式分别为
+<div class="math notranslate nohighlight">
+\[ P(A) = P(A\mid B)P(B) + P(A\mid\bar B)P(\bar B) \]</div>
+
+<div class="math notranslate nohighlight">
+\[ P(B\mid A)=\frac{P(A\mid B)P(B)}{P(A)}=\frac{P(A\mid B)P(B)}{P(A\mid B)P(B)+P(A\mid\bar B)P(\bar B)} \]</div>
+</p>
+</section>
+<section id="id10">
+<h3>独立性<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>设<span class="math notranslate nohighlight">\(A,B\)</span>是两事件，如果满足等式
+<div class="math notranslate nohighlight">
+\[ P(AB)=P(A)P(B) \]</div>
+
+则称事件<span class="math notranslate nohighlight">\(A,B\)</span>相互独立，简称<span class="math notranslate nohighlight">\(A,B\)</span>独立</p>
+</section>
+</section>
+<section id="id11">
+<h2>随机变量<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>设随机试验的[[#样本空间]]为<span class="math notranslate nohighlight">\(S={e}\)</span>。<span class="math notranslate nohighlight">\(X=X(e)\)</span>是定义在样本空间<span class="math notranslate nohighlight">\(S\)</span>上的实值单值函数。称<span class="math notranslate nohighlight">\(X=X(e)\)</span>为随机变量。</p>
+<section id="id12">
+<h3>离散型随机变量<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>离散型随机变量的全部可能取到的值是有限个或可列无限多个。
+设离散型随机变量<span class="math notranslate nohighlight">\(X\)</span>所有可能取的值为<span class="math notranslate nohighlight">\(x_k(k=1,2,\cdotp\cdotp\cdotp)\)</span>，<span class="math notranslate nohighlight">\(X\)</span>取各个可能值的概率，即事件<span class="math notranslate nohighlight">\(\{X=x_k\}\)</span>的概率，为
+<div class="math notranslate nohighlight">
+\[P\{X=x_{k}\}=p_{k},\:k=1,2,\cdots.\]</div>
+</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p_k\ge0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{k=1}^{n}p_{k}=1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0-1\)</span>分布<br />
+随机变量<span class="math notranslate nohighlight">\(X\)</span>只可能取0与1两个值，其分布律为
+<div class="math notranslate nohighlight">
+\[P\{ X = k \} = p^{k} ( 1 - p )^{1 - k} ,k = 0 ,1\quad( 0 &lt; p &lt; 1 )\]</div>
+</p></li>
+<li><p>二项分布 / 伯努利分布<br />
+<span class="math notranslate nohighlight">\(P(A)=p, P(\bar A)=1-p\)</span>， 将试验<span class="math notranslate nohighlight">\(E\)</span>独立重复<span class="math notranslate nohighlight">\(n\)</span>次，称这一串重复的独立试验为<span class="math notranslate nohighlight">\(n\)</span>重伯努利试验。以<span class="math notranslate nohighlight">\(X\)</span>表示<span class="math notranslate nohighlight">\(n\)</span>重伯努利试验中事件<span class="math notranslate nohighlight">\(A\)</span>发生的次数，随机变量<span class="math notranslate nohighlight">\(X\)</span>的分布律为
+<div class="math notranslate nohighlight">
+\[P\{ X = k \} = \sum_{k=0}^n p^{k} \binom{n}{k} ( 1 - p )^{n - k} ,k = 0 ,1,\cdots,n\]</div>
+
+称随机变量<span class="math notranslate nohighlight">\(X\)</span>服从参数为<span class="math notranslate nohighlight">\(n,p\)</span>的二项分布，并记为<span class="math notranslate nohighlight">\(X\sim b(n,p)\)</span></p></li>
+<li><p>泊松分布<br />
+设随机变量 <span class="math notranslate nohighlight">\(X\)</span> 所有可能取的值为 <span class="math notranslate nohighlight">\(0,1,2,\cdotp\cdotp\cdotp\)</span>,而取各个值的概率为
+<div class="math notranslate nohighlight">
+\[P\{X=k\}=\frac{\lambda^{k}\mathrm{e}^{-\lambda}}{k!},\:k=0,1,2,\cdots,\]</div>
+
+其中 <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> 是常数.则称 X 服从参数为<span class="math notranslate nohighlight">\(\lambda\)</span> 的泊松分布，记为<span class="math notranslate nohighlight">\(X\sim\pi(\lambda).\)</span></p>
+<ul>
+<li><p>以<span class="math notranslate nohighlight">\(n,p\)</span>为参数的二项分布的概率值可以由参数为<span class="math notranslate nohighlight">\(\lambda=np\)</span>的泊松分布的概率值近似。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id13">
+<h3>连续型随机变量<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>设<span class="math notranslate nohighlight">\(X\)</span>是一个随机变量<span class="math notranslate nohighlight">\(,x\)</span>是任意实数，函数
+<div class="math notranslate nohighlight">
+\[F(x)=P\{X{\leqslant}x\}\:,\:-\infty&lt;x&lt;\infty \]</div>
+
+称为 <span class="math notranslate nohighlight">\(X\)</span> 的分布函数。
+如果对于随机变量<span class="math notranslate nohighlight">\(X\)</span>的分布函数<span class="math notranslate nohighlight">\(F(x)\)</span>，存在非负函数 <span class="math notranslate nohighlight">\(f(x)\)</span>，使对于任意实数 <span class="math notranslate nohighlight">\(x\)</span> 有
+<div class="math notranslate nohighlight">
+\[F(x)=\int_{-\infty}^xf(t)\:\mathrm{d}t\:,\]</div>
+
+则称<span class="math notranslate nohighlight">\(X\)</span>为连续型随机变量，其中函数 <span class="math notranslate nohighlight">\(f(x)\)</span>称为<span class="math notranslate nohighlight">\(X\)</span> 的概率密度函数，简称概率密度。</p>
+<ul class="simple">
+<li><p>均匀分布<br />
+若连续型随机变量<span class="math notranslate nohighlight">\(X\)</span>具有概率密度
+<div class="math notranslate nohighlight">
+\[\begin{split}f(x)=\begin{cases}\dfrac{1}{b-a},&amp;a&lt;x&lt;b,\\[2ex]0\:,&amp;\text{其他,}\end{cases}\end{split}\]</div>
+
+则称<span class="math notranslate nohighlight">\(X\)</span>在区间(<span class="math notranslate nohighlight">\(a,b\)</span>)上服从均匀分布.记为<span class="math notranslate nohighlight">\(X\sim U(a,b)\)</span></p></li>
+<li><p>指数分布<br />
+若连续型随机变量 X 的概率密度为
+<div class="math notranslate nohighlight">
+\[\begin{split}f(x)=\begin{cases}\dfrac{1}{\theta}\mathrm{e}^{-x/\theta},x&gt;0,\\[2ex]0,\quad\text{其他,}\end{cases}\end{split}\]</div>
+
+其中<span class="math notranslate nohighlight">\(\theta&gt;0\)</span>为常数，则称 X 服从参数为<span class="math notranslate nohighlight">\(\theta\)</span>的指数分布.</p></li>
+<li><p>正态分布<br />
+若连续型随机变量 X 的概率密度为
+<div class="math notranslate nohighlight">
+\[f(x)=\frac{1}{\sqrt{2\pi}\:\sigma}\mathrm{e}^{-\frac{(x-\mu)^{2}}{2}}\:,-\infty&lt;x&lt;\infty\:\]</div>
+
+其中<span class="math notranslate nohighlight">\(\mu,\sigma(\sigma&gt;0)\)</span>为常数，则称 <span class="math notranslate nohighlight">\(X\)</span> 服从参数为 <span class="math notranslate nohighlight">\(\mu , \sigma\)</span> 的 正 态分布或高斯(Gauss)分布，记为<span class="math notranslate nohighlight">\(X\sim N(\mu,\sigma^{2}).\)</span></p></li>
+<li><p>随机变量的函数的分布<br />
+设随机变量<span class="math notranslate nohighlight">\(X\)</span>具有概率密度<span class="math notranslate nohighlight">\(f_x(x),-\infty&lt; x &lt; \infty \)</span>,又设函数<span class="math notranslate nohighlight">\(g(x)\)</span> 处处可导且恒有 <span class="math notranslate nohighlight">\(g^\prime(x)&gt;0\)</span> (或恒有 <span class="math notranslate nohighlight">\(g^\prime(x)&lt;0\)</span>),则 <span class="math notranslate nohighlight">\(Y=g(X)\)</span>是连续型随机变量， 其概率密度为
+<div class="math notranslate nohighlight">
+\[\begin{split}f_Y(y)=\begin{cases}f_X\bigl[h(y)\bigr]\bigl[h^{'}(y)\bigr],&amp;\alpha&lt;y&lt;\beta,\\0,&amp;\text{其他,}\end{cases}\end{split}\]</div>
+
+其中<span class="math notranslate nohighlight">\(\alpha=\min\{g(-\infty),g(\infty)\},\beta=\max\{g(-\infty),g(\infty)\},h(y)\)</span>是<span class="math notranslate nohighlight">\(g(x)\)</span>的反函数。</p></li>
+</ul>
+</section>
+</section>
+<section id="id14">
+<h2>多维随机变量及其分布<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>设<span class="math notranslate nohighlight">\((X,Y)\)</span>是二维随机变量，对于任意实数 <span class="math notranslate nohighlight">\(x,y\)</span>二元函数：
+<div class="math notranslate nohighlight">
+\[F(x,y)=P\{(X\leqslant x)\cap(Y\leqslant y)\}\xLeftrightarrow{\text{记成}}P\{X\leqslant x,Y\leqslant y\}\]</div>
+
+称为二维随机变量<span class="math notranslate nohighlight">\((X,Y)\)</span>的分布函数，或称为随机变量<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>的联合分布函数。</p>
+<p>我们称 <span class="math notranslate nohighlight">\(P\{X=x_i,Y=y_j\}=p_{ij},i,j=1,2,\cdotp\cdotp\cdotp\)</span>为二维离散型随机变量<span class="math notranslate nohighlight">\((X,Y)\)</span>的分布律，或随机变量<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>的联合分布律。可以用表格表示为</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Y\X</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1/10</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>4/10</p></td>
+<td><p>2/10</p></td>
+<td><p>1/10</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>2/10</p></td>
+</tr>
+<tr class="row-odd"><td><p>二维随机变量<span class="math notranslate nohighlight">\((X,Y)\)</span>的分布函数 <span class="math notranslate nohighlight">\(F(x,y)=\int_{-\infty}^y\int_{-\infty}^xf(u,v) \mathrm{d}u\mathrm{d}v\)</span> 称为随机变量<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>的联合概率密度。</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>以上关于二维随机变量的讨论可以扩展到<span class="math notranslate nohighlight">\(n\)</span>维随机变量的情况。</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id15">
+<h3>边缘分布<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>二维随机变量<span class="math notranslate nohighlight">\((X,Y)\)</span>具有分布函数<span class="math notranslate nohighlight">\(F(X,Y)\)</span>，随机变量<span class="math notranslate nohighlight">\(X\)</span>，<span class="math notranslate nohighlight">\(Y\)</span>分别有分布函数<span class="math notranslate nohighlight">\(F_x(X)\)</span>，<span class="math notranslate nohighlight">\(F_y(Y)\)</span>，依次称为二维随机变量<span class="math notranslate nohighlight">\((X,Y)\)</span>关于<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>的边缘分布函数。
+<div class="math notranslate nohighlight">
+\[ F_{X}(x)=P\{X\leqslant x\}=P\{X\leqslant x,Y&lt;\infty\}=F(x,\infty) \]</div>
+</p>
+<ul class="simple">
+<li><p>离散型随机变量</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ F_{X}(x)=F(x,\infty)=\sum_{x_{i}\leqslant x}\sum_{j=1}^{\infty}p_{ij}. \]</div>
+<p>我们常常将边缘分布律写在联合分布律表格地边缘上，这就是“边缘分布律”这个名词的来源。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Y\X</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\{Y=y\}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1/10</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1/10</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>4/10</p></td>
+<td><p>2/10</p></td>
+<td><p>1/10</p></td>
+<td><p>7/10</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>2/10</p></td>
+<td><p>2/10</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P\{X=x\}\)</span></p></td>
+<td><p>1/10</p></td>
+<td><p>4/10</p></td>
+<td><p>2/10</p></td>
+<td><p>3/10</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>连续型随机变量
+<div class="math notranslate nohighlight">
+\[ F_X(x)=F(x,\infty)=\int_{-\infty}^{x}\biggl[\int_{-\infty}^{\infty}f(x,y) \mathrm{d}y\biggr] \mathrm{d}x \]</div>
+
+随机变量<span class="math notranslate nohighlight">\((X,Y)\)</span>关于<span class="math notranslate nohighlight">\(X\)</span>的边缘概率密度为
+<div class="math notranslate nohighlight">
+\[ f_X(x)=\int_{-\infty}^{\infty}f(x,y) \mathrm{d}y \]</div>
+</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>条件分布<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>离散型随机变量<br />
+定义 设(<span class="math notranslate nohighlight">\(X,Y\)</span>)是二维离散型随机变量，对于固定的<span class="math notranslate nohighlight">\(j\)</span>,若<span class="math notranslate nohighlight">\(P\{Y=y_j\}&gt;0\)</span>,
+则称
+<div class="math notranslate nohighlight">
+\[P\langle\:X=x_i\:|\:Y=y_j\:\rangle=\frac{P\langle\:X=x_i\:,Y=y_j\:\rangle}{P\langle\:Y=y_j\:\rangle}=\frac{p_{ij}}{p\:._j}\:,i=1\:,2\:,\cdots\]</div>
+
+为在<span class="math notranslate nohighlight">\(Y=y_{j}\)</span>条件下随机变量<span class="math notranslate nohighlight">\(X\)</span>的条件分布律.</p></li>
+<li><p>连续型随机变量<br />
+定义 设二维随机变量(<span class="math notranslate nohighlight">\(X,Y\)</span>)的概率密度为 <span class="math notranslate nohighlight">\(f(x,y),(X,Y)\)</span>关于<span class="math notranslate nohighlight">\(Y\)</span> 的边缘概率密度为 <span class="math notranslate nohighlight">\(f_Y(y).\)</span> 若对于固定的 <span class="math notranslate nohighlight">\(y,f_Y(y)&gt;0\)</span>,则称<span class="math notranslate nohighlight">\(\frac {f(x,y)}{f_Y(y)}\)</span>为在 <span class="math notranslate nohighlight">\(Y= y\)</span> 的条件下 <span class="math notranslate nohighlight">\(X\)</span> 的条件概率密度，记为</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f_{X|Y}(x\mid y)=\frac{f(x,y)}{f_{Y}(y)}.\]</div>
+</section>
+<section id="id17">
+<h3>相互独立的随机变量<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>设<span class="math notranslate nohighlight">\(F(x,y)\)</span>及<span class="math notranslate nohighlight">\(F_X(x),F_Y(y)\)</span>分别是二维随机变量<span class="math notranslate nohighlight">\((X,Y)\)</span>的分布函数及边缘分布函数.若对于所有<span class="math notranslate nohighlight">\(x,y\)</span>有
+<div class="math notranslate nohighlight">
+\[P\{X\leqslant x,Y\leqslant y\}=P\{X\leqslant x\}P\{Y\leqslant y\}\]</div>
+
+即
+<div class="math notranslate nohighlight">
+\[F(x,y)=F_{X}(x)F_{Y}(y)\:,\]</div>
+
+则称随机变量 X 和 Y 是相互独立的<br />
+对于连续型随机变量
+<div class="math notranslate nohighlight">
+\[f(x,y)=f_X(x)f_Y(y)\]</div>
+</p>
+</section>
+</section>
+<section id="id18">
+<h2>随机变量分布的数字特征<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<section id="id19">
+<h3>期望<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p>设离散型随机变量<span class="math notranslate nohighlight">\(X\)</span>的分布律为<span class="math notranslate nohighlight">\(P\{X=x_k\}=p_k,k=1,2,\cdots\)</span>，若级数<span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty}x_kp_k\)</span>绝对收敛，则称级数的和为随机变量<span class="math notranslate nohighlight">\(X\)</span>的数学期望，记为<span class="math notranslate nohighlight">\(E(X)\)</span>。
+<div class="math notranslate nohighlight">
+\[ E(X)=\sum_{k=1}^{\infty}x_kp_k\]</div>
+
+设连续型随机变量X的概率密度为<span class="math notranslate nohighlight">\(f(x)\)</span>，若积分<span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty}xf(x)\mathrm{d}x\)</span>绝对收敛，则称积分的值为随机变量<span class="math notranslate nohighlight">\(X\)</span>的数学期望，记为<span class="math notranslate nohighlight">\(E(X)\)</span>。
+<div class="math notranslate nohighlight">
+\[ E(X)=\int_{-\infty}^{\infty}xf(x)\mathrm{d}x \]</div>
+</p>
+<ul class="simple">
+<li><p>设<span class="math notranslate nohighlight">\(C\)</span>是常数，则有<span class="math notranslate nohighlight">\(E(C)=C\)</span></p></li>
+<li><p>设<span class="math notranslate nohighlight">\(X\)</span>是一个随机变量，<span class="math notranslate nohighlight">\(C\)</span>是常数，则有<span class="math notranslate nohighlight">\(E(CX)=CE(X)\)</span></p></li>
+<li><p>设<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>是两个随机变量，则有<span class="math notranslate nohighlight">\(E(X+Y)=E(X)+E(Y)\)</span></p></li>
+<li><p>设<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>是相互独立的随机变量，则有<span class="math notranslate nohighlight">\(E(XY)=E(X)E(Y)\)</span></p></li>
+</ul>
+</section>
+<section id="id20">
+<h3>方差<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p>设<span class="math notranslate nohighlight">\(X\)</span>是一个随机变量，若<span class="math notranslate nohighlight">\(E\{[X-E(X)]^2\}\)</span>存在，则称为<span class="math notranslate nohighlight">\(X\)</span>的方差，记为<span class="math notranslate nohighlight">\(D(X)\)</span>或<span class="math notranslate nohighlight">\(Var(X)\)</span>。
+<div class="math notranslate nohighlight">
+\[ D(X)=Var(x)=E\{[X-E(X)]^2\}=E(X^2)-[E(X)]^2 \]</div>
+</p>
+<ul class="simple">
+<li><p>设<span class="math notranslate nohighlight">\(C\)</span>是常数，则<span class="math notranslate nohighlight">\(D(C)=0\)</span></p></li>
+<li><p>设<span class="math notranslate nohighlight">\(X\)</span>是随机变量，<span class="math notranslate nohighlight">\(C\)</span>是常数，则有
+<div class="math notranslate nohighlight">
+\[ D(CX)=C^2D(X) \]</div>
+
+<div class="math notranslate nohighlight">
+\[ D(X+C)=D(X) \]</div>
+</p></li>
+<li><p>设<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>是两个随机变量，则有
+<div class="math notranslate nohighlight">
+\[ D(X+Y)=D(X)+D(Y)+2E\{(X-E(X))(Y-E(Y))\} \]</div>
+
+特别，若<span class="math notranslate nohighlight">\(X\)</span>，<span class="math notranslate nohighlight">\(Y\)</span>相互独立，则有
+<div class="math notranslate nohighlight">
+\[ D(X+Y)=D(X)+D(Y) \]</div>
+</p></li>
+<li><p><span class="math notranslate nohighlight">\(D(X)=0\)</span>的充要条件是<span class="math notranslate nohighlight">\(X\)</span>以概率 1 取常数<span class="math notranslate nohighlight">\(E(X)\)</span>,即
+<div class="math notranslate nohighlight">
+\[P\{X{=}E(X)\}{=}1\]</div>
+</p></li>
+<li><p>切比雪夫不等式给出了在随机变量<span class="math notranslate nohighlight">\(X\)</span>的分布未知，只知道<span class="math notranslate nohighlight">\(E(X)\)</span>和<span class="math notranslate nohighlight">\(D(X)\)</span>的情况下，对事件<span class="math notranslate nohighlight">\(\{X-E(X)\}\leqslant\varepsilon\)</span>概率的下限的估计
+<div class="math notranslate nohighlight">
+\[ P\{|X-\mu|\geqslant\varepsilon\}\leqslant\frac{\sigma^2}{\varepsilon^2} \]</div>
+</p></li>
+</ul>
+<p>二维随机变量(X,Y)具有分布函数F(x,y)，X、Y各自的分布函数<span class="math notranslate nohighlight">\(F_x(X)\)</span>，<span class="math notranslate nohighlight">\(F_y(Y)\)</span>称为边缘分布函数。
+<div class="math notranslate nohighlight">
+\[F_x(x)=P\{X\leq x, Y&lt;\infty\}=F(x,\infty)\]</div>
+
+<div class="math notranslate nohighlight">
+\[F_y(y)=P\{Y\leq y, X&lt;\infty\}=F(\infty,y)\]</div>
+</p>
+</section>
+<section id="id21">
+<h3>协方差<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<p>量<span class="math notranslate nohighlight">\(E\{[X-E(X)][Y-E(Y)]\}\)</span>称为随机变量<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>的协方差，记为<span class="math notranslate nohighlight">\(Cov(X,Y)\)</span>。
+<div class="math notranslate nohighlight">
+\[ \mathrm{Cov}(X,Y)=E\{\begin{bmatrix}X-E(X)\end{bmatrix}\begin{bmatrix}Y-E(Y)\end{bmatrix}\} \]</div>
+
+随机变量<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>的相关系数为
+<div class="math notranslate nohighlight">
+\[ \rho_{XY}=\frac{\mathrm{Cov}(X,Y)}{\sqrt{D(X)} \sqrt{D(Y)}} \]</div>
+</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D(X+Y)=D(X)+D(Y)+2\mathrm{Cov}(X,Y).\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{Cov}(aX,bY)=ab\mathrm{Cov}(X,Y),a,b\)</span>是常数</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mid\rho_{XY}\mid\leqslant1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(|\rho_{XY}|=1\)</span> 的充要条件是，存在常数 <span class="math notranslate nohighlight">\(a,b\)</span> 使
+<div class="math notranslate nohighlight">
+\[P\{Y=a+bX\}=1\]</div>
+</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho_{XY}\)</span>是一个可以用来表征<span class="math notranslate nohighlight">\(X\)</span>，<span class="math notranslate nohighlight">\(Y\)</span>之间线性关系紧密程度的量，值越大相关程度越高。<span class="math notranslate nohighlight">\(\rho_{XY}=0\)</span>时，<span class="math notranslate nohighlight">\(X\)</span>，<span class="math notranslate nohighlight">\(Y\)</span>不相关。</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>矩<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<p>设<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>是随机变量，若 <span class="math notranslate nohighlight">\(E( X^{k}),k= 1, 2, \cdotp \cdotp \cdotp\)</span> 存在，称它为<span class="math notranslate nohighlight">\(X\)</span>的<span class="math notranslate nohighlight">\(k\)</span>阶原点矩，简称<span class="math notranslate nohighlight">\(k\)</span>阶矩。<br />
+若 <span class="math notranslate nohighlight">\(E\{\begin{bmatrix}X-E(X)\end{bmatrix}^{k}\},k=2,3,\cdots\)</span> 存在，称它为 <span class="math notranslate nohighlight">\(X\)</span> 的<span class="math notranslate nohighlight">\(k\)</span> 阶中心矩。<br />
+若 <span class="math notranslate nohighlight">\(E(X^kY^l)\:, k,l=1,2,\cdots\)</span> 存在，称它为 <span class="math notranslate nohighlight">\(X\)</span> 和<span class="math notranslate nohighlight">\(Y\)</span>的<span class="math notranslate nohighlight">\(k+l\)</span>阶混合矩。<br />
+若 <span class="math notranslate nohighlight">\(E\{ [ X- E( X) ] ^{k}[ Y- E( Y) ] ^l\} , k, l= 1, 2, \cdots\)</span> 存在，称它为<span class="math notranslate nohighlight">\(X\)</span>和<span class="math notranslate nohighlight">\(Y\)</span>的<span class="math notranslate nohighlight">\(k+l\)</span>阶混合中心矩。</p>
+<p>设<span class="math notranslate nohighlight">\(n\)</span>维随机变量( <span class="math notranslate nohighlight">\(X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>)的二阶混合中心矩
+<span class="math notranslate nohighlight">\(c_{ij}=Cov(X_i,X_j)=E\{[X_i-E(X_i)][X_j-E(X_j)]\},i,j=1,2,\cdots,n\)</span>
+都存在，则称矩阵
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{C}=\begin{bmatrix}c_{11}&amp;c_{12}&amp;\cdots&amp;c_{1n}\\c_{21}&amp;c_{22}&amp;\cdots&amp;c_{2n}\\\vdots&amp;\vdots&amp;&amp;\vdots\\c_{n1}&amp;c_{n2}&amp;\cdots&amp;c_{nn}\end{bmatrix}\end{split}\]</div>
+
+为<span class="math notranslate nohighlight">\(n\)</span>维随机变量<span class="math notranslate nohighlight">\((X_1,X_2,\cdotp\cdotp\cdotp,X_n\)</span>)的协方差矩阵.由于<span class="math notranslate nohighlight">\(c_ij=c_{ji}(i\neq j;i,j=1,2,\cdotp\cdotp\cdotp,n\)</span>),因而上述矩阵是一个对称矩阵。</p>
+</section>
+</section>
+<section id="id23">
+<h2>大数定律及中心极限定理<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<p>大数定理是叙述随机变量序列的前一些项的算术平均值在某种条件下收敛到这些项的均值的算术平均值。<br />
+中心极限定理是确定在什么条件下，大量随机变量之和的分布逼近于正态分布。</p>
+<section id="id24">
+<h3>大数定律<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<p>频率的稳定性是概率定义的客观基础，本节目的是对频率的稳定性作出理论的说明。</p>
+<section id="id25">
+<h4>依概率收敛<a class="headerlink" href="#id25" title="Link to this heading">#</a></h4>
+<p>设<span class="math notranslate nohighlight">\(Y_1,Y_2,\cdots,Y_n,\cdots\)</span>是一个随机变量序列<span class="math notranslate nohighlight">\(,a\)</span> 是一个常数.若对于任意正数
+<span class="math notranslate nohighlight">\(\varepsilon\)</span>,有
+<div class="math notranslate nohighlight">
+\[\lim_{n\to\infty}P\{\mid Y_n-a\mid&lt;\varepsilon\}\:=\:1\]</div>
+
+则称序列<span class="math notranslate nohighlight">\(Y_1,Y_2,\cdots,Y_n,\cdots\)</span>依概率收敛于<span class="math notranslate nohighlight">\(a\)</span>,记为
+<div class="math notranslate nohighlight">
+\[Y_{n}\xrightarrow{P}a\]</div>
+</p>
+<ul class="simple">
+<li><p>设 <span class="math notranslate nohighlight">\(X_n\xrightarrow{P}a,Y_n\xrightarrow{P}b\)</span>，又设函数 <span class="math notranslate nohighlight">\(g(x,y)\)</span>在点<span class="math notranslate nohighlight">\((a,b)\)</span>连续，则<span class="math notranslate nohighlight">\(g(X_{n},Y_{n})\xrightarrow{P}g(a,b)\)</span>。</p></li>
+</ul>
+</section>
+<section id="id26">
+<h4>辛钦大数定理<a class="headerlink" href="#id26" title="Link to this heading">#</a></h4>
+<p>设随机变量 <span class="math notranslate nohighlight">\(X_1,X_2,\cdotp\cdotp\cdotp,X_n,\cdotp\cdotp\cdotp\)</span>相互独立，服从同一分布且具有数学期望<span class="math notranslate nohighlight">\(E(X_k)=\mu(k=1,2,\cdots)\)</span>,则序列<span class="math notranslate nohighlight">\(\overline{X}=\frac1n\sum_{k=1}^nX_k\)</span>依概率收敛于 <span class="math notranslate nohighlight">\(\mu\)</span>,即 <span class="math notranslate nohighlight">\(\overline{X}\xrightarrow P\mu\)</span>。</p>
+<div class="math notranslate nohighlight">
+\[ \lim_{n\to\infty}P\left\{\left|\frac{1}{n}\sum_{k=1}^{n}X_{k}-\mu\right|&lt;\varepsilon\right\}=1 \]</div>
+<p>对于独立同分布且具有均值<span class="math notranslate nohighlight">\(\mu\)</span>的随机变量<span class="math notranslate nohighlight">\(X_1,X_2,\cdots\)</span>，当<span class="math notranslate nohighlight">\(n\)</span>很大时它们的算术平均<span class="math notranslate nohighlight">\(\frac{1}{n}\sum_{k=1}{n}X_k\)</span> 很可能接近于<span class="math notranslate nohighlight">\(\mu\)</span>。</p>
+</section>
+<section id="id27">
+<h4>伯努利大数定理<a class="headerlink" href="#id27" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[ \lim_{n\to\infty}P\left\{\left|\frac{f_{A}}{n}-p\right|&lt;\varepsilon\right\}=1 \]</div>
+<p>对于给定的任意小的正数<span class="math notranslate nohighlight">\(\varepsilon\)</span>，事件“频率<span class="math notranslate nohighlight">\(\frac{f_A}{n}\)</span>与概率<span class="math notranslate nohighlight">\(p\)</span>的偏差小于<span class="math notranslate nohighlight">\(\varepsilon\)</span>”实际上几乎是必定要发生的。这就是频率稳定性的真正含义。在实际应用中，当试验次数很大时，便可以用事件的频率来代替事件的概率。</p>
+</section>
+</section>
+<section id="id28">
+<h3>中心极限定理<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
+<section id="id29">
+<h4>独立同分布的中心极限定理<a class="headerlink" href="#id29" title="Link to this heading">#</a></h4>
+<p>均值为<span class="math notranslate nohighlight">\(\mu\)</span>，方差为<span class="math notranslate nohighlight">\(\sigma^2&gt;0\)</span>的独立同分布的随机变量<span class="math notranslate nohighlight">\(X_1, X_2, \cdots, X_n\)</span>之和<span class="math notranslate nohighlight">\(\bar X =\sum_{k=1}{n}X_k\)</span>的标准化变量，当<span class="math notranslate nohighlight">\(n\)</span>充分大时，有
+<div class="math notranslate nohighlight">
+\[ \bar X \sim N(\mu, \sigma^2/n) \]</div>
+
+近似地服从均值为<span class="math notranslate nohighlight">\(\mu\)</span>，方差为<span class="math notranslate nohighlight">\(\sigma^2/n\)</span>的正态分布。</p>
+</section>
+<section id="id30">
+<h4>李雅普诺夫定理<a class="headerlink" href="#id30" title="Link to this heading">#</a></h4>
+<p>无论各个随机变量<span class="math notranslate nohighlight">\(X_k\)</span>服从什么分布，只要满足定理的条件，那么它们的和<span class="math notranslate nohighlight">\(\sum_{k=1}^nX_k\)</span>当<span class="math notranslate nohighlight">\(n\)</span>足够大时，就近似的服从正态分布。在很多问题中，所考虑的随机变量可以表示称很多个独立的随机变量之和，它们往往近似地服从正态分布。</p>
+</section>
+<section id="id31">
+<h4>拉普拉斯定理<a class="headerlink" href="#id31" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[ \lim_{n\to\infty}P\left\{\frac{\eta_{n}-np}{\sqrt{np\left(1-p\right)}}\leqslant x\right\}=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}\mathrm{e}^{-t^{2}/2}\mathrm{d}t=\Phi(x) \]</div>
+<p>定理表明，正态分布是二项分布的极限分布。</p>
+</section>
+</section>
+</section>
+<section id="id32">
+<h2>排列与组合<a class="headerlink" href="#id32" title="Link to this heading">#</a></h2>
+<section id="id33">
+<h3>排列数<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[ A_n^m=n(n-1)\ldots(n-m+1)=\frac{n!}{(n-m)!} \]</div>
+</section>
+<section id="id34">
+<h3>组合数<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
+<p>每一个组合在<span class="math notranslate nohighlight">\(m\)</span>个位置上都能有<span class="math notranslate nohighlight">\(m!\)</span>个排列，因此要除以<span class="math notranslate nohighlight">\(m!\)</span>去掉重复的情况。</p>
+<div class="math notranslate nohighlight">
+\[ C_n^m=\frac{n(n-1)\ldots(n-m+1)}{m!}=\frac{n!}{m!(n-m)!} \]</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="%E7%BB%9F%E8%AE%A1%E5%AD%A6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">统计学</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E4%BF%A1%E6%81%AF%E8%AE%BA.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">信息论</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">速查表</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本概念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">样本空间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">频率与概率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">条件概率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">乘法公式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">全概率公式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">贝叶斯公式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">独立性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">随机变量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">离散型随机变量</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">连续型随机变量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">多维随机变量及其分布</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">边缘分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">条件分布</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">相互独立的随机变量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">随机变量分布的数字特征</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">期望</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">方差</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">协方差</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">矩</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">大数定律及中心极限定理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">大数定律</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">依概率收敛</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">辛钦大数定理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">伯努利大数定理</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">中心极限定理</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">独立同分布的中心极限定理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">李雅普诺夫定理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">拉普拉斯定理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">排列与组合</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">排列数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">组合数</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leo Mao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Leo Mao.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
