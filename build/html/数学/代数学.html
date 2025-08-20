@@ -319,18 +319,26 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">线性空间和线性变换</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">线性空间</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">线性相关性</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">维数、基与坐标</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n"><span class="math notranslate nohighlight">\(n\)</span>维实数向量空间</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">线性变换</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">抽象代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">群</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">环</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">域</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">矩阵</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">矩阵运算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">初等变换</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">行列式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">线性代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">线性空间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">线性相关性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">维数、基与坐标</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n"><span class="math notranslate nohighlight">\(n\)</span>维实数向量空间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">线性变换</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">矩阵</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">矩阵运算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">初等变换</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">行列式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">相似矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">二次型</a></li>
 </ul>
 </li>
 </ul>
@@ -346,6 +354,33 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>代数学<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>抽象代数<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>群<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>群是一种集合加上一种运算的代数结构。定义集合为<span class="math notranslate nohighlight">\(A\)</span>，运算为·，那么群可以记作<span class="math notranslate nohighlight">\(G=(A,·)\)</span>。群的运算满足以下几个条件：</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\forall a_1,a_2\in A, a_1·a_2\in A\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall a_1, a_2, a_3 \in A,(a_1·a_2)·a_3=a_1·(a_2·a_3).\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists a_0\in A, s.t. \forall a\in A, a_0·a=a·a_0=a\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall a\in A,\exists a^{-1}\in A,s.t. a·a^{-1}=a_0.\)</span></p></li>
+</ol>
+</section>
+<section id="id4">
+<h3>环<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((R,+)\)</span>是一个交换群</p></li>
+<li><p><span class="math notranslate nohighlight">\((R,\times)\)</span>是一个幺半群</p></li>
+<li><p>乘法对于加法满足交换律</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>域<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>可除交换环</p>
+</section>
+</section>
+<section id="id6">
+<h2>线性代数<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p><strong>线性代数的实际应用</strong>
 设向量<span class="math notranslate nohighlight">\(\mathbfit P=[x,y]^T\)</span>在基底<span class="math notranslate nohighlight">\(\mathbfit e_1,\mathbfit e_2\)</span>的坐标系中，将其变换到基底<span class="math notranslate nohighlight">\(\mathbfit e_3=a\mathbfit e_1+b\mathbfit e_2,\mathbfit e_4=c\mathbfit e_1+d\mathbfit e_2\)</span>的坐标系中，向量<span class="math notranslate nohighlight">\(\mathbfit P'=[x',y']^T\)</span>该如何表示？
@@ -361,10 +396,8 @@ y'=\frac{-bx+ay}{ad-bc}
 
 不同参考系下求同一向量坐标是常见需求，需要知道如何求逆矩阵，求逆矩阵需要先求行列式和伴随矩阵。这体现了线性代数、矩阵、行列式三个部分内容之间的联系。</p>
 </div></blockquote>
-<section id="id2">
-<h2>线性空间和线性变换<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<section id="id3">
-<h3>线性空间<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3>线性空间<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>设<span class="math notranslate nohighlight">\(V\)</span>是一个非空集合，<span class="math notranslate nohighlight">\(\mathbb{R}\)</span>为实数域.如果对于任意两个元素<span class="math notranslate nohighlight">\(\mathbf \alpha,\mathbfit \beta\in V\)</span>,总有惟一的一个元素<span class="math notranslate nohighlight">\(\mathbf \gamma\in V\)</span>与之对应，称为<span class="math notranslate nohighlight">\(\mathbfit \alpha\)</span>与<span class="math notranslate nohighlight">\(\mathbfit \beta\)</span>的和，记作<span class="math notranslate nohighlight">\(\mathbfit \gamma=\mathbfit\alpha+\mathbfit\beta;\)</span> 又对于任一数<span class="math notranslate nohighlight">\(\lambda\in\mathbb{R}\)</span>与任一元素<span class="math notranslate nohighlight">\(\mathbfit \alpha \in V\)</span>,总有惟一的一个元素<span class="math notranslate nohighlight">\(\mathbfit\delta\in V\)</span>与之对应， 称为<span class="math notranslate nohighlight">\(\lambda\)</span>与<span class="math notranslate nohighlight">\(\mathbfit\alpha\)</span>的积，记作<span class="math notranslate nohighlight">\(\mathbfit\delta=\lambda\mathbfit\alpha;\)</span>并且这两种运算满足以下八条运算规律（设<span class="math notranslate nohighlight">\(\mathbfit\alpha,\mathbfit\beta,\mathbfit\gamma\in V;\lambda,\mu\in\mathbb{R}\)</span> ）</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbfit\alpha+\mathbfit\beta=\mathbfit\beta+\mathbfit\alpha;\)</span></p></li>
@@ -379,8 +412,8 @@ y'=\frac{-bx+ay}{ad-bc}
 满足以上8条运算规律的加法及乘数运算，称为线性运算，凡定义了线性运算的集合，称为向量空间或线性空间。</p></li>
 </ol>
 </section>
-<section id="id4">
-<h3>线性相关性<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id8">
+<h3>线性相关性<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>给定向量组<span class="math notranslate nohighlight">\(A:a_1,a_2,\cdotp\cdotp\cdotp,a_m\)</span>,对于任何一组实数<span class="math notranslate nohighlight">\(k_1,k_2,\cdotp\cdotp\cdotp,k_m\)</span>,
 <div class="math notranslate nohighlight">
 \[k_{1}a_{1}+k_{2}a_{2}+\cdots+k_{m}a_{m},\]</div>
@@ -398,8 +431,8 @@ y'=\frac{-bx+ay}{ad-bc}
 
 则称向量组<span class="math notranslate nohighlight">\(A\)</span>是线性相关的，否则称它线性无关。</p>
 </section>
-<section id="id5">
-<h3>维数、基与坐标<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3>维数、基与坐标<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>在线性空间<span class="math notranslate nohighlight">\(V\)</span>中，如果存在<span class="math notranslate nohighlight">\(n\)</span>个元素<span class="math notranslate nohighlight">\(\mathbfit\alpha_1,\mathbfit\alpha_2,\cdots,\mathbfit\alpha_n\)</span>满足：</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbfit\alpha_1,\mathbfit\alpha_2,\cdots,\mathbfit\alpha_n\)</span>线性无关</p></li>
@@ -433,8 +466,8 @@ y'=\frac{-bx+ay}{ad-bc}
 维数相等的线性空间都同构，同构空间保持线性运算的对应关系。因此，<span class="math notranslate nohighlight">\(V_n\)</span>中的抽象的线性运算就可以转化为<span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>中的线性运算，并且<span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>中凡是涉及线性运算的性质就都适用于<span class="math notranslate nohighlight">\(V_n\)</span>。</p></li>
 </ol>
 </section>
-<section id="id6">
-<h3>线性变换<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3>线性变换<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>从集合<span class="math notranslate nohighlight">\(A\)</span>到集合<span class="math notranslate nohighlight">\(B\)</span>的的映射记作<span class="math notranslate nohighlight">\(T\)</span>。 设<span class="math notranslate nohighlight">\(\alpha_{1}\in A,T(\alpha_{1})=\beta_{1}\)</span>，就说映射<span class="math notranslate nohighlight">\(T\)</span>把元素<span class="math notranslate nohighlight">\(\alpha_{1}\)</span>变为<span class="math notranslate nohighlight">\(\beta_{1},\beta_{1}\)</span>称为<span class="math notranslate nohighlight">\(\alpha_{1}\)</span>在映射<span class="math notranslate nohighlight">\(T\)</span>下的像，<span class="math notranslate nohighlight">\(\alpha_1\)</span> 称为 <span class="math notranslate nohighlight">\(\beta_1\)</span> 在映射 <span class="math notranslate nohighlight">\(T\)</span> 下的源。<span class="math notranslate nohighlight">\(A\)</span> 称为映射 <span class="math notranslate nohighlight">\(T\)</span> 的源集。像的全体所构成的集合称为像集，记作 <span class="math notranslate nohighlight">\(T(A)\)</span>，即
 <div class="math notranslate nohighlight">
 \[ T(A)=\{\beta=T(\alpha)\mid\alpha\in A\}. \]</div>
@@ -458,8 +491,8 @@ y'=\frac{-bx+ay}{ad-bc}
 仿射变换包括线性变换和平移，保持直线和平行关系不变。</p>
 </section>
 </section>
-<section id="id7">
-<h2>矩阵<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h2>矩阵<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>若干个同维度的向量所组成的集合叫做向量组。矩阵是一个含有有限个向量的向量组。
 <div class="math notranslate nohighlight">
 \[\begin{split}A=\left[\begin{matrix}{a_{11}}&amp;{a_{12}}&amp;{\cdots}&amp;{a_{1n}}\\{a_{21}}&amp;{a_{22}}&amp;{\cdots}&amp;{a_{2n}}\\{\vdots}&amp;{\vdots}&amp;&amp;{\vdots}\\{a_{m1}}&amp;{a_{m2}}&amp;{\cdots}&amp;{a_{mn}}\\\end{matrix}\right]\end{split}\]</div>
@@ -483,8 +516,8 @@ y'=\frac{-bx+ay}{ad-bc}
 \[\mathbfit  R\mathbfit  R^T=\mathbfit I\]</div>
 
 因此正交矩阵的转置等于正交矩阵的逆<span class="math notranslate nohighlight">\(\mathbfit R^{-1}=\mathbfit R^T\)</span></p>
-<section id="id8">
-<h3>矩阵运算<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id12">
+<h3>矩阵运算<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>矩阵的加法<br />
 <div class="math notranslate nohighlight">
@@ -525,19 +558,37 @@ y'=\frac{-bx+ay}{ad-bc}
 </p></li>
 </ol>
 </section>
-<section id="id9">
-<h3>初等变换<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<p>三种初等变换：</p>
+<section id="id13">
+<h3>初等变换<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>初等变换包括初等行变换和初等列变换，初等行变换包括以下三种变换：</p>
 <ol class="arabic simple">
-<li><p>对调两行</p></li>
-<li><p>行乘数k</p></li>
-<li><p>行加另一行的k倍</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_i\leftrightarrow r_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r_i\times k\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r_i+ k \times r_j\)</span></p></li>
 </ol>
-<p>标准型 - 左上角是单位矩阵
-矩阵的秩 - 矩阵化为行标准形后的非零行的行数</p>
+<p>初等列变换则将行换成列。初等行变换可以求线性方程组的解，方法是将系数矩阵和常数矩阵构成增广矩阵进行初等行变换为行最简矩阵，即可写出解。
+设<span class="math notranslate nohighlight">\(\mathbfit A\)</span>和<span class="math notranslate nohighlight">\(\mathbfit B\)</span>为<span class="math notranslate nohighlight">\(m\times n\)</span>矩阵，那么：</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbfit A \overset{r}\sim \mathbfit B\)</span>的充分必要条件是存在<span class="math notranslate nohighlight">\(m\)</span>阶可逆矩阵<span class="math notranslate nohighlight">\(\mathbfit P\)</span>，使<span class="math notranslate nohighlight">\(\mathbfit {PA=B}\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbfit A \overset{c}\sim \mathbfit B\)</span>的充分必要条件是存在<span class="math notranslate nohighlight">\(n\)</span>阶可逆矩阵<span class="math notranslate nohighlight">\(\mathbfit Q\)</span>，使<span class="math notranslate nohighlight">\(\mathbfit {AQ=B}\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbfit A \sim \mathbfit B\)</span>的充分必要条件是存在<span class="math notranslate nohighlight">\(m\)</span>阶可逆矩阵<span class="math notranslate nohighlight">\(\mathbfit P\)</span>及<span class="math notranslate nohighlight">\(n\)</span>阶可逆矩阵<span class="math notranslate nohighlight">\(\mathbfit Q\)</span>，使<span class="math notranslate nohighlight">\(\mathbfit {PAQ=B}\)</span>。
+这表明了矩阵乘法与初等变换间的关系，初等行变换是左乘可逆矩阵，初等列变换是右乘可逆矩阵。
+求矩阵的逆矩阵时，若<span class="math notranslate nohighlight">\((\mathbfit {A,E})\overset{r}\sim(\mathbfit {E,P})\)</span>，则<span class="math notranslate nohighlight">\(\mathbfit {PA=E}\)</span>，<span class="math notranslate nohighlight">\(\mathbfit {PE = P}\)</span>，<span class="math notranslate nohighlight">\(\mathbfit {P=A}^{-1}\)</span>。</p></li>
+</ol>
+<p>初等变换可以将<span class="math notranslate nohighlight">\(m\times n\)</span>的矩阵变为标准形，即左上角为单位阵，其余元素为<span class="math notranslate nohighlight">\(0\)</span>。标准形非零行数记为矩阵的秩<span class="math notranslate nohighlight">\(R(\mathbfit A)\)</span>。</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(0\leq R(\mathbfit A_{m\times n})\leq \min(m,n)\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(\mathbfit A^T)=R(\mathbfit A)\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbfit A\sim \mathbfit B, R(\mathbfit A)=R(\mathbfit B)\)</span>；</p></li>
+<li><p>若<span class="math notranslate nohighlight">\(\mathbfit P\)</span>、<span class="math notranslate nohighlight">\(\mathbfit Q\)</span>可逆，则<span class="math notranslate nohighlight">\(R(\mathbfit {PAQ})=R(\mathbfit A)\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(\max(R(\mathbfit A), R(\mathbfit B))\leq R(\mathbfit {A,B})\leq R(\mathbfit A)+R(\mathbfit B)\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(\mathbfit A+B)\leq R(\mathbfit A)+R(\mathbfit B)\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(\mathbfit {AB})\leq \min(R(\mathbfit A),R(\mathbfit B))\)</span>；</p></li>
+<li><p>若 <span class="math notranslate nohighlight">\(\mathbfit{A}_{m \times n} \mathbfit{B}_{n \times l} = \mathbfit{O}\)</span>, 则 <span class="math notranslate nohighlight">\(R(\mathbfit{A}) + R(\mathbfit{B}) \leq n\)</span>.</p></li>
+</ol>
 </section>
-<section id="id10">
-<h3>行列式<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3>行列式<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{vmatrix}a_{11}&amp;b_{1}\\\\a_{21}&amp;b_{2}\end{vmatrix}=a_{11}b_{2}-b_{1}a_{21} \end{split}\]</div>
 <p>行列式是一个数值。
@@ -555,6 +606,82 @@ y'=\frac{-bx+ay}{ad-bc}
 <div class="math notranslate nohighlight">
 \[ D=a_{ij}A_{ij} \]</div>
 </p>
+</section>
+<section id="id15">
+<h3>相似矩阵<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>设有<span class="math notranslate nohighlight">\(n\)</span>维向量
+<div class="math notranslate nohighlight">
+\[\begin{split}x=\begin{pmatrix}x_1\\\\x_2\\\vdots\\\\x_n\end{pmatrix},y=\begin{pmatrix}y_1\\\\y_2\\\vdots\\y_n\end{pmatrix},\end{split}\]</div>
+
+<div class="math notranslate nohighlight">
+\[\left[\mathbfit x,\mathbfit y\right]=x_{1}y_{1}+x_{2}y_{2}+\cdots+x_{n}y_{n}=\mathbfit x^T\mathbfit y\]</div>
+</p>
+<p><span class="math notranslate nohighlight">\([x,y]\)</span>称为向量 <span class="math notranslate nohighlight">\(x\)</span>与 y 的内积。</p>
+<div class="math notranslate nohighlight">
+\[ \parallel x\parallel=\sqrt{[ x ,x ]}=\sqrt{x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2}} \]</div>
+<p><span class="math notranslate nohighlight">\(\parallel x\parallel\)</span>称为向量<span class="math notranslate nohighlight">\(x\)</span>的长度或范数。
+当<span class="math notranslate nohighlight">\(x\neq 0\)</span>，<span class="math notranslate nohighlight">\(y\neq 0\)</span>时，
+<div class="math notranslate nohighlight">
+\[ \theta = \arccos \frac{[ x ,y ]}{\parallel x\parallel\parallel y\parallel} \]</div>
+
+称为<span class="math notranslate nohighlight">\(n\)</span>维向量<span class="math notranslate nohighlight">\(\mathbfit x\)</span>与<span class="math notranslate nohighlight">\(\mathbfit y\)</span>的夹角。
+当<span class="math notranslate nohighlight">\([\mathbfit x, \mathbfit y]=0\)</span>时，称向量<span class="math notranslate nohighlight">\(\mathbfit x\)</span>与<span class="math notranslate nohighlight">\(\mathbfit y\)</span>正交。
+若<span class="math notranslate nohighlight">\(n\)</span>维向量<span class="math notranslate nohighlight">\(a_1, a_2, \cdots, a_r\)</span>是一组两两正交的非零向量，则<span class="math notranslate nohighlight">\(a_1, a_2, \cdots, a_r\)</span>线性无关。
+设<span class="math notranslate nohighlight">\(n\)</span>维向量<span class="math notranslate nohighlight">\(e_1, e_2, \cdots, e_r\)</span>是向量空间<span class="math notranslate nohighlight">\(V(V\subset\mathbb{R}^{n})\)</span>的一个基，如果<span class="math notranslate nohighlight">\(e_1, e_2, \cdots, e_r\)</span> 两两正交，且都是单位向量，则称<span class="math notranslate nohighlight">\(e_1, e_2, \cdots, e_r\)</span>是<span class="math notranslate nohighlight">\(V\)</span>的一个规范正交基。<span class="math notranslate nohighlight">\(V\)</span>中的任一向量<span class="math notranslate nohighlight">\(a\)</span>应能由<span class="math notranslate nohighlight">\(e_1, e_2, \cdots, e_r\)</span>线性表示。
+设表示式为<span class="math notranslate nohighlight">\(a = \lambda_1e_1+\lambda_2e_2+\cdots+\lambda_re_r\)</span>，其中的系数为
+<div class="math notranslate nohighlight">
+\[ \lambda_i =\mathbfit e_i^T \mathbfit a =[\mathbfit a,\mathbfit e_i] \]</div>
+
+这就是向量在规范正交基中的坐标的计算公式。
+如果<span class="math notranslate nohighlight">\(n\)</span>阶矩阵<span class="math notranslate nohighlight">\(\mathbfit A\)</span>满足
+<div class="math notranslate nohighlight">
+\[ \mathbfit A^T \mathbfit A=\mathbfit E \Leftrightarrow \mathbfit A^{-1} = \mathbfit A^T\]</div>
+
+那么<span class="math notranslate nohighlight">\(\mathbfit A\)</span>称为正交矩阵，简称正交阵。
+设<span class="math notranslate nohighlight">\(\mathbfit A\)</span>是<span class="math notranslate nohighlight">\(n\)</span>阶矩阵，如果数 <span class="math notranslate nohighlight">\(\lambda\)</span>和<span class="math notranslate nohighlight">\(n\)</span> 维非零列向量<span class="math notranslate nohighlight">\(\mathbfit x\)</span>使关系式
+<div class="math notranslate nohighlight">
+\[A\mathbfit x=\lambda \mathbfit x \Leftrightarrow (\mathbfit A -\lambda \mathbfit E) \mathbfit x=\mathbfit 0 \]</div>
+
+成立，那么，这样的数<span class="math notranslate nohighlight">\(\lambda\)</span>称为矩阵 A 的特征值，非零向量<span class="math notranslate nohighlight">\(x\)</span>称为A 的对应于特征值 <span class="math notranslate nohighlight">\(\lambda\)</span> 的特征向量。</p>
+<ul class="simple">
+<li><p>特征方程  <span class="math notranslate nohighlight">\(\mid \mathbfit A-\lambda \mathbfit E\mid=0\)</span></p></li>
+<li><p>特征多项式 <span class="math notranslate nohighlight">\(\mid \mathbfit A-\lambda \mathbfit E\mid\)</span></p></li>
+<li><p>特征值就是特征方程的解</p></li>
+<li><p>特征方程在复数范围内恒有解，其个数为方程的次数。
+设<span class="math notranslate nohighlight">\(\mathbfit A,\mathbfit B\)</span>都是<span class="math notranslate nohighlight">\(n\)</span>阶矩阵，若有可逆矩阵<span class="math notranslate nohighlight">\(\mathbfit P\)</span>，使
+<div class="math notranslate nohighlight">
+\[\mathbfit P^{- 1}\mathbfit A\mathbfit P= \mathbfit B\]</div>
+
+则称<span class="math notranslate nohighlight">\(\mathbfit B\)</span>是<span class="math notranslate nohighlight">\(\mathbfit A\)</span>的相似矩阵，或说矩阵<span class="math notranslate nohighlight">\(\mathbfit A\)</span>与<span class="math notranslate nohighlight">\(\mathbfit B\)</span>相似。对<span class="math notranslate nohighlight">\(\mathbfit A\)</span>进行运算<span class="math notranslate nohighlight">\(\mathbfit P^{-1}\mathbfit A\mathbfit P\)</span>称为对<span class="math notranslate nohighlight">\(\mathbfit A\)</span>进行相似变换，可逆矩阵<span class="math notranslate nohighlight">\(\mathbfit P\)</span>称为把<span class="math notranslate nohighlight">\(\mathbfit A\)</span>变成<span class="math notranslate nohighlight">\(\mathbfit B\)</span>的相似变换矩阵。
+若<span class="math notranslate nohighlight">\(n\)</span>阶矩阵<span class="math notranslate nohighlight">\(\mathbfit A\)</span>与<span class="math notranslate nohighlight">\(\mathbfit B\)</span>相似，则<span class="math notranslate nohighlight">\(\mathbfit A\)</span>与<span class="math notranslate nohighlight">\(\mathbfit B\)</span>的特征多项式相同，从而<span class="math notranslate nohighlight">\(\mathbfit A\)</span>与<span class="math notranslate nohighlight">\(\mathbfit B\)</span>的特征值亦相同。
+若<span class="math notranslate nohighlight">\(n\)</span>阶矩阵<span class="math notranslate nohighlight">\(\mathbfit A\)</span>与对角阵
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{\Lambda}=\left[\begin{matrix}{\lambda_{1}}&amp;&amp;&amp;\\&amp;{\lambda_{2}}&amp;&amp;\\&amp;&amp;{\ddots}&amp;\\&amp;&amp;&amp;{\lambda_{n}}\\\end{matrix}\right]\end{split}\]</div>
+
+相似，则<span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\cdots,\lambda_{n}\)</span>即是<span class="math notranslate nohighlight">\(\mathbfit A\)</span>的<span class="math notranslate nohighlight">\(n\)</span>个特征值。
+设<span class="math notranslate nohighlight">\(\mathbfit A\)</span>为<span class="math notranslate nohighlight">\(n\)</span>阶对称阵，则必有正交阵<span class="math notranslate nohighlight">\(\mathbfit P\)</span>，使<span class="math notranslate nohighlight">\(\mathbfit P^{-1}\mathbfit A\mathbfit P=\mathbfit P^T\mathbfit A\mathbfit P=\mathbfit \Lambda\)</span>，其中<span class="math notranslate nohighlight">\(\Lambda\)</span>是以<span class="math notranslate nohighlight">\(A\)</span>的<span class="math notranslate nohighlight">\(n\)</span>个特征值为对角元的对角阵。</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>二次型<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<p>二次型是含有<span class="math notranslate nohighlight">\(n\)</span>个变量<span class="math notranslate nohighlight">\(x_1, x_2, \cdots, x_n\)</span>的二次齐次函数
+<div class="math notranslate nohighlight">
+\[\begin{split} f(x_{1},x_{2},\cdots,x_{n})=a_{11}x_{1}^{2}+a_{22}x_{2}^{2}+\cdots+a_{nn}x_{n}^{2}\\+2a_{12}x_{1}x_{2}+2a_{13}x_{1}x_{3}+\cdots+2a_{n-1,n}x_{n-1}x_{n} \end{split}\]</div>
+</p>
+<p>对于二次型，我们讨论的主要问题是寻求可逆的线性变换，使二次型只含平方项，称为二次型的标准形。
+利用矩阵，二次型可以记作
+<div class="math notranslate nohighlight">
+\[ f=\mathbfit x^T\mathbfit A\mathbfit x \]</div>
+
+其中<span class="math notranslate nohighlight">\(\mathbfit A\)</span>为对称阵。
+任给二次型<span class="math notranslate nohighlight">\(f=\sum_{i,j=1}^{n} a_{ij}x_{i}x_{j} ( a_{ij}=a_{ji} )\)</span>，总有正交变换<span class="math notranslate nohighlight">\(\mathbfit x = \mathbfit P \mathbfit y\)</span>，使<span class="math notranslate nohighlight">\(f\)</span>化为标准形
+<div class="math notranslate nohighlight">
+\[ f=\lambda_{1} y_{1}^{2}+\lambda_{2} y_{2}^{2}+\cdots+\lambda_{n}y_{n}^{2} \]</div>
+
+其中<span class="math notranslate nohighlight">\(\lambda_1, \lambda_2, \cdots, \lambda_n\)</span>是<span class="math notranslate nohighlight">\(f\)</span>的矩阵<span class="math notranslate nohighlight">\(\mathbfit A=(a_ij)\)</span>的特征值。
+设有二次型 <span class="math notranslate nohighlight">\(f(x)=x^{\mathrm{T}}Ax\)</span>,如果对任何 <span class="math notranslate nohighlight">\(x\neq0\)</span>,都有 <span class="math notranslate nohighlight">\(f(x)&gt;0\)</span>（显然<span class="math notranslate nohighlight">\(f(0)=0\)</span>），则称<span class="math notranslate nohighlight">\(f\)</span>为正定二次型，并称对称阵<span class="math notranslate nohighlight">\(A\)</span>是正定的；如果对任何<span class="math notranslate nohighlight">\(x\neq0\)</span> 都有<span class="math notranslate nohighlight">\(f(x)&lt;0\)</span>，则称<span class="math notranslate nohighlight">\(f\)</span>为负定二次型，并称对称阵<span class="math notranslate nohighlight">\(A\)</span>是负定的
+对称阵<span class="math notranslate nohighlight">\(A\)</span>为正定的充分必要条件是<span class="math notranslate nohighlight">\(A\)</span>的特征值全为正。
+设有二次型<span class="math notranslate nohighlight">\(f(x)=x^TAx\)</span>，若对于每个非零向量，都有<span class="math notranslate nohighlight">\(f(x)\leq0\)</span>，则称<span class="math notranslate nohighlight">\(f(x)\)</span>为半正定二次型。</p>
 </section>
 </section>
 </section>
@@ -605,18 +732,26 @@ y'=\frac{-bx+ay}{ad-bc}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">线性空间和线性变换</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">线性空间</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">线性相关性</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">维数、基与坐标</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n"><span class="math notranslate nohighlight">\(n\)</span>维实数向量空间</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">线性变换</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">抽象代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">群</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">环</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">域</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">矩阵</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">矩阵运算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">初等变换</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">行列式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">线性代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">线性空间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">线性相关性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">维数、基与坐标</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n"><span class="math notranslate nohighlight">\(n\)</span>维实数向量空间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">线性变换</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">矩阵</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">矩阵运算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">初等变换</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">行列式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">相似矩阵</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">二次型</a></li>
 </ul>
 </li>
 </ul>
